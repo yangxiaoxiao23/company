@@ -1,0 +1,82 @@
+
+	<!-- 新版旅游攻略 -->
+    <div id="left" class="abouts_left">
+        	<div class="left_func">
+                <!-- 攻略标题 -->
+				{{foreach item=value key=key from=$data.type_info}}
+                <div class="func_list">
+                    <h2><a href="{{$value.url}}" {{if $value.type_id eq $data.parent_id}}class="click"{{/if}}>{{$value.type_name}}攻略</a><!-- 此处a里面点击以后加入class="click" --></h2>
+                    <ul>
+						{{foreach item=v key=k from=$value.son}}
+                        <li><a href="{{$v.url}}" {{if $v.type_id eq $data.type_id}}class="click"{{/if}}>{{$v.type_name}}攻略<b>&gt;</b><!-- 此处a里面点击以后加入class="click" --></a></li>
+                        <div class="raiders_cls clear">
+                            {{if $data.type_id eq $v.type_id}}
+                            {{if $data.left_three neq ''}}
+                            <ul class="raiders_cls_left">
+                                {{$data.left_three}}
+                            </ul>
+                            <!-- 偶数 -->
+                            <ul class="raiders_cls_right">
+                                {{$data.right_three}}
+                            </ul>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+                        {{/foreach}}
+                    </ul>
+                </div>
+				{{/foreach}}
+                <!-- 攻略标题 end -->
+            </div>
+        	
+            <!-- 最新专题 -->
+            <div class="lastest_action">
+            	<h2>最新专题</h2>
+                <ul>
+                	<li><a target="_blank" href=""><img alt="" src="http://www.xiaoming.com/image/nav/abouts_img4.jpg"></a></li>
+                    <li><a target="_blank" href=""><img alt="" src="http://www.xiaoming.com/image/nav/abouts_img4.jpg"></a></li>
+                </ul>
+            </div>
+            <!-- 最新专题 end -->
+            
+            <!-- 热销排行 -->
+            <div class="arrange_warp cfix">
+                <div class="title_1"><h2>热销排行榜</h2></div>
+                    <div class="cont">
+                        <ul>
+                            <li class="s_1"><span class="color_orange fr">$426+</span><a href="http://www.xiaoming.com/luoshanji-lasi-daxiagu-shengtababala-jiujinshan-youshengmeidi-zhutileyuan-8d-lvyou.html" title="洛杉矶,拉斯维加斯,大峡谷,圣塔芭芭拉,旧金山,优胜美地,主题乐园八日超值游**感受特色叮当车，领略壮丽大峡谷**">洛杉矶,拉斯维加斯,大峡谷,圣塔芭芭拉,旧金山,优胜美地,主题乐园八日超值游**感受特色叮当车，领略壮丽大峡谷**</a></li>
+                            <li class="s_2"><span class="color_orange fr">$298+</span><a href="http://www.xiaoming.com/niuyue-boshidun-baigong-yelu-7d-lvyou.html" title="纽约,波士顿,白宫,耶鲁大学七日创新精华游**美东八城游，风光无限好**">纽约,波士顿,白宫,耶鲁大学七日创新精华游**美东八城游，风光无限好**</a></li>
+                            <li class="s_3"><span class="color_orange fr">$335+</span><a href="http://www.xiaoming.com/niuyue-boshidun-guohuidasha-niyajialapubu-8d-lvyou.html" title="纽约,波士顿,国会大厦,尼亚加拉瀑布八日超值自由行之旅">纽约,波士顿,国会大厦,尼亚加拉瀑布八日超值自由行之旅</a></li>
+                            <li class="s_4"><span class="color_orange fr">$319+</span><a href="http://www.xiaoming.com/huangshi-baoweihu-yanhucheng-xixia-7d-lvyou.html" title="黄石公园,洛杉矶,拉斯维加斯,包伟湖,布莱斯峡谷,盐湖城,西峡谷七日超值游(入住黄石湖木屋)**即刻入住黄石湖木屋，零距离欣赏黄石美景**">黄石公园,洛杉矶,拉斯维加斯,包伟湖,布莱斯峡谷,盐湖城,西峡谷七日超值游(入住黄石湖木屋)**即刻入住黄石湖木屋，零距离欣赏黄石美景**</a></li>
+                            <li class="s_5"><span class="color_orange fr">$361+</span><a href="http://www.xiaoming.com/lasiweijiasi-huangshigongyuan-gongmen-8d-lvyou.html" title="黄石公园,拉斯维加斯,西峡谷,总统巨石,拱门八日游**相约美西，梦幻黄石**">黄石公园,拉斯维加斯,西峡谷,总统巨石,拱门八日游**相约美西，梦幻黄石**</a></li>
+                       </ul>
+                    </div>
+              </div>
+  </div>
+  
+  		<div id="right" class="abouts_right">
+        	<div class="aboutsTit">
+            	<ul>
+                	<li>{{$data.type_name}}攻略</li>
+                </ul>
+            </div>
+            <div class="aboutsTit">
+                <form method="get" action="">
+                    <input type="text" name="search" value="{{$data.search}}"/>
+                    <input type="submit" value="search">
+                </form>
+
+            </div>
+            <div class="aboutsCont ">
+            	<div class="func_cont_list">
+                	<ul>
+						{{section name=title loop=$data.list_info.list}}
+                        <li {{if ($smarty.section.title.index+1)%5 eq 0 && ($smarty.section.title.index+1) neq 0}}class="x"{{/if}}><a title="{{$data.list_info.list[title].article_title}}" href="{{$data.list_info.list[title].url}}">{{$data.list_info.list[title].article_title}}</a><label>{{$data.list_info.list[title].date}}</label></li>
+						{{/section}}
+                        
+                    </ul>
+                </div>
+				{{$data.list_info.page}}
+            </div>
+        </div>
+    <!-- 新版旅游攻略 end -->

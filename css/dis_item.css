@@ -1,0 +1,57 @@
+/** 优惠模块的样式表 **/
+@charset "utf-8";
+.dis-item .view{ display:none; }
+.dis-item .edit{}
+
+.dis-item {
+	font-size:14px;
+}
+
+.dis-item {
+    float:left;
+    padding: 20px 20px 0px 20px;
+    text-align:right;
+}
+
+.dis-item li {
+    width: 330px;
+	line-height:30px;
+	height:30px;
+}
+
+.dis-item li.points-tips {
+    width: 600px;
+    text-align:left;
+    padding-top: 20px;
+    color: #666666;
+}
+
+.dis-item input {
+    height: 18px;
+    width: 155px;
+    border: 1px solid #bbbbbb;
+    color: #666666;
+    padding-left: 5px;
+}
+
+.dis-item button {
+    width: 50px;
+    background: #f60;
+    border: 1px;
+    height: 22px;
+    line-height: 22px;
+    margin-left: 5px;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.dis-item span.price {
+    height: 18px;
+    width: 155px;
+    padding-left:3px;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+    text-align:left;
+}

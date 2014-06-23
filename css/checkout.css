@@ -1,0 +1,1707 @@
+@charset "utf-8";
+/* CSS Document */
+body, #sitebg{ background:none; }
+#head{ border-bottom:4px solid #276EC6;}
+#body{width:100%; background:#F0F0F0; padding:0;}
+#body-content{width:990px; margin:0 auto;}
+.shopping-progress-left {
+    background: url("../image/shopping-cart-icon.png") no-repeat 34px 37px;
+    float: left;
+    height: 35px;
+    padding: 45px 0 16px 48px;
+	font:12px/1 tahoma,Arial,宋体,Helvetica,sans-serif;
+}
+.shopping-progress-right .two-step strong {
+    padding: 0 16px 0 75px;
+}
+.shopping-progress-left span {
+    font-family: '微软雅黑','宋体';
+    font-size: 36px;
+    padding-left: 50px;
+}
+.shopping-progress-right {
+    background: url("../image/progress-2.png") no-repeat left 39px ;
+    float: right;
+    height: 41px;
+    line-height: 41px;
+    padding: 39px 18px 17px 0;
+    width: 591px;
+}
+.shopping-progress-right strong {
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 31px;
+    height: 41px;
+    line-height: 41px;
+    padding: 0 16px;
+    vertical-align: top;
+}
+
+.shopping-progress-right span {
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: '微软雅黑','宋体';
+    font-size: 18px;
+    height: 41px;
+    line-height: 41px;
+}
+.shopping-progress-right .three-step span{padding-right:60px;}
+
+
+
+#LoginInfo form {}
+#PassengerFlightInfo form {}
+#PaymentInfo form {}
+#ContactInfo form {}
+#BillingInfo form { border:#F60 dashed }
+
+
+#sitebg {
+    background: none repeat scroll 0 0 #FFFFFF;
+}
+#topbar .top-content, #head #head-content, #body-content, #foot #foot-content {
+    margin: 0 auto;
+    width: 990px;
+}
+input[type="checkbox"], input[type="radio"], label {
+    margin-right: 3px;
+    vertical-align: middle;
+}
+#topbar .top-content .register-succ-tooltip {
+    background: url("../image/register-succ.png") no-repeat 0 0;
+    height: 60px;
+    left: 200px;
+    position: absolute;
+    width: 309px;
+    z-index: 7777;
+}
+#topbar .top-content .register-succ-tooltip p {
+    font-size: 12px;
+    height: 18px;
+    line-height: 18px;
+    padding: 15px 12px 15px 8px;
+}
+#body {
+    background-color: #F0F0F0;
+    height: 100%;
+}
+.shopping-progress {
+    height: 96px;
+}
+.shopping-progress-left {
+    background: url("../image/shopping-cart-icon.png") no-repeat 34px 37px;
+    float: left;
+    height: 35px;
+    padding: 45px 0 16px 48px;
+}
+.shopping-progress-left span {
+    font-family: '微软雅黑','宋体';
+    font-size: 36px;
+    padding-left: 50px;
+}
+.shopping-progress-right {
+    background: url("../image/progress-2.png") no-repeat left 39px;
+    float: right;
+    height: 41px;
+    line-height: 41px;
+    padding: 39px 18px 17px 0;
+    width: 591px;
+}
+.shopping-progress-right strong {
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 31px;
+    height: 41px;
+    line-height: 41px;
+    padding: 0 16px;
+    vertical-align: top;
+}
+.shopping-progress-right span {
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: '微软雅黑','宋体';
+    font-size: 18px;
+    height: 41px;
+    line-height: 41px;
+}
+.shopping-progress-right .two-step strong {
+    padding: 0 16px 0 75px;
+}
+.shopping-progress-right .three-step span {
+    padding-right: 60px;
+}
+#body-content .purchaser-info-wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-bottom: 10px;
+}
+#body-content .purchaser-info-wrap dt {
+    background: none repeat scroll 0 0 #276EC6;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 20px;
+}
+#body-content .purchaser-info-wrap .status {
+    background: url("../image/product-split.png") repeat-x left bottom;
+    color: #999999;
+    font-size: 14px;
+    height: 34px;
+    line-height: 34px;
+    position: absolute;
+    right: 15px;
+    text-align: right;
+    top: 17px;
+    width: 150px;
+}
+#body-content .purchaser-info-wrap .go-login, #body-content .purchaser-info-wrap .go-register {
+    background: url("../image/go-on.png") no-repeat 20px -6px;
+    color: #0A8CD2;
+    cursor: pointer;
+    padding-right: 40px;
+}
+.purchaser-info-wrap .register-form {
+    border-left: 1px solid #CADEFF;
+    border-right: 1px solid #CADEFF;
+    padding-top: 24px;
+}
+.purchaser-info-wrap .login-form {
+    border-bottom: 1px solid #CADEFF;
+    border-left: 1px solid #CADEFF;
+    border-right: 1px solid #CADEFF;
+    padding-top: 24px;
+}
+.purchaser-info-wrap .purchaser-info p {
+    height: 25px;
+    line-height: 25px;
+    padding: 6px 0;
+}
+.purchaser-info-wrap .person-attr {
+    color: #333333;
+    text-align: right;
+    width: 336px;
+}
+.purchaser-info-wrap #purchaser-name, .purchaser-info-wrap #purchaser-email, .purchaser-info-wrap input {
+    border: 1px solid #BBBBBB;
+    padding: 0 5px;
+    width: 180px;
+}
+.purchaser-info-wrap .purchaser-info input {
+    color: #999999;
+    height: 23px;
+	line-height: 23px;
+    padding-left: 5px;
+}
+.purchaser-info-wrap .person-value .tooltip {
+    color: #FF5000;
+    font-size: 14px;
+}
+.purchaser-info-wrap .person-value .login-tooltip {
+    color: #666666;
+    padding-left: 14px;
+}
+.purchaser-info-wrap .person-value .forget-password {
+    background: url("../image/forget-password.png") no-repeat right center;
+    color: #FF8800;
+    padding-left: 14px;
+    padding-right: 20px;
+}
+.purchaser-info-wrap .submit-btn {
+    padding-left: 380px;
+}
+.purchaser-info-wrap .submit-btn #register-submit, .purchaser-info-wrap .submit-btn #login-submit {
+    background: none repeat scroll 0 0 #FF8800;
+    border: 1px solid #E98007;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-size: 18px;
+    line-height: 32px;
+    margin: 20px 0;
+    width: 108px;
+	cursor:pointer;
+}
+.purchaser-info-wrap .register-tooltip {
+    background: none repeat scroll 0 0 #FFEFDD;
+    border: 1px solid #FECE96;
+    color: #FF5A00;
+    height: 33px;
+    line-height: 35px;
+    padding-left: 18px;
+}
+.order-title {
+    background: none repeat scroll 0 0 #276EC6;
+    color: #FFFFFF;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 20px;
+}
+.shopping-wrap .product-img {
+    float: left;
+    padding-right: 25px;
+    padding-top: 8px;
+}
+.shopping-wrap .traveling-together {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #FF5A00;
+    color: #FE5900;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 2px 3px;
+}
+.shopping-wrap .product-list {
+    margin-bottom: 10px;
+}
+.shopping-wrap .product-detail .product-title {
+    background: none repeat scroll 0 0 #D3E7FF;
+    border: 1px solid #E4E4E4;
+    color: #0066FF;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 18px;
+}
+.shopping-wrap .product-detail .product-title .title {
+    font-weight: bold;
+}
+.shopping-wrap .product-content {
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #CADEFF;
+    border-left: 1px solid #CADEFF;
+    border-right: 1px solid #CADEFF;
+}
+.shopping-wrap .product-detail .product-content dl.product-attr-list {
+    padding: 8px 60px 3px 40px;
+    zoom:1;
+}
+
+.shopping-wrap .product-detail .product-content dl.product-attr-list:after, .shopping-wrap .product-detail dl.product-attr-list dd:after {
+    display:block;
+    content:'';
+    clear:both;
+}
+
+
+.shopping-wrap .product-detail .option-label {
+    float:left;
+    color: #999999;
+}
+
+.shopping-wrap .product-detail .product-content dl.product-attr-list dd {
+    color: #333333;
+    font-size: 14px;
+    line-height: 28px;
+    padding: 0 5px;
+    width: 890px;
+    zoom:1;
+}
+
+
+.shopping-wrap .product-detail .product-content dl.product-attr-list dd:hover {
+    background: none repeat 0 0 #FFE7CD;
+}
+.shopping-wrap .product-detail .product-content dl.product-attr-list dd.special-project-dd:hover {
+    background: none repeat 0 0;
+}
+.shopping-wrap .product-detail .product-detail-center {
+    padding-left: 315px;
+    position: absolute;
+}
+.shopping-wrap .product-detail .special-project-detail li:hover {
+    background: none repeat scroll 0 0 #FFE7CD;
+}
+.shopping-wrap .travel-cost {
+    bottom: 30px;
+    font-size: 14px;
+    height: 22px;
+    line-height: 22px;
+    position: absolute;
+    right: 8px;
+    text-align: right;
+}
+
+.shopping-wrap .product-action {
+	position: absolute;
+    right: 10px;
+    top: -2px;
+	border: 1px solid #CADEFF;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 0 4px;
+	text-align:right;
+    color: #307DE7;
+    font-size: 12px;
+}
+
+.shopping-wrap .product-action a:hover {
+    color: #FF6600;
+}
+.tourist-info .tourist-info-title {
+    background: none repeat scroll 0 0 #E5F2FA;
+    color: #666666;
+    font-size: 14px;
+    height: 30px;
+    line-height: 30px;
+    margin: 0 10px;
+    padding-left: 18px;
+}
+.tourist-info .tourist-info-title .title {
+    font-weight: bold;
+}
+.tourist-info .tourist-info-title .tooltip {
+    color: #276EC6;
+    font-size: 12px;
+    padding-left: 15px;
+}
+.expand-collapse {
+    background: url("../image/action-icon.png") no-repeat 30px 0;
+    color: #276EC6;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    padding-right: 40px;
+}
+.tourist-info .depart-date-key, .tourist-info .depart-date-value {
+    color: #666666;
+    font-size: 14px;
+    height: 54px;
+    line-height: 54px;
+}
+.tourist-info .depart-date-key {
+    padding-left: 28px;
+}
+.tourist-info .depart-date-wrap label {
+    background: url("../image/header-icons.png") no-repeat right -48px;
+    color: #FF5A00;
+    font-size: 12px;
+    padding-left: 35px;
+    padding-right: 12px;
+    position: relative;
+}
+.tourist-info .insurance-tooltip {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #D3E7FF;
+    border-radius: 5px;
+    color: #999999;
+    display: none;
+    left: 35px;
+    min-height: 30px;
+    padding: 10px;
+    position: absolute;
+    top: 25px;
+    width: 620px;
+    z-index: 8888;
+}
+.tourist-info .insurance-tooltip .tooltip-arrow {
+    background: url("../image/tooltip.png") no-repeat 0 0;
+    height: 7px;
+    left: 20px;
+    position: absolute;
+    top: -4px;
+    width: 11px;
+}
+.tourist-info .depart-date-wrap label:hover {
+    background: url("../image/header-icons.png") no-repeat right -88px;
+    position: relative;
+}
+.tourist-info .depart-date-wrap label:hover .insurance-tooltip {
+    display: block;
+}
+.tourist-info .insurance-type {
+    color: #666666;
+    line-height: 24px;
+    margin: 0 auto 15px;
+    width: 450px;
+}
+.tourist-info .insurance-type label {
+    margin-left: 20px;
+}
+.tourist-info .insurance-type input {
+    margin-right: 5px;
+}
+.tourist-info .insurance-type p {
+    background: none repeat 0 0;
+    color: #666666;
+    font-size: 12px;
+}
+.tourist-info .insurance-type .adult-price, .tourist-info .insurance-type .minors-price {
+    color: #FF0000;
+    margin-right: 50px;
+}
+.tourist-info .depart-date-wrap .chooise {
+    padding-left: 74px;
+}
+.tourist-info .depart-date-wrap .chooise-result {
+    background: none repeat scroll 0 0 #45AF51;
+    color: #FFFFFF;
+    display: inline-block;
+    height: 20px;
+    line-height: 20px;
+    padding: 4px;
+}
+.tourist-info .tourist-info-ul .tourist-contact {
+    background: #e5f2fa url("../image/tourist-li-number22.png") no-repeat scroll 10px center;
+    color: #666666;
+    margin: 5px 20px;
+    height: 28px;
+    line-height: 28px;
+}
+.tourist-info .tourist-number {
+    display: inline-block;
+    _dispaly: inline;
+    _zoom: 1;
+    text-align: center;
+    width: 22px;
+    font-size: 14px;
+    padding-left: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+.tourist-info .tourist-no {
+    color: #666666;
+    font-size: 12px;
+    font-weight: bold;
+    padding-left: 12px;
+    padding-right: 70px;
+}
+.country-select {
+    background: url("../image/input-edit.png") no-repeat scroll right -40px #FFFFFF;
+    border: 1px solid #BBBBBB;
+    color: #999999;
+    display: inline-block;
+    height: 25px;
+    width: 45px;
+}
+.country-id {
+    border: 1px solid #BBBBBB;
+    color: #999999;
+    height: 25px;
+    text-align: center;
+    width: 26px;
+}
+.tourist-phone {
+    border: 1px solid #BBBBBB;
+    color: #999999;
+    height: 25px;
+    width: 107px;
+}
+.tourist-info .tourist-contact .tooltip {
+    color: #FF5000;
+    font-size: 14px;
+}
+
+.odd-flights { margin:5px 0; background-color:#ffffff; /*border:1px solid #FFC75F; */}
+.odd-flights hr{ height:1px; border-top:1px dashed #FFC75F; border-bottom:none; }
+.odd-flights-hd{ height:30px; line-height:30px; padding:0 10px; background: #c6e0f0;}
+.odd-flights-tit { color:#000000; }
+.odd-flights-tit strong { margin-right:10px; }
+.odd-flights-hd .shirink-btn { float:right; color:#276EC6; cursor:pointer; }
+.odd-flights-hd .shirink-btn i.up { border-color:transparent transparent #FFF; border-style:dashed dashed solid; }
+.odd-flights-hd .odd-flights-edit { float:right; margin-right:10px; }
+.odd-flights-hd .odd-flights-edit span { padding-left:15px; background-position:-124px -128px; background-repeat:no-repeat; }
+.odd-flights-list { padding:10px 0; }
+.odd-flights-list dt{position:relative;height: 28px;line-height: 28px;background:#e5f2fa;}
+.odd-flights-list dd { width:350px; float:left; _display:inline; line-height:26px; border-bottom:1px solid #FFF; }
+.odd-flights-list dd:hover { background:#F9F9F9; border-bottom:1px dashed #E3E3E3; }
+.odd-flights-list dd span { width:75px; float:left; text-align:right; }
+
+
+.flights {
+	margin: 35px 0 20px 0;
+}
+
+.flights .flight-wrap-title {
+    display:none;
+	margin: 0 10px;
+	height: 30px;
+	background: #e5f2fa;
+	line-height:30px;
+	padding-left: 18px;
+	font-size:14px;
+	color:#666666;
+}
+
+.flights .flight-wrap-title .title {
+	font-weight: bold ;
+}
+
+
+.flights .add-flight {
+	margin-left: 35px;
+	height: 30px;
+	line-height: 30px;
+	width: 180px;
+	color: #fff;
+	font-size: 14px;
+	background:#fe8902;
+	border: 0;
+	border-radius: 3px;
+	text-align:left;
+	cursor:pointer;
+}
+
+.flights .add-flight em {
+	padding-left: 22px;
+	font-weight:bold;
+}
+
+.flights .add-flight span {
+	padding-left: 15px;
+}
+
+.flights .tooltip {
+	padding-left: 24px;
+	color:#999999;
+}
+
+.flights .flight-info-wrap {
+    margin: 0 20px;
+}
+
+
+.flights .flight-info-wrap li.edit-flight {
+	position:relative;	
+}
+
+.flights .flight-info-wrap .flight-title {
+	height: 28px;
+	line-height: 28px;
+	font-size: 12px;
+	color: #666666;
+	padding-left: 45px;
+	font-weight:bold;
+	margin:14px 0;
+	background: #e5f2fa url(../image/plane-16.png) no-repeat 10px 2px;
+}
+
+.flights .flight-info-wrap .flight-con {
+	float:left;
+	width:50%;
+}
+
+
+.flights .flight-info-wrap .flight-con p{
+	color:#666666;
+	font-size:12px;
+    padding-left: 20px;
+}
+
+.flights .flight-info-wrap .flight-con .select-all {
+	width:60px;
+	*width: 70px;
+}
+
+.flights .flight-info-wrap .flight-con .passenger{
+	line-height:28px;
+	margin: 10px 0;
+    padding-left: 20px;
+}
+
+.flights .flight-info-wrap .flight-con .passenger-option {
+	width: 260px;
+}
+
+.flights .flight-info-wrap .flight-con .passenger-option li {
+	width: 110px;
+	float:left;
+}
+
+.flights .flight-info-wrap .aerobus-info{
+	width:330px;
+	padding-bottom:10px;
+	border:1px solid #addbf7;
+    margin-left: 20px;
+}
+
+.flights .flight-info-wrap .aerobus-info h3 {
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
+	color:#666666;
+	font-weight:bold;
+	background:#e5f2fa;
+}
+
+.flights .flight-info-wrap .aerobus-info table {width:100%;}
+
+.flights .flight-info-wrap .aerobus-info table caption{
+	padding:10px 0 10px 30px;
+	color: #535353;
+	text-align:left;
+}
+
+.flights .flight-info-wrap .aerobus-info table caption p{
+	color: #999999;
+}
+
+.flights .flight-info-wrap .aerobus-info table tr{
+	height:28px;
+	line-height:28px;
+}
+
+.flights .flight-info-wrap .aerobus-info .attr {
+	width:90px;
+	color: #b4b4b4;
+	text-align:right;
+}
+
+.flights .flight-info-wrap .aerobus-info .val {
+	color: #535353;
+	text-align:left;
+}
+
+.flights .flight-info-wrap .aerobus-info p.tips {
+    padding-left:0;
+}
+
+.flights .edit-flight {
+	position:relative;
+}
+
+.flights .flight-wrap-content .flight-content-title{
+	margin: 15px 20px;
+	height: 34px;
+	line-height:34px;
+	font-size:14px;
+	color:#666666;
+	padding-left:70px;
+	background:#e5f2fa url(../image/plane.png) no-repeat 28px 5px;
+}
+
+
+.flights .flight-text {
+	margin:14px 0 0 78px;
+	width: 295px;
+	height:294px;
+	border: 1px solid #addbf7;
+}
+
+.flights .flight-text .title {
+	padding-left: 20px;
+	height: 30px;
+	line-height:30px;
+	color: #666666;
+	background: #e5f2fa;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.flights  .flight-text .auto-go-hotel, .flight-info  .flight-text .auto-go-out {
+	margin-top: 5px;
+	margin-left: 18px;
+	color:#666666;
+}
+
+.flights .flight-text .auto-go-hotel .tooltip, .flight-info  .flight-text .auto-go-out .tooltip {
+	padding: 3px 0;
+}
+
+.flights .flight-text .flight-attr {
+	margin-top: 10px;
+}
+
+.flights .flight-text .flight-attr .key {
+	padding: 6px 10px 6px 0;
+	height: 22px;
+	line-height: 22px;
+	text-align:right;
+	width:64px;
+	color:#666666;
+}
+
+.flights .flight-text .flight-attr .value input {
+	width:155px;
+	border:1px solid #bbbbbb;
+	color:#666666;
+	padding-left:5px;
+	height:20px;
+	line-height:20px;
+}
+
+.flights .flight-text .flight-time {
+	margin: 3px 0 18px 0;
+	text-align: center;
+	color: #717171;
+}
+
+.flights .repeat-add-flight {
+	margin-top: 20px;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+}
+
+J_passengers
+
+#ContactInfo {
+    margin-top: 10px;
+}
+#ContactInfo .title {
+    background: none repeat scroll 0 0 #D3E7FF;
+    border: 1px solid #E4E4E4;
+    color: #666666;
+    font-size: 14px;
+    height: 28px;
+    line-height: 30px;
+    padding-left: 14px;
+}
+#ContactInfo .contentText {
+    margin-bottom: 5px;
+    border-left: 1px solid #cadeff;
+    border-right: 1px solid #cadeff;
+    border-bottom: 1px solid #cadeff;
+}
+
+#ContactInfo .contentText .comments {
+    border: 0;
+    width: 978px;
+    height: 90px;
+    padding: 5px;
+    overflow: auto;
+    resize: none;
+    background-color:#FFF;
+}
+
+#ContactInfo .action, .shopping-wrap .action {height:45px;padding-right:40px;}
+
+#ContactInfo .action button, .shopping-wrap .action button {
+	float:right;
+    margin-bottom: 5px;
+    background: #ff8800;
+    border: 1px solid #e98007;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 3px;
+    width: 200px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    _display: inline;
+    _zoom: 1;
+    cursor: pointer;
+}
+
+#play-way-wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    margin-top: 8px;
+}
+#play-way-wrap .play-way-title {
+    background: none repeat scroll 0 0 #276EC6;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 18px;
+}
+#play-way-wrap .play-expand-collapse {
+    color: #FFFFFF;
+}
+#play-way-wrap .play-way-content {
+    border: 1px solid #CADEFF;
+    padding: 15px 20px;
+}
+#play-way-wrap .play-way-content .select-currency {
+    background: none repeat scroll 0 0 #FF8800;
+    color: #FFFFFF;
+    font-size: 14px;
+    height: 36px;
+    line-height: 50px;
+}
+.selected-currency {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px 3px 0 0;
+    color: #333333;
+}
+#play-way-wrap .play-way-content .select-currency #rmb-currency {
+    margin-left: 16px;
+    padding: 10px 15px 2px;
+}
+#play-way-wrap .play-way-content .select-currency #dollar-currency {
+    padding: 10px 15px 2px;
+}
+#play-way-wrap #play-option-wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 4px 4px 10px;
+}
+#play-way-wrap #play-option-wrap dt {
+    color: #333333;
+    height: 38px;
+    line-height: 38px;
+}
+#play-way-wrap #play-option-wrap dd {
+    background: url("../image/selected-way.png") no-repeat left -40px;
+    color: #666666;
+    height: 38px;
+    line-height: 38px;
+    margin-bottom: 1px;
+    padding-left: 18px;
+    width: 194px;
+}
+#play-way-wrap #play-option-wrap dd.selected {
+    background: url("../image/selected-way.png") no-repeat left 0;
+    font-weight: bold;
+}
+#play-way-wrap #play-option-wrap dd input {
+    margin-right: 28px;
+}
+#play-way-wrap .way-mark-wrap {
+    border-bottom: 1px solid #D4D4D4;
+    color: #666666;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+    margin: 47px 0 0 30px;
+    padding-left: 13px;
+    width: 660px;
+}
+#play-way-wrap .way-mark-content {
+    margin-top: 20px;
+}
+#play-way-wrap #dollar-way {
+    display: none;
+}
+#discount-wrap {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CADEFF;
+    margin-top: 10px;
+}
+#discount-content {
+    padding: 20px 20px 0;
+    text-align: right;
+}
+#discount-content li {
+    line-height: 24px;
+}
+#discount-content li input {
+    border: 1px solid #BBBBBB;
+    color: #666666;
+    height: 18px;
+    padding-left: 5px;
+    width: 155px;
+}
+#discount-content li button {
+    background: none repeat scroll 0 0 #FF6600;
+    border: 1px none;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 24px;
+    line-height: 24px;
+    width: 40px;
+}
+#discount-content .discount-option {
+    width: 300px;
+}
+#discount-content .discount-option .cancle-btn {
+    display: none;
+}
+#discount-wrap .cost-attr {
+    color: #666666;
+}
+#discount-wrap .cost-value {
+    color: #FF5400;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    width: 80px;
+}
+#discount-wrap #discount-tooltip a {
+    background: url("../image/pmsg_icon.png") no-repeat right center;
+    color: #666666;
+    cursor: pointer;
+    display: inline-block;
+    margin-left: 50px;
+    padding-right: 15px;
+    text-decoration: underline;
+}
+
+#order-action {
+    padding: 10px;
+}
+#order-action #preview-btn {
+    background: url("../image/preview.png") no-repeat scroll 12px 7px #2C7CC9;
+    border: 1px solid #1E6FBF;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 18px;
+    height: 40px;
+    line-height: 40px;
+    margin: 12px 50px 12px 540px;
+    padding-left: 20px;
+    text-align: center;
+    width: 130px;
+}
+#order-action #generate-btn {
+    background: none repeat scroll 0 0 #FF8800;
+    border: 1px solid #E98007;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 5px;
+    text-align: center;
+    width: 200px;
+}
+#order-action #agreement {
+    padding: 10px 70px 10px 0;
+}
+#preview-wrap {
+    margin: 0 auto;
+    width: 990px;
+}
+#preview-split {
+    background: none repeat scroll 0 0 #276EC6;
+    height: 6px;
+}
+#preview-con {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CADEFF;
+    padding: 3px 10px 0;
+}
+#preview-con .order-no {
+    border-bottom: 1px solid #A6CBFE;
+    color: #666666;
+    font-size: 14px;
+    height: 29px;
+    line-height: 29px;
+    padding-left: 10px;
+}
+#preview-con .order-people {
+    height: 64px;
+    padding: 6px 10px;
+}
+#preview-con .order-people .info {
+    color: #333333;
+    font-size: 14px;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+}
+#preview-con .order-people div {
+    color: #666666;
+    font-size: 12px;
+    height: 24px;
+    line-height: 24px;
+}
+#preview-con .order-people .name {
+    display: inline-block;
+    width: 90px;
+}
+#preview-con .order-people .phone {
+    display: inline-block;
+    width: 100px;
+}
+#preview-con .order-people .email {
+    display: inline-block;
+    width: 180px;
+}
+#preview-con .detail {
+}
+#preview-con .detail .title {
+    background: none repeat scroll 0 0 #E2F2FF;
+    border-top: 4px solid #A6CBFE;
+    color: #666666;
+    font-size: 14px;
+    height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+}
+#preview-con .subject-wrap {
+    padding-top: 18px;
+}
+#preview-con .subject-wrap li {
+}
+#preview-con .subject-wrap .subject-title {
+    background: none repeat scroll 0 0 #E5F2FA;
+    color: #0066FF;
+    font-size: 12px;
+    font-weight: bold;
+    height: 27px;
+    line-height: 27px;
+    padding-left: 10px;
+}
+#preview-con .subject-wrap .subject-con {
+    border-bottom: 1px solid #E3E2E2;
+    font-size: 12px;
+    padding: 5px 10px 18px;
+    position: relative;
+}
+#preview-con .subject-wrap .subject-con tr {
+    height: 22px;
+    line-height: 22px;
+}
+#preview-con .subject-wrap .subject-con .attr {
+    color: #999999;
+    text-align: right;
+    width: 75px;
+}
+#preview-con .subject-wrap .subject-con .val {
+    color: #333333;
+    width: 245px;
+}
+#preview-con .subject-wrap .subject-con .travel-cost {
+    bottom: 9px;
+    font-size: 14px;
+    font-weight: bold;
+    height: 22px;
+    line-height: 22px;
+    position: absolute;
+    right: 8px;
+    text-align: right;
+}
+#preview-con .subject-wrap .tourist-info-wrap {
+    padding-top: 23px;
+}
+#preview-con .subject-wrap .tourist-info-wrap li {
+}
+#preview-con .subject-wrap .tourist-info-wrap li p {
+    background: url("../image/tourist-li-number22.png") no-repeat scroll 10px center #E5F2FA;
+    color: #666666;
+    font-size: 12px;
+    height: 28px;
+    line-height: 28px;
+}
+#preview-con .subject-wrap .tourist-info-wrap li .tourist-no {
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    padding-left: 10px;
+    text-align: center;
+    width: 22px;
+}
+#preview-con .subject-wrap .tourist-info-wrap strong {
+    padding: 0 30px 0 10px;
+}
+#preview-con .subject-wrap .tourist-info-wrap .phone {
+    color: #333333;
+}
+#preview-con .subject-wrap .tourist-info-wrap .detail {
+    padding: 10px;
+}
+#preview-con .subject-wrap .tourist-info-wrap .detail tr {
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+}
+#preview-con .subject-wrap .tourist-info-wrap .detail .attr {
+    color: #999999;
+    text-align: left;
+    width: 110px;
+}
+#preview-con .subject-wrap .tourist-info-wrap .detail .val {
+    color: #333333;
+    text-align: left;
+    width: 200px;
+}
+#preview-con .subject-wrap .tourist-info-wrap .detail .gender {
+    color: #999999;
+    text-align: left;
+    width: 40px;
+}
+#preview-con .subject-wrap .flight-info-wrap {
+    padding: 20px 0;
+}
+#preview-con .subject-wrap .flight-info-wrap .flight-title {
+    background: url("../image/plane-16.png") no-repeat scroll 10px 0 #E5F2FA;
+    color: #666666;
+    font-size: 12px;
+    height: 22px;
+    line-height: 22px;
+    margin: 14px 0;
+    padding-left: 45px;
+}
+#preview-con .subject-wrap .flight-info-wrap .flight-con {
+    float: left;
+    padding-left: 45px;
+    width: 435px;
+}
+#preview-con .subject-wrap .flight-info-wrap .flight-con p {
+    color: #666666;
+    font-size: 12px;
+    padding-left: 10px;
+}
+#preview-con .subject-wrap .flight-info-wrap .flight-con .passenger {
+    font-weight: bold;
+    height: 28px;
+    line-height: 28px;
+}
+#preview-con .subject-wrap .flight-info-wrap .aerobus-info {
+    border: 1px solid #ADDBF7;
+    margin-top: 6px;
+    width: 295px;
+}
+#preview-con .subject-wrap .flight-info-wrap .aerobus-info h3 {
+    background: none repeat scroll 0 0 #E5F2FA;
+    color: #666666;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+#preview-con .subject-wrap .flight-info-wrap .aerobus-info table tr {
+    height: 28px;
+    line-height: 28px;
+}
+#preview-con .subject-wrap .flight-info-wrap .aerobus-info .attr {
+    color: #B4B4B4;
+    text-align: right;
+    width: 90px;
+}
+#preview-con .subject-wrap .flight-info-wrap .aerobus-info .val {
+    color: #535353;
+    text-align: left;
+}
+#preview-amount {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CADEFF;
+    height: 176px;
+    margin-top: 10px;
+    overflow: hidden;
+    width: 988px;
+}
+#preview-amount ul {
+    padding: 18px 20px 0;
+}
+#preview-amount ul li {
+    color: #666666;
+    font-size: 14px;
+    height: 28px;
+    line-height: 28px;
+}
+#preview-amount ul li .cost-attr {
+    float: left;
+    text-align: right;
+    width: 865px;
+}
+#preview-amount ul li .cost-val {
+    color: #FF5400;
+    float: right;
+    font-family: Arial,Helvetica,sans-serif;
+    text-align: right;
+    width: 75px;
+}
+#preview-payable {
+    background: url("../image/product-split.png") repeat-x 0 0;
+    color: #666666;
+    float: right;
+    font-size: 18px;
+    margin-right: 15px;
+    padding: 10px 25px 25px 0;
+    text-align: right;
+    width: 245px;
+}
+#preview-payable span {
+    color: #FF5400;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 24px;
+}
+.agreement {
+    color: #666666;
+    padding: 10px 40px 10px 0;
+    text-align: right;
+}
+.agreement button {
+    background: none repeat scroll 0 0 #FF8800;
+    border: 1px solid #E98007;
+    border-radius: 3px;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 22px;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 10px;
+    text-align: center;
+    width: 200px;
+}
+#protocol {
+    position: relative;
+}
+#protocol h3 {
+    background: none repeat scroll 0 0 #FF8800;
+    color: #FFFFFF;
+    font-family: '微软雅黑','宋体';
+    font-size: 22px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+}
+#protocol p {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px;
+    color: #FF8800;
+    height: 20px;
+    line-height: 20px;
+    position: absolute;
+    right: 10px;
+    text-align: center;
+    top: 7px;
+    width: 20px;
+}
+#protocol .con {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #E3E3E3 #E3E3E3;
+    border-image: none;
+    border-right: 4px solid #E3E3E3;
+    border-style: none solid solid;
+    border-width: medium 4px 4px;
+    height: 166px;
+    overflow: auto;
+    resize: none;
+    width: 982px;
+}
+
+#body-content .purchaser-info-wrap {
+	background: #fff;
+	margin-bottom: 10px;
+}
+
+#body-content .purchaser-info-wrap dt {
+	background: #276ec6;
+	color: #fff;
+	padding-left: 20px;
+	height:32px;
+	line-height:32px;
+	font-size:14px;
+}
+#body-content .purchaser-info-wrap .status {
+	top: 17px;
+	right:15px;
+	width: 150px;
+	position:absolute;
+	text-align: right;
+	height: 34px;
+	line-height:34px;
+	font-size: 14px;
+	color: #999999;
+	background:url(../image/product-split.png) repeat-x left bottom;
+}
+.tourist-detail {
+	zoom:1;
+}
+.tourist-detail:after{
+	clear: both;
+    content: "";
+    display: block;
+}
+.tourist-info-input{
+	color: #999999;
+    font-size: 14px;
+    padding: 10px 20px;
+	zoom:1;
+}
+
+.tourist-info-input{
+	clear: both;
+    content: "";
+    display: block;
+}
+
+.tourist-info-input li{
+    width:450px;
+	height: 35px;
+    line-height: 35px;
+	float:left;
+}
+.tourist-info-input li  label{
+    width:125px; float:left; text-align:right;
+}
+.tourist-info-input li  p {display:inline-block;_display:inline;_zoom:1;}
+
+.tourist-info-input .tourist-input {
+	border: 1px solid #B5B5B5;
+    height: 25px;
+    padding-left: 5px;
+    width: 189px;
+	margin-right:5px;
+}
+
+#ProductsList .contentContainer {
+    padding:5px;
+    border: 1px solid #cadeff;
+    background: #fff;
+}
+
+
+
+#ProductsList #preview-split {
+    background: #276ec6;
+    height: 6px;
+}
+
+#ProductsList .contentContainer .order-people {
+	padding: 6px 10px;
+}
+
+#ProductsList .contentContainer .info {
+	height: 26px;
+line-height: 26px;
+font-size: 14px;
+font-weight: bold;
+color: #333333;
+}
+
+#ProductsList .contentContainer .order-people div {
+	height: 24px;
+	line-height: 24px;
+	font-size: 12px;
+	color: #666666;
+}
+
+#ProductsList .contentContainer .order-people div span {
+	padding-right: 20px;
+}
+
+#ProductsList .contentContainer .title {
+	background: none repeat scroll 0 0 #E5F2FA;
+	color: #666666;
+	font-size: 14px;
+	height: 30px;
+	line-height: 30px;
+	padding-left: 18px;
+}
+
+#ProductsList .contentContainer .title h3 {
+	position:relative;
+	color: #666666;
+	font-size: 14px;
+	line-height: 30px;
+}
+
+#ProductsList .contentContainer h3 a.gobackmodify {
+	position:absolute;
+	right:30px;
+	color:#0066ff;
+	font-size:12px;
+}
+
+
+.shopcart-pro-info h4 {
+    height: 27px;
+    line-height: 27px;
+    padding-left: 10px;
+    color: #0066ff;
+    background: #f3f3f3;
+    font-size: 12px;
+	margin-top: 5px;
+    font-weight: bold;
+}
+
+.shopcart-pro-info h4 em {
+    color: #999999;
+}
+
+.shopcart-pro-info .con {
+	padding: 10px 20px;
+	font-size: 12px;
+}
+
+.shopcart-pro-info .con p {
+	height: 22px;
+	line-height: 22px;
+	font-size:12px;
+	color: #333333;
+}
+
+.shopcart-pro-info .con p i {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border: 1px solid #FF5A00;
+	color: #FE5900;
+	font-size: 12px;
+	margin-left: 10px;
+	padding: 2px 3px;
+	font-style:normal;
+}
+
+
+.shopcart-pro-info .con span {
+	color: #999999;
+}
+
+.shopcart-pro-info .con em {
+	font-weight: bold;
+}
+
+.shopcart-pro-list .point-price {
+	text-align:right;
+	border-top: 1px dotted #e3e2e2;
+	color:#666666;
+	font-size: 12px;
+	line-height: 22px;
+	text-align: right;
+	padding: 5px 0;
+}
+
+.shopcart-pro-list .point-price p span{
+	display:inline-block;
+	_display:inline;
+	_zoom:1;	
+	width: 100px;
+	text-align:left;
+	color:#f60;
+}
+
+.passenger-wrap {
+	margin:5px 0 10px 0;
+	border-top:1px solid #e3e2e2; 
+}
+
+.passenger-wrap h3 {
+	position:relative;
+	padding-left: 18px;
+	color: #666666;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	
+}
+
+.passenger-wrap h3 a, .flight-wrap h3 a{
+	position:absolute;
+	right:30px;
+	color:#0066ff;
+	font-size:12px;
+}
+
+.passenger-wrap .passenger-info-wrap {
+
+}
+
+
+.passenger-wrap .passenger-info-wrap li p {
+	padding-left:5px;
+	font-size: 12px;
+	color: #666666;
+	margin: 5px 10px 0 10px;
+}
+
+.passenger-wrap .passenger-info-wrap li p strong{
+	width: 140px;
+	text-align:right;
+	display:inline-block;
+	_display:inline;
+	_zoom:1;
+}
+
+.passenger-wrap .passenger-info-wrap li p span{
+	width: 80px;
+	color: #333333;
+	display:inline-block;
+	_display:inline;
+	_zoom:1;
+}
+
+.passenger-wrap li p span.email {
+	width: 150px;
+}
+
+.passenger-wrap li p span.phone {
+	width: 125px;
+}
+
+.passenger-wrap li p span.gender {
+	width: 20px;
+}
+
+.passenger-wrap li p span.weight, .passenger-wrap li p span.height{
+	width: 50px;
+}
+
+.flight-wrap {
+	margin:5px 0 10px 0;
+	border-top:1px solid #e3e2e2; 
+}
+
+.flight-wrap h3 {
+	position:relative;
+	color: #666666;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+	padding: 5px 0 5px 20px;
+	
+}
+
+.flight-wrap p.flight-title {
+	height: 22px;
+	line-height: 22px;
+	font-size: 12px;
+	color: #666666;
+	padding-left: 45px;
+	background: #f3f3f3 url(../image/plane-16.png) no-repeat 10px 0px;
+	margin: 5px 10px 0 10px;
+}
+
+.flight-wrap .flight-con{
+	float: left;
+	width: 435px;
+	padding-left: 20px;
+}
+
+.flight-wrap .flight-con p {
+	color: #666666;
+	font-size: 12px;
+}
+.flight-wrap .flight-con .passenger {
+	line-height: 28px;
+	margin: 10px 0;
+}
+.flight-wrap .flight-con .passenger ul {
+	zoom: 1;
+}
+
+.flight-wrap .flight-con .passenger ul:after {
+	content:'';
+	display:block;
+	clear:both;
+}
+
+.flight-wrap .flight-con .passenger ul li {
+	float: left;
+	width: 45%;
+}
+
+.flight-wrap .flight-con .aerobus-info {
+	width: 430px;
+	padding-bottom: 10px;
+	border: 1px solid #addbf7;
+}
+
+.flight-wrap .flight-con .aerobus-info h3 {
+	height: 30px;
+	line-height: 30px;
+	padding-left: 10px;
+	color: #666666;
+	font-weight: bold;
+	background: #f3f3f3;
+}
+
+.flight-wrap .flight-con .aerobus-info table tr{
+	height: 28px;
+line-height: 28px;
+}
+
+.flight-wrap .flight-con .aerobus-info table td.attr {
+	width: 90px;
+	color: #b4b4b4;
+	text-align: right;
+	vertical-align:top;
+}
+
+.flight-wrap .flight-con .aerobus-info table td.val {
+	width:125px;
+	color: #535353;
+	vertical-align:top;
+}
+
+.flight-wrap .flight-con .aerobus-info table td.val .pass-name {
+	padding:0 4px;
+}
+
+.flight-wrap .flight-con .aerobus-info table td.val .pass-name:hover {
+	background:#2aa2ce;
+	color: #fff;
+}
+
+.flight-wrap .flight-con .aerobus-info table td.departure,.flight-wrap .flight-con .aerobus-info table td.reach {
+	text-align: left;
+	padding-left:30px;
+}
+
+.payment-wrap {
+	margin-top:10px;
+	padding:5px;
+    border: 1px solid #cadeff;
+    background: #fff;
+}
+#ProductsList form .contentText {
+	padding: 10px 40px 10px 0;
+	text-align: right;
+	color: #666666;
+}
+
+#ProductsList form .contentText button {
+	margin-bottom: 10px;
+	background: #ff8800;
+	border: 1px solid #e98007;
+	color: #fff;
+	font-size: 22px;
+	border-radius: 3px;
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	display: inline-block;
+	_display: inline;
+	_zoom: 1;
+	cursor: pointer;
+}
+
+.contentText .agree-label {
+	border: 2px solid rgb(204, 0, 0);
+	background-color: rgb(255, 255, 204);
+	padding: 3px;
+}
+
+#protocol {
+	position:relative;
+	display:none;
+}
+#protocol h3 {
+	height: 34px;
+	line-height: 34px;
+	color:#ffffff;
+	background:#ff8800;
+	font-size: 22px;
+	font-family:'微软雅黑','宋体';
+	text-align:center;
+}
+
+#protocol p {
+	position:absolute;
+	top:7px;
+	right:10px;
+	width: 20px;
+	height:20px;
+	line-height: 20px;
+	color:#ff8800;
+	background: #ffffff;
+	text-align:center;
+	border-radius:3px;
+}
+
+#protocol .con{
+	width:982px;
+	height:166px;
+	border:4px solid #e3e3e3;
+	border-top:none;
+	overflow: auto;
+	resize: none;
+}
+
+.important-text-f60 {
+	color: #f60;	
+}
+
+.important-text-333 {
+	color: #333333;	
+}
+
+.important-text-666 {
+	color: #666666;	
+}
+
+.important-text-999 {
+	color: #999999;	
+}

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="../../js/yhbCalendar/css/calendar.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../js/yhbCalendar//calendar-debug.js"></script>
+
+    <style>
+        body{margin:0;}
+    </style>
+
+</head>
+
+<body>
+<h3>设置日期范围range</h3>
+range: '2014-03-05:2014-04-05' <input  id="c1"  class="cc" /><br/>
+<pre>
+设置某一段时间的星期几为有效时间
+range: [{
+    fragment: '2014-03-01:2014-03-31',
+    only:'week:2,3,5,6'
+}]
+</pre>
+<input  id="c2"  class="cc" /><br/>
+<pre>
+还可以设置某几段时间在不同的时间段内的星期几为有效时间
+range: [{
+    fragment: '2014-03-01:2014-03-15',
+    only:'week:2,3,5,6'
+}, {
+    fragment: '2014-03-16:2014-03-31',
+    only:'week:1,4,5'
+}]
+</pre><input  id="c3"  class="cc" /><br/>
+
+<pre>
+将某一个时间段内设置为单数日期有效
+range: [{
+    fragment: '2014-03-01:2014-03-31',
+    only:'odevity:odd'
+}]
+</pre>
+<input  id="c4"  class="cc" /><br/>
+
+<pre>
+将某一个时间段内设置为双数日期有效
+range: [{
+    fragment: '2014-03-01:2014-03-31',
+    only:'odevity:even'
+}]
+</pre>
+<input  id="c5"  class="cc" /><br/>
+
+
+<script type="text/javascript">
+
+    var callbackFunction = function(){
+        console.log('选择日期后，则执行的回调方法');
+    };
+
+    var showAfterFun = function(){
+        console.log('showAfter');
+    };
+
+    var hideAfterFun = function(){
+        console.log('hideAfter');
+    };
+
+    var defaultTc = {
+        range: '2014-03-05:2014-04-05'
+    };
+    $('#c1').calendar(defaultTc || {});
+
+    defaultTc = {
+        range: [{
+            fragment: '2014-03-01:2014-03-31',
+            only:'week:2,3,5,6'
+        }]
+    };
+    $('#c2').calendar(defaultTc || {});
+
+    defaultTc = {
+        range: [{
+            fragment: '2014-03-01:2014-03-15',
+            only:'week:2,3,5,6'
+        }, {
+            fragment: '2014-03-16:2014-03-31',
+            only:'week:1,4,5'
+        }]
+    };
+    $('#c3').calendar(defaultTc || {});
+
+    defaultTc = {
+        range: [{
+            fragment: '2014-03-01:2014-03-31',
+            only:'odevity:odd'
+        }]
+    };
+    $('#c4').calendar(defaultTc || {});
+
+    defaultTc = {
+        range: [{
+            fragment: '2014-03-01:2014-03-31',
+            only:'odevity:even'
+        }]
+    };
+    $('#c5').calendar(defaultTc || {});
+</script>
+</body>
+</html>

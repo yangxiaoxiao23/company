@@ -1,0 +1,561 @@
+<div class="adv">
+	<img src="/tpl/www/image/pro-list-ad.jpg">
+</div>
+
+<div class="clear">
+    <div class="fl pmain">
+        
+        {{* 如果不是搜索结果页面才显示Tab标签 *}}
+        {{if $data.tabs.off != true }}
+        <ul class="pro-type-tab">
+            {{* 当前目录下的所有线路 / *}}
+            <li class="{{$data.tabs.main.class}}"><a href="{{$data.tabs.main.href}}">{{$data.tabs.main.title}} ({{$data.tabs.main.rows_num}})</a></li>
+            
+            {{* 经典休闲游 packages/ *}}
+            {{if $data.tabs.packages.rows_num > 0 }}
+            <li class="{{$data.tabs.packages.class}}"><a href="{{$data.tabs.packages.href}}">{{$data.tabs.packages.title}} ({{$data.tabs.packages.rows_num}})</a></li>
+            {{/if}}
+            
+            {{* 周边热点线路 hot-tour/ *}}
+            {{if $data.tabs.topic.rows_num > 0 }}
+            <li class="{{$data.tabs.topic.class}}"><a href="{{$data.tabs.topic.href}}">{{$data.tabs.topic.title}} ({{$data.tabs.topic.rows_num}})</a></li>
+            {{/if}}
+            
+            {{* 畅销线路 *}}
+            {{if $data.tabs.well.rows_num > 0 }}
+            <li class="{{$data.tabs.well.class}}"><a href="{{$data.tabs.well.href}}">{{$data.tabs.well.title}} ({{$data.tabs.well.rows_num}})</a></li>
+            {{/if}}
+            
+            {{* 限时抢购 /special *}}
+            {{if $data.tabs.special.rows_num > 0 }}
+            <li class="{{$data.tabs.special.class}}"><a href="{{$data.tabs.special.href}}">{{$data.tabs.special.title}} ({{$data.tabs.special.rows_num}})</a></li>
+            {{/if}}
+            
+        </ul>
+        {{/if}}
+        
+        <div class="play_filters">
+            <div class="play_filters-bd">
+            
+                <div class="selected-sec clear">    
+                    <div class="fl">
+                    	<div class="select-bd">您已选择：                    
+                            {{foreach from=$data.attractions item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="attractions" data-id="{{$array.id}}">{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            <!-- 出发 -->
+                            {{foreach from=$data.departure item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="departure" data-id="{{$array.id}}">出发：{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            
+                            <!-- 结束城市 -->
+                            {{foreach from=$data.destination item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="destination" data-id="{{$array.id}}">结束：{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            <!-- 行程天数 -->
+                            {{foreach from=$data.days item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="days" data-id="{{$array.id}}">{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            <!-- 出团日期 -->
+                            {{foreach from=$data.weeks item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="week" data-id="{{$array.id}}">{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            <!-- 价格预算 -->
+                            {{foreach from=$data.prices item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="prices" data-id="{{$array.id}}">{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                            
+                            <!-- 优惠活动 -->
+                            {{foreach from=$data.preferential item=array }}
+                                {{if $array.selected == 'true' && $array.id != '0'}}
+                                    <span class="preferential" data-id="{{$array.id}}">{{$array.name}}</span>
+                                {{/if}}
+                            {{/foreach}}
+                    	</div>
+                    </div>
+                    <a href="{{$data.reset_href}}" class="reset-select">全部清除</a>
+                </div>
+            
+            
+                {{* 如果不是搜索结果页面才显示 想去哪儿 标签 *}}
+                {{if $data.goWhere.off != true && $data.attractions|@count > 1 }}
+                <div class="pro-city uifix">
+                	<h4>包含景区</h4>
+                    <div class="pro-city-bd clear">
+                        <div class="select-mode">
+                            <ul class="pro-city-list single">
+                                
+                                {{foreach from=$data.attractions item=array }}
+                                    <li isHot="{{$array.isHot}}"><a href="javascript:void(0);" url="{{$array.href}}" status="single" data-id="{{$array.id}}" class="{{if $array.selected =='true'}} active {{/if}}">{{$array.name}}{{if $array.selected =='true'}}<em></em>{{/if}}</a></li>
+                                {{/foreach}}
+                                
+                                <!--<li><a href="" class="more">查看更多&gt;&gt;</a></li>-->
+                            </ul>
+                            
+                            
+                            <!--
+                            <ul class="pro-city-list multip">
+                                
+                                {{foreach from=$data.attractions item=array }}
+                                    <li><a href="{{$array.href}}" class="{{if $array.selected =='true'}} all active {{/if}}">{{$array.name}}{{if $array.selected =='true'}}<em></em>{{/if}}</a></li>
+                                {{/foreach}}
+                            </ul> -->
+                            
+                            <div class="scroll-sec">
+                                <ul class="label">
+                                    <li type="all" class="active">不限</li>
+                                    <li type="hot">热门</li>
+                                    <li data='A'>A</li><li data='B'>B</li><li data='C'>C</li><li data='D'>D</li>
+                                    <li data='E'>E</li><li data='F'>F</li>
+                                    <li data='G'>G</li><li data='H'>H</li><li data='I'>I</li><li data='J'>J</li>
+                                    <li data='k'>K</li><li data='L'></li>
+                                    <li data='M'>M</li><li data='N'>N</li><li data='O'>O</li><li data='P'>P</li>
+                                    <li data='Q'>Q</li><li data='R'>R</li>
+                                    <li data='S'>S</li><li data='T'>T</li><li data='U'>U</li><li data='V'>V</li>
+                                    <li data='W'>W</li><li data='X'>X</li>
+                                    <li data='Y'>Y</li><li data='Z'>Z</li>
+                                </ul>
+                                
+                                <ul class="pro-city-list more">
+                                    
+                                    {{foreach from=$data.attractions item=array }}
+                                        <li code="{{$array.code}}" isHot="{{$array.isHot}}"><a url="{{$array.href}}" status="single"  data-id="{{$array.id}}" class="{{if $array.selected =='true'}} active {{/if}}">{{$array.name}}{{if $array.selected =='true'}}<em></em>{{/if}}</a></li>
+                                    {{/foreach}}
+                                    
+                                    <!--<li><a href="" class="more">查看更多&gt;&gt;</a></li>-->
+                                </ul>
+                                
+                                <div class="multip-wrap">
+                                    <ul class="pro-city-list multip">
+                                        {{foreach from=$data.attractions item=array }}
+                                            <li code="{{$array.code}}" isHot="{{$array.isHot}}"><a href="javascript:void(0);" url="{{$array.href}}" status="multip" data-id="{{$array.id}}" class="{{if $array.selected =='true'}} active {{/if}}">{{$array.name}}{{if $array.selected =='true'}}<em></em>{{/if}}</a></li>
+                                        {{/foreach}}
+                                        
+                                        <!--<li><a href="" class="more">查看更多&gt;&gt;</a></li>-->
+                                    </ul>
+                                    <div class="btn-wrap"><i href="javascript:void(0);" class="ok">确定</i><i href="javascript:void(0);" class="cancle">取消</i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-mode clear">
+                        <!--<div class="coll">收起</div>-->
+                        <span class="expand pngFix">更多</span>
+                        <span class="multipBtn">多选</span>
+                        <span class="single">单选</span>
+                    </div>
+                </div>
+                {{/if}}
+                
+                <div class="pro-select uifix">
+                    
+                    <!--
+                    <p>
+                    <a href="{{$data.reset_href}}" class="reset-select">重置筛选条件</a>
+                    {{if $data.sel_attractions!=''}}
+                    <span class="fl">您想去<strong class="all-product">{{$data.sel_attractions}}</strong> - 继续筛选：</span>
+                    {{/if}}
+                    </p> -->
+                    
+                    
+                    <ul class="pro-select-list">
+                        {{if $data.departure|@count > 1}}
+                        <li>
+                            <h5>出发城市：</h5>
+                            <div class="pro-select-links">
+                                
+                                {{foreach from=$data.departure item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                                
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                        {{if $data.destination|@count > 1}}
+                        <li>
+                            <h5>结束城市：</h5>
+                            <div class="pro-select-links">
+                                
+                                {{foreach from=$data.destination item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                                
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                        {{if $data.days|@count > 1}}
+                        <li>
+                            <h5>行程天数：</h5>
+                            <div class="pro-select-links">
+                                
+                                {{foreach from=$data.days item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                                
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                        {{if $data.weeks|@count > 1}}
+                        <li>
+                            <h5>出团日期：</h5>
+                            <div class="pro-select-links">
+                                {{foreach from=$data.weeks item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                        {{if $data.prices|@count > 1}}
+                        <li>
+                            <h5>价格预算：</h5>
+                            <div class="pro-select-links">
+                                
+                                {{foreach from=$data.prices item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                                
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                        
+                        {{if $data.preferential|@count > 1}}
+                        <li>
+                            <h5>优惠活动：</h5>
+                            <div class="pro-select-links">
+                                
+                                {{foreach from=$data.preferential item=array}}
+                                    <a href="{{$array.href}}" class="{{if $array.selected =='true'}} no-limit {{/if}}">{{$array.name}}</a>
+                                {{/foreach}}
+                                
+                            </div>
+                        </li>
+                        {{/if}}
+                        
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pro-select-adjust">
+                <span class="pro-adjust-btn extend" status="down">展开</span>
+            </div>        
+         </div>
+        {{* 有产品数据时的处理方式 *}}
+        {{ if $data.split.rows_count}}
+        
+        <div class="pro-list-panel">
+            <div class="pro-list-hd">
+                <p class="pro-total">共<em class="pro-total-number">{{$data.split.rows_count}}</em>条线路</p>
+                <div class="pro-sort">
+                    <!-- 原来存在,隐藏 <span class="fl">排序：</span> -->
+                    
+                    <a href="{{$data.sort.price_href}}" class="{{$data.sort.price_class}} pngFix">综合</a>
+                    
+                    <a href="{{$data.sort.price_href}}" class="{{$data.sort.price_class}} pngFix">销量</a>
+                    
+                    <a href="{{$data.sort.price_href}}" class="{{$data.sort.price_class}} pngFix">价格</a>
+                    
+                    <a href="{{$data.sort.price_href}}" class="{{$data.sort.price_class}} pngFix">价格</a>
+                    
+                    <a href="#" class="unselected pngFix">买2送1</a>
+                    
+                    <a href="{{$data.sort.price_href}}" class="selected pngFix">限时抢购</a>
+                    
+                    <!-- 原来存在,隐藏
+                    <a href="{{$data.sort.price_href}}" class="{{$data.sort.price_class}}">价格</a>
+                    
+                    <a href="{{$data.sort.time_href}}" class="{{$data.sort.time_class}}">持续时间</a>
+                    
+                    {{$data.sort.select_field}}
+                    <select onchange="sort_product_list(this.value)" class="fl pro-sort-select" id="proSort" name="sort">
+                        <option selected="" value="">--排序方式--</option>
+                        {{foreach key=key from=$data.sort.sort_values item=array}}
+                            {{if $array.url}}
+                            <option value="{{$array.url}}" {{if $smarty.get.sort==$array.id}} selected="selected" {{/if}}>{{$array.text}}</option>
+                            {{/if}}
+                        {{/foreach}}
+                    </select> -->
+                </div>
+            </div>
+             
+            <div class="pro-list-pager pager-top">
+                <ul id="listPages">
+                    
+                        {{ if $data.split.page_content.previous_href}}
+                            <li><a href="{{$data.split.page_content.previous_href}}">上一页</a></li>
+                        {{/if}}
+                        
+                        {{ if $data.split.page_content.previous_x_page}}
+                            <li><a href="{{$data.split.page_content.previous_x_page.href}}">{{$data.split.page_content.previous_x_page.text}}</a></li>
+                        {{/if}}
+                        
+                        {{foreach from=$data.split.page_content.pages_list item=array}}
+                            {{if $array.href =="" }}
+                            
+                                <li class="current"><span>{{$array.text}}</span></li>
+                            {{else}}
+                            
+                                <li><a href="{{$array.href}}" >{{$array.text}}</a></li>
+                            {{/if}}
+                        {{/foreach}}
+                        
+                        {{ if $data.split.page_content.next_x_page}}
+                            <li><a href="{{$data.split.page_content.next_x_page.href}}">{{$data.split.page_content.next_x_page.text}}</a></li>
+                        {{/if}}
+                        
+                        {{ if $data.split.page_content.next_href}}
+                    <li><a href="{{$data.split.page_content.next_href}}">下一页</a></li>
+                        {{/if}}
+                        
+                    
+                </ul>
+            </div>
+            <div class="pro-list-items">
+                <ul class="pro-list-ul">
+                    {{* 产品列表循环 *}}								
+                    {{section name=i loop=$data.products}}
+                    
+                    <li class="{{$data.products[i].liClass}} pro-list-li">
+                        <div class="pro-title">
+                            <div class="offer-active"><a href="#" class="recommend  pngFix"></a><a href="#" class="exclusive  pngFix"></a><a href="#" class="hot  pngFix"></a><a href="#" class="sale  pngFix"></a></div>
+                            <div class="type-text">美东+美西</div><div class="type-arrow"></div>
+                            <h4 class="pro-list-itemtit"><a href="{{$data.products[i].productsUrl}}">{{$data.products[i].productsNameHtml}}</a></h4>
+                        </div>
+                        <div class="pro-item-cont clear">
+                            
+                            <!--  优惠活动 开始-->
+                            
+                            <!--图片左上角-->
+                            <div class="today-special pngFix">
+                                <p class="today-special-bd">今日特价</p>
+                            </div>
+                                   
+                            <!--图片右下角-->
+                            <div class="buytwosendone pngFix"><p>买二送一</p></div>
+                            <!--  优惠活动 结束-->
+                            
+                            <div class="pro-item-pic">
+                                <div class="product-pic">
+                                    <a href="{{$data.products[i].productsUrl}}"><img data-lazyload-src="{{$data.products[i].productsImageThumbnailsSrc}}" /></a>
+                                </div>
+                                
+                                <ul class="product-comments">
+                                    
+                                    <li><a href="{{$data.products[i].productsRateUrl}}">满意度 <em class="satisfied">{{$data.products[i].productsRate}}%</em> </a></li>
+                                    
+                                    <li><a href="{{$data.products[i].productsReviewsUrl}}">评论(<em>{{$data.products[i].productsReviewsNum}}</em>)</a></li>
+                                    <!--
+                                    <li><a href="{{$data.products[i].productsTravelCompanionUrl}}">结伴同游(<em>{{$data.products[i].productsTravelCompanionCount}}</em>)</a></li>
+                                    
+                                    <li><a href="{{$data.products[i].productsQuestionUrl}}">咨询(<em>{{$data.products[i].productsQuestionNum}}</em>)</a></li>							-->
+                                </ul>
+                            </div>
+                            <div class="pro-item-info">
+                                <table>
+                                    <tbody>
+                                        {{if $data.productsItem[i].titleModel!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleModel}}：{{* 旅游团号*}}</td>
+                                            <td><span class="pro-tuan-nub">{{$data.products[i].productsModelHtml}}</span></td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        {{if $data.productsItem[i].titleDeparture!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleDeparture}}：{{* 出发城市 *}}</td>
+                                            <td>{{$data.products[i].startCityString}}
+                                                {{if $data.productsItem[i].titleEndCity!=""}}
+                                                {{$data.productsItem[i].titleEndCity}}：{{* 结束城市 *}}{{$data.products[i].endCityString}}
+                                                {{/if}}
+                                            </td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        {{if $data.productsItem[i].titleDepartureDate!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleDepartureDate}}：{{* 出团时间<b>如果长度太长要处理一下啊</b> *}}</td>
+                                            <td>{{$data.products[i].departureString}}</td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        
+                                        {{if $data.productsItem[i].titleProductsSmall!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleProductsSmall}}：{{* 行程特色 *}}</td>
+                                            <td>{{$data.products[i].products_small_description}}</td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        <!--
+                                        
+                                        {{if $data.productsItem[i].titleViaAttractions!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleViaAttractions}}：{{* 途经景点 *}}</td>
+                                            <td><div>{{$data.products[i].attractionsCityString}}</div></td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        {{if $data.productsItem[i].titleEndCity!=""}}
+                                        <tr>
+                                            <td class="pro-info-des">{{$data.productsItem[i].titleEndCity}}：{{* 结束城市 *}}</td>
+                                            <td>{{$data.products[i].endCityString}}</td>
+                                        </tr>
+                                        {{/if}} -->
+                                        
+                                        {{if $data.products[i].typeIcons}}
+                                        <tr>
+                                            <td class="pro-info-des">促销活动：</td>
+                                            <td>
+                                            {{foreach from=$data.products[i].typeIcons item=array name=foo}}
+                                                <span class="act_21">{{$array.text}}</span>
+                                            {{/foreach}}
+                                            <td>
+                                        </tr>
+                                        {{/if}}
+                                        
+                                        
+                                        
+                                    </tbody>
+                                </table>
+                                <div class="pro-item-booking">
+                                    <p>{{$data.products[i].priceTag}}{{* <b>价格标签：里面可能有特价起价等信息请雷锋根据提供的标签定制CSS</b> *}}</p>
+                                    {{if $data.products[i].products_stock_status}}
+                                     <p class="booking-bd"><a href="{{$data.products[i].productsUrl}}" class="booking-btn">{{$data.productsItem[i].titleBooking}}{{* 预订行程 *}}</a></p>
+                                    {{else}}
+                                        <a href="{{$data.products[i].productsUrl}}" class="sold-out-btn">已售完</a>
+                                    {{/if}}
+                                    {{if $data.products[i].pointsNum > 0 }}
+                                        <p class="product-integral">赠{{$data.products[i].pointsNum}}<a href="{{$data.products[i].pointsUrl}}" >积分</a></p>
+                                    {{/if}}
+                                    
+                                </div>
+                                <div class="hotel-feature"><span class="wifi pngFix">免费wifi</span><span class="invitation pngFix">旅美邀请函</span><span class="feast pngFix">牛排大餐</span><span class="bus pngFix">豪华巴士接送</span></div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    {{/section}}
+                    
+                </ul>
+            </div>
+            <div class="pro-list-pager pager-bottom">
+                <ul id="listPages1">
+                {{* 底部分页栏：用js再读一次顶部分页到这里来，减少服务器负担 *}}
+                <script type="text/javascript"> $('#listPages1').html($('#listPages').html()); </script>
+                </ul>
+            </div>
+        </div>
+        {{else}}
+        {{* 无产品数据时的处理方式，请雷锋添加html代码 *}}
+            暂无相关产品数据！
+        {{/if}}
+    </div>
+    
+    {{* 右边小栏目 *}}
+    <div class="fr pside">
+        
+        {{* 搜索栏 *}}
+        {{if $data.box.search}}
+            {{include file="boxs/search.html"}}
+        {{/if}}
+        
+        
+        <div class="adbox" group="{{$array.group}}">
+            <a href="#" target="#"><img src="/tpl/www/image/slide/slide-adv1.jpg" alt="" /></a>
+        </div>
+        
+        
+        {{* 我的的优势 done *}}
+        {{if $data.box.our_advantages}}
+            {{include file="boxs/our_advantages.html"}}
+        {{/if}}
+        
+        
+        <div class="adbox" group="{{$array.group}}">
+            <a href="#" target="#"><img src="/tpl/www/image/slide/slide-adv2.jpg" alt="" /></a>
+        </div>
+        
+        {{* 热销榜 done *}}
+        <!-- 这里需要后台配合修改 -->
+        {{if $data.box.travel_companion}}
+            {{include file="boxs/hot.html"}}
+        {{/if}}
+        
+        <div class="adbox" group="{{$array.group}}">
+            <a href="#" target="#"><img src="/tpl/www/image/slide/slide-adv3.jpg" alt="" /></a>
+        </div>
+        
+        {{* 结伴同游帖子 done *}}
+        {{if $data.box.travel_companion}}
+            {{include file="boxs/travel_companion.html"}}
+        {{/if}}
+        
+        <div class="adbox" group="{{$array.group}}">
+            <a href="#" target="#"><img src="/tpl/www/image/slide/slide-adv4.jpg" alt="" /></a>
+        </div>
+        
+        {{* 旅游咨询 done *}}
+        <!-- 这里需要后台配合修改 -->
+        {{if $data.box.travel_companion}}
+            {{include file="boxs/trip_news.html"}}
+        {{/if}}
+        
+        {{* 联系方式 *}}
+        {{if $data.box.contact}}
+            {{include file="boxs/contact.html"}}
+        {{/if}}
+        
+        <!--
+        {{* 广告栏0 done *}}
+        {{if $data.box.ad_0}}
+                {{foreach from=$data.box.ad_0 item=array }}
+                    <div class="adbox" group="{{$array.group}}">
+                        <a href="{{$array.links}}" target="{{$array.target}}"><img src="{{$array.src}}" alt="{{$array.alt}}" {{$array.width_height}} /></a>
+                    </div>
+                {{/foreach}}
+        {{/if}} -->
+        
+        <!--
+        {{* SEO辅助栏 done *}}
+        {{if $data.box.seo_aid}}
+            {{include file="boxs/seo_aid.html"}}
+        {{/if}} -->
+        
+        <!--
+        {{* 广告栏1 done *}}
+        {{if $data.box.ad_1}}
+                {{foreach from=$data.box.ad_1 item=array }}
+                    <div class="adbox" group="{{$array.group}}">
+                        <a href="{{$array.links}}" target="{{$array.target}}"><img src="{{$array.src}}" alt="{{$array.alt}}" {{$array.width_height}} /></a>
+                    </div>
+                {{/foreach}}
+        {{/if}} -->
+    </div>
+</div>
+<script>
+KISSY.ImageLazyload({
+	mod: "manual", 	// 延迟模式。默认为 auto
+	diff: 10 		// 当前屏幕下多远处的图片开始延迟加载。默认两屏外的图片才延迟加载
+}); 
+</script>

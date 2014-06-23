@@ -1,0 +1,116 @@
+
+  <!-- 新版旅游攻略 -->
+<div id="left" class="abouts_left">
+        	<div class="left_func">
+                <!-- 攻略标题 -->
+               {{foreach item=value key=key from=$data.type_info}}
+                <div class="func_list">
+                    <h2><a href="{{$value.url}}" {{if $value.type_id eq $data.parent_id}}class="click"{{/if}}>{{$value.type_name}}攻略</a><!-- 此处a里面点击以后加入class="click" --></h2>
+                    <ul>
+						{{foreach item=v key=k from=$value.son}}
+                        <li><a href="{{$v.url}}" {{if $v.type_id eq $data.type_id}}class="click"{{/if}}>{{$v.type_name}}攻略<b>&gt;</b><!-- 此处a里面点击以后加入class="click" --></a></li>
+                        <div class="raiders_cls clear">
+                            {{if $data.type_id eq $v.type_id}}
+                            {{if $data.left_three neq ''}}
+                            <ul class="raiders_cls_left">
+                                {{$data.left_three}}
+                            </ul>
+                            <!-- 偶数 -->
+                            <ul class="raiders_cls_right">
+                                {{$data.right_three}}
+                            </ul>
+                            {{/if}}
+                            {{/if}}
+                        </div>
+                        {{/foreach}}
+                    </ul>
+                </div>
+				{{/foreach}}
+                <!-- 攻略标题 end -->
+            </div>
+        	
+            <!-- 最新专题 -->
+            <div class="lastest_action">
+            	<h2>最新专题</h2>
+                <ul>
+                	<li><a target="_blank" href=""><img alt="" src="http://www.xiaoming.com/image/nav/abouts_img4.jpg"></a></li>
+                    <li><a target="_blank" href=""><img alt="" src="http://www.xiaoming.com/image/nav/abouts_img4.jpg"></a></li>
+                </ul>
+            </div>
+            <!-- 最新专题 end -->
+            
+            <!-- 热销排行 -->
+            <div class="arrange_warp cfix">
+                <div class="title_1"><h2>热销排行榜</h2></div>
+                    <div class="cont">
+                        <ul>
+                            <li class="s_1"><span class="color_orange fr">$426+</span><a href="http://www.xiaoming.com/luoshanji-lasi-daxiagu-shengtababala-jiujinshan-youshengmeidi-zhutileyuan-8d-lvyou.html" title="洛杉矶,拉斯维加斯,大峡谷,圣塔芭芭拉,旧金山,优胜美地,主题乐园八日超值游**感受特色叮当车，领略壮丽大峡谷**">洛杉矶,拉斯维加斯,大峡谷,圣塔芭芭拉,旧金山,优胜美地,主题乐园八日超值游**感受特色叮当车，领略壮丽大峡谷**</a></li>
+                            <li class="s_2"><span class="color_orange fr">$298+</span><a href="http://www.xiaoming.com/niuyue-boshidun-baigong-yelu-7d-lvyou.html" title="纽约,波士顿,白宫,耶鲁大学七日创新精华游**美东八城游，风光无限好**">纽约,波士顿,白宫,耶鲁大学七日创新精华游**美东八城游，风光无限好**</a></li>
+                            <li class="s_3"><span class="color_orange fr">$335+</span><a href="http://www.xiaoming.com/niuyue-boshidun-guohuidasha-niyajialapubu-8d-lvyou.html" title="纽约,波士顿,国会大厦,尼亚加拉瀑布八日超值自由行之旅">纽约,波士顿,国会大厦,尼亚加拉瀑布八日超值自由行之旅</a></li>
+                            <li class="s_4"><span class="color_orange fr">$319+</span><a href="http://www.xiaoming.com/huangshi-baoweihu-yanhucheng-xixia-7d-lvyou.html" title="黄石公园,洛杉矶,拉斯维加斯,包伟湖,布莱斯峡谷,盐湖城,西峡谷七日超值游(入住黄石湖木屋)**即刻入住黄石湖木屋，零距离欣赏黄石美景**">黄石公园,洛杉矶,拉斯维加斯,包伟湖,布莱斯峡谷,盐湖城,西峡谷七日超值游(入住黄石湖木屋)**即刻入住黄石湖木屋，零距离欣赏黄石美景**</a></li>
+                            <li class="s_5"><span class="color_orange fr">$361+</span><a href="http://www.xiaoming.com/lasiweijiasi-huangshigongyuan-gongmen-8d-lvyou.html" title="黄石公园,拉斯维加斯,西峡谷,总统巨石,拱门八日游**相约美西，梦幻黄石**">黄石公园,拉斯维加斯,西峡谷,总统巨石,拱门八日游**相约美西，梦幻黄石**</a></li>
+                       </ul>
+                    </div>
+    </div>
+  </div>
+  
+  		<div id="right" class="abouts_right">
+        	<div class="aboutsTit">
+            	<ul>
+                	<li>{{$data.type_name}}攻略</li>
+                </ul>
+            </div>
+            <div class="aboutsCont ">
+            	<div class="func_cont_list cifx">
+                	<!-- 文章标题 -->
+                	<h1 class="gl_title">{{$data.info.info.article_title}}</h1>
+                    <p class="gl_from"><span>发布时间：{{$data.info.info.add_time}}</span><span class="blank"></span><span>来源于：{{$data.info.info.article_from}}</span></p>
+                    <!-- 文章标题 end -->
+                    
+                   	<!-- 文章内容 -->
+                    <div class="article_cont">
+                    	{{$data.info.info.article_content}}
+                    </div>
+                    <!-- 文章内容 end  -->
+                    
+                    <div class="article_about">
+                    	<p class="art_search">相关搜索：{{foreach item=v key=k from=$data.info.tags}}<a href="{{$v.url}}">{{$v.tags_name}}</a>{{/foreach}}</p>
+                        <p class="art_pn cfix">
+                        	<span class="art_prev">上一篇：{{if $data.info.ago eq ''}}没有了!!!{{else}}<a href="{{$data.info.ago.url}}">{{$data.info.ago.article_title}}</a>{{/if}}</span>
+                            <span class="art_next">下一篇：{{if $data.info.after eq ''}}没有了!!!{{else}}<a href="{{$data.info.after.url}}">{{$data.info.after.article_title}}</a>{{/if}}</span>
+                        </p>
+                    </div>
+                    
+                    <div class="cfix">
+                    <!-- Baidu Button BEGIN -->
+                    	<span class="share_title">分享到：</span>
+                        <div class="bdshare_t bds_tools get-codes-bdshare" id="bdshare">
+                        <a class="bds_qzone" title="分享到QQ空间" href="#">QQ空间</a>
+                        <a class="bds_tsina" title="分享到新浪微博" href="#">新浪微博</a>
+                        <a class="bds_tqq" title="分享到腾讯微博" href="#">腾讯微博</a>
+                        <a class="bds_renren" title="分享到人人网" href="#">人人网</a>
+                        <a class="bds_t163" title="分享到网易微博" href="#">网易微博</a>
+                        <span class="bds_more">更多</span>
+                        <a class="shareCount" href="#" title="累计分享0次">0</a>
+                        </div>
+                        <script data="type=tools&amp;uid=18719" id="bdshare_js" type="text/javascript" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=386192"></script>
+                        
+                        <script type="text/javascript">
+                        document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+                        </script>
+					<!-- Baidu Button END -->
+                    </div> 
+                </div>
+            </div>
+            <!-- 相关推荐 -->
+            <div class="recom_box">
+                <h2 class="recom_title">推荐相关内容</h2>
+                <ul>
+					{{foreach item=v key=k from=$data.recommend}}
+                    <li class="fl"><em>·</em><a href="{{$v.url}}">{{$v.article_title}}</a></li>
+					{{/foreach}}
+                </ul>
+            </div>
+            <!-- 相关推荐 end -->
+        </div>
+    <!-- 新版旅游攻略 end -->

@@ -1,0 +1,944 @@
+@charset"utf-8";
+.odd-proinfo-useritems input, .odd-flights input, .odd-paypanel input {
+	height:22px;
+	line-height:22px;
+}
+
+.odd-status {
+    margin:10px 0;
+    padding-left:20px;
+    height:57px;
+    line-height:57px;
+    background:#fff0e0;
+    border:1px solid #ffd7aa;
+    font-size:14px;
+    color:#333333;
+}
+.odd-status .status-text {
+    margin-left:90px;
+}
+.odd-status strong {
+    margin-right:12px;
+    font-size:14px;
+    color:#fc4b06;
+}
+.odd-paybtn, .odd-proinfo-print, .odd-proinfo-print span, .odd-edit-uibtn, .odd-flights-edit, .odd-flights-edit span, .odd-together-hd, .odd-together-table th, .odd-together-paybtn {
+    background:url(../image/odd.png);
+}
+
+.expand-collapse {
+    font-size:12px;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+    padding-right:40px;
+    background:url(../image/action-icon.png) no-repeat 30px 2px;
+    cursor:pointer;
+    font-weight:normal;
+}
+
+
+.odd-panel {
+    border:1px solid #cadeff;
+    margin-top:10px;
+}
+.odd-panel .odd-hd {
+    height:35px;
+    background-position:0 0;
+    background-repeat:repeat-x;
+    line-height:35px;
+    border-bottom:1px solid #cadeff;
+}
+
+.odd-panel .odd-hand {
+    cursor:pointer;
+    background:#d3e7ff;
+}
+
+.odd-panel .order-person {
+	border-bottom:none;
+}
+
+.odd-panel .odd-hd h3 {
+    float:left;
+    padding-left:12px;
+    font-size:14px;
+    color:#666666;
+}
+.odd-panel .odd-hd span {
+    font-size:12px;
+    padding-right:10px;
+    color:#333333;
+}
+.odd-panel .odd-hd h3 strong {
+    color:#fc4b06;
+}
+.odd-contxt {
+    padding:10px;
+    padding-top:3px;
+}
+.odd-contxt .odd-infoitem {
+    margin-right:15px;
+}
+.odd-comments p {
+    margin-top:3px;
+    padding:2px 0 8px;
+    line-height:24px;
+    word-break:break-all;
+    word-wrap:break-word;
+    color:#666666;
+}
+.odd-comments p.time {
+    text-align:right;
+    border-bottom:1px dashed #CCC;
+}
+.odd-comments p span {
+    margin-left:5px;
+    padding:0 2px;
+    height:20px;
+    line-height:20px;
+}
+.odd-logs li {
+    height:24px;
+    line-height:24px;
+    clear:both;
+}
+.odd-logs .odd-log-date {
+    float:left;
+    margin-right:20px;
+}
+.odd-logs .odd-log-status {
+    float:left;
+    margin-right:45px;
+}
+.odd-logs .odd-log-tips {
+    float:left;
+}
+.odd-proitem-table {
+    border:0 none;
+    width:760px;
+    margin:0 -1px;
+}
+.odd-proitem-table th, .odd-proitem-table td {
+    border:1px solid #CCC;
+}
+.odd-proitem-table th {
+    line-height:32px;
+    text-align:center;
+    color:#1653A8;
+    border-top:0 none;
+}
+.odd-proitem-table td {
+    line-height:20px;
+    padding:10px;
+    border-bottom:0 none;
+}
+.odd-proitem-table .odd-proitem-green {
+    color:#090;
+}
+.odd-paypanel {
+    margin-top:10px;
+    clear:both;
+    overflow:hidden;
+}
+
+.odd-comments-editor p {
+    text-indent:12px;
+    font-weight:700;
+    line-height:24px;
+    color:#666666;
+}
+.odd-comments-editor textarea {
+    border:1px solid #CCC;
+    margin:0 5px;
+    width:736px;
+    height:90px;
+    padding:5px;
+    overflow:auto;
+    resize:none;
+    background-color:#FFF;
+}
+.odd-comments-editor .action {
+    text-align:center;
+    padding:5px 0
+}
+.odd-comments-editor .odd-comment-submit {
+    width:106px;
+    height:26px;
+    line-height:26px;
+    padding-bottom:2px;
+    overflow:hidden;
+    color:#317ee7;
+    border:1px solid #cadeff;
+    cursor:pointer;
+    font-weight:700;
+    border-radius:3px;
+}
+.odd-pay-counts {
+    border:1px solid #cadeff;
+    padding-bottom:10px;
+}
+.odd-pay-counts table {
+    display:block;
+}
+.odd-pay-counts table tr {
+}
+.odd-pay-counts table tr td {
+    text-align:right;
+}
+.odd-pay-counts p {
+    line-height:22px;
+    text-align:right;
+}
+.odd-pay-counts .odd-payed {
+    color:#060;
+}
+.odd-pay-counts .odd-needpay {
+    color:#F00;
+}
+.odd-pay-counts .odd-paybtn {
+    float:right;
+    width:136px;
+    height:40px;
+    margin-top:5px;
+    line-height:40px;
+    background-position:0 -60px;
+    background-repeat:no-repeat;
+    font-weight:700;
+    font-family:"Microsoft Yahei";
+    color:#FFF;
+    text-align:center;
+    font-size:18px;
+}
+.odd-pay-counts .odd-paybtn:hover {
+    text-decoration:none;
+}
+.odd-proinfo {
+    margin-top:15px;
+}
+.odd-proinfo-hd {
+    line-height:32px;
+}
+.odd-proinfo-hd h4 {
+    font-size:14px;
+    color:#2e63fd;
+	background:#e6f2fa;
+}
+.odd-proinfo-hd h4 span {
+    color:#999999;
+}
+.odd-proinfo-hd h4 a {
+    color:#2e63fd;
+}
+.odd-proinfo-print, .odd-flights-hd .odd-flights-edit {
+    float:right;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    height:22px;
+    margin-top:3px;
+    background-position:0 -100px;
+    background-repeat:repeat-x;
+    line-height:22px;
+    padding:0 5px;
+    border:1px solid #fbba5e;
+    color:#76270E;
+    border-radius:2px;
+}
+.odd-proinfo-print span {
+    padding-left:18px;
+    background-position:-120px -36px;
+    background-repeat:no-repeat;
+}
+.odd-proinfo-print:hover, .odd-flights-hd .odd-flights-edit:hover {
+    text-decoration:none;
+}
+.odd-proinfo-des {
+    position:relative;
+    padding:10px 0;
+    border-bottom:1px dashed #CCC;
+	_zoom:1;
+}
+
+.odd-proinfo-descont p {
+    line-height:24px;
+}
+.odd-proinfo-descont .attr {
+    width:120px;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+    text-align:right;
+    color:#999999;
+}
+.odd-proinfo-descont .val {
+    color:#333333;
+}
+.odd-proinfo-descont .traveling-together {
+    background:none repeat scroll 0 0 #FFFFFF;
+    border:1px solid #FF5A00;
+    color:#FE5900;
+    font-size:12px;
+    margin-left:10px;
+    padding:2px 3px;
+}
+.modify {
+    border:0;
+    background:#3684c5;
+    color:#ffffff;
+    padding:3px 12px;
+    border-radius:3px;
+    cursor:pointer;
+}
+.odd-proinfo-cost {
+	*width: 210px;
+    position:absolute;
+    bottom:5px;
+    right:10px;
+}
+.odd-proinfo-cost p {
+    height:32px;
+    line-height:22px;
+    font-size:14px;
+    color:#666666;
+    text-align:right;
+}
+.odd-proinfo-cost .proprice {
+    font-size:22px;
+    color:#ff5a00;
+}
+.odd-proinfo-cost em {
+    font-family:"微软雅黑", '宋体';
+}
+.odd-proinfo-cost .payon {
+    font-size:20px;
+    color:#fc4b06;
+}
+.odd-proinfo-cost .payoff {
+    font-size:20px;
+    color:#F00;
+}
+.odd-proinfo-useritems {
+    padding-top:23px;
+    border-bottom:1px dashed #CCC;
+}
+.odd-panel input[type='checkbox'], .odd-proinfo-useritems input[type='radio'] {
+    vertical-align:middle;
+    margin-right:6px;
+}
+
+.odd-proinfo-useritems li div.pass-title {
+    height:28px;
+    line-height:28px;
+    background:#e5f2fa url(../image/tourist-li-number22.png) no-repeat 10px;
+    font-size:12px;
+    color:#666666;
+}
+.odd-proinfo-useritems .tourist-no {
+    display:inline-block;
+    _dispaly:inline;
+    _zoom:1;
+    text-align:center;
+    width:22px;
+    font-size:14px;
+    padding-left:10px;
+    font-family:Arial, Helvetica, sans-serif;
+    color:#fff;
+}
+.odd-proinfo-useritems strong {
+    padding:0 30px 0 10px;
+}
+.action-modify, .action-delete {
+    padding-top: 4px;
+	padding-right: 4px;
+}
+.action-save {
+    text-align:center;
+    padding:10px;
+}
+.action-modify button, .action-delete button, .action-save button {
+    height:20px;
+    line-height:20px;
+    padding:0 10px;
+    border:0;
+    background:#3684c5;
+    cursor:pointer;
+    color:#ffffff;
+    border-radius:3px;
+}
+
+.action-save button.cancel {
+	background:#adadad;
+}
+
+.action-save button.save, .action-save button.cancel {
+    height:24px;
+    line-height:24px;
+    margin:0 5px;
+}
+.odd-proinfo-useritems button.save, .odd-proinfo-useritems button.cancel {
+    display:none;
+}
+.odd-proinfo-useritems .phone {
+    color:#333333;
+}
+.odd-proinfo-useritems .detail {
+    padding:10px 10px;
+}
+.odd-proinfo-useritems .detail li.desc {
+    height:26px;
+    line-height:26px;
+    font-size:12px;
+    float:left;
+    width:50%;
+}
+.odd-proinfo-useritems .detail .attr, .odd-proinfo-useritems .detail .gender {
+    width:110px;
+    text-align:right;
+    color:#999999;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+}
+.odd-proinfo-useritems .detail .val .weight, .odd-proinfo-useritems .detail .val .height {
+    width:30px;
+}
+.odd-proinfo-useritems .detail .val {
+    width:170px;
+    text-align:left;
+    color:#333333;
+}
+
+.odd-proinfo-useritems .detail .mobile-phone {
+	width:240px;
+	display:inline-block;
+	*display:inline;
+	*zoom:1;
+}
+.odd-proinfo-useritems .detail .mobile-phone .area-wrap .area-box {
+	height: 24px;
+	line-height: 24px;
+}
+
+.odd-proinfo-useritems .detail .mobile-phone .area-wrap .areas{
+	height: 22px;
+	line-height: 22px;
+}
+.odd-proinfo-useritems .detail .mobile-phone .area-wrap input{
+	height: 22px;
+	line-height: 22px;
+}
+
+.odd-proinfo-useritems .detail .editor-gender, .odd-proinfo-useritems .detail .single, .odd-proinfo-useritems .detail .insurance, .odd-proinfo-useritems .detail .empty {
+    display:none;
+}
+.odd-proinfo-useritems .detail .view {
+    border:0;
+    width:150px;
+}
+.odd-proinfo-useritems .detail .edit {
+    border:1px solid #a9a9a9;
+}
+.odd-flights {
+    margin:5px 0;
+    background-color:#ffffff;
+}
+.odd-flights hr {
+    height:1px;
+    border-top:1px dashed #FFC75F;
+    border-bottom:none;
+}
+.odd-flights-hd {
+    height:30px;
+    line-height:30px;
+    padding:0 10px;
+    background:#c6e0f0;
+}
+.odd-flights-tit {
+    color:#666666;
+}
+.odd-flights-tit strong {
+    margin-right:10px;
+}
+.odd-flights-hd .shirink-btn {
+    float:right;
+    color:#276EC6;
+    cursor:pointer;
+}
+.odd-flights-hd .shirink-btn i.up {
+    border-color:transparent transparent #FFF;
+    border-style:dashed dashed solid;
+}
+.odd-flights-hd .odd-flights-edit {
+    float:right;
+    margin-right:10px;
+}
+.odd-flights-hd .odd-flights-edit span {
+    padding-left:15px;
+    background-position:-124px -128px;
+    background-repeat:no-repeat;
+}
+.odd-flights-list {
+    padding:10px 0;
+}
+.odd-flights-list dt {
+    position:relative;
+    height:28px;
+    line-height:28px;
+    background:#e5f2fa;
+}
+.odd-flights-list dd {
+    width:350px;
+    float:left;
+    _display:inline;
+    line-height:26px;
+    border-bottom:1px solid #FFF;
+}
+.odd-flights-list dd:hover {
+    background:#F9F9F9;
+    border-bottom:1px dashed #E3E3E3;
+}
+.odd-flights-list dd span {
+    width:75px;
+    float:left;
+    text-align:right;
+}
+.odd-flights .flight-info-wrap {
+    padding:10px 0;
+}
+.odd-flights .flight-info-wrap li.flight-list {
+    position:relative;
+}
+.odd-flights .flight-info-wrap .flight-title {
+    height:28px;
+    line-height:28px;
+    font-size:12px;
+    color:#666666;
+    padding-left:45px;
+    font-weight:bold;
+    margin:14px 0;
+    background:#e5f2fa url(../image/plane-16.png) no-repeat 10px 2px;
+}
+.odd-flights .flight-info-wrap .flight-con {
+    float:left;
+    width:350px;
+    padding-left:10px;
+}
+.odd-flights .flight-info-wrap .flight-con p {
+    color:#666666;
+    font-size:12px;
+}
+
+.odd-flights .flight-info-wrap .flight-con .passenger {
+    line-height:28px;
+    margin:10px 0;
+}
+.odd-flights .flight-info-wrap .flight-con .passenger li {
+    float:left;
+    width:33%;
+}
+
+
+.odd-flights .flight-info-wrap .flight-con .passenger-option {
+    width:260px;
+}
+.odd-flights .flight-info-wrap .flight-con .passenger-option li {
+    width:128px;
+    float:left;
+	white-space:nowrap;
+}
+.odd-flights .flight-info-wrap .aerobus-info {
+    width:330px;
+    padding-bottom:10px;
+    border:1px solid #addbf7;
+}
+.odd-flights .flight-info-wrap .aerobus-info h3 {
+    height:30px;
+    line-height:30px;
+    padding-left:10px;
+    color:#666666;
+    font-weight:bold;
+    background:#e5f2fa;
+}
+
+.odd-flights .flight-info-wrap .aerobus-info table {width:100%;}
+
+.odd-flights .flight-info-wrap .aerobus-info table caption {
+    padding:10px 0 10px 30px;
+    color:#535353;
+    text-align:left;
+}
+.odd-flights .flight-info-wrap .aerobus-info table caption p {
+    color:#999999;
+}
+.odd-flights .flight-info-wrap .aerobus-info table tr {
+    height:28px;
+    line-height:28px;
+}
+.odd-flights .flight-info-wrap .aerobus-info .attr {
+    width:90px;
+    color:#b4b4b4;
+    text-align:right;
+}
+.odd-flights .flight-info-wrap .aerobus-info .val {
+    color:#535353;
+    text-align:left;
+}
+.odd-flights-list .arrival-flight, .odd-flights-list .departure-flight {
+    padding-left:10px;
+    color:#666666;
+    font-size:12px;
+}
+.odd-flights-list .passenger {
+    font-weight:bold;
+    height:28px;
+    line-height:28px;
+}
+.odd-flights .edit-flight {
+    position:relative;
+}
+.odd-together {
+    margin:10px 0;
+    border-top:1px dashed #CCC;
+    border-bottom:1px dashed #CCC;
+}
+.odd-together-hd {
+    height:30px;
+    line-height:30px;
+    padding:0 10px;
+    background-position:0 -150px;
+    background-repeat:repeat-x;
+}
+.odd-together-hd h4 {
+    float:left;
+    color:#FFF;
+}
+.odd-together-table {
+    width:100%;
+    border:1px solid #CCC;
+}
+.odd-together-table th, .odd-together-table td {
+    border:1px solid #CCC;
+}
+.odd-together-table th {
+    height:32px;
+    background-position:0 -180px;
+    background-repeat:repeat-x;
+    padding:0 5px;
+}
+.odd-together-table tr.even td {
+    background:#F7F7F7;
+}
+.odd-together-table td {
+    padding:0 5px;
+    line-height:30px;
+}
+.odd-together-table td a.odd-together-editname {
+    margin-left:20px;
+    color:#FF6900;
+}
+.odd-together-paybtn {
+    width:136px;
+    height:40px;
+    line-height:40px;
+    padding-bottom:3px;
+    overflow:hidden;
+    margin:5px auto;
+    border:0 none;
+    background-position:0 -60px;
+    background-repeat:no-repeat;
+    font-weight:700;
+    font-family:"Microsoft Yahei";
+    color:#FFF;
+    text-align:center;
+    font-size:18px;
+    cursor:pointer;
+}
+#J_PaymentModuleList {
+    margin-top:10px;
+    background:#fff;
+}
+
+#J_PaymentModuleList .select-way dl input[type='checkbox'], #J_PaymentModuleList .select-way dl input[type='radio'], label {
+	margin-right: 3px;
+	vertical-align: middle;
+}
+
+#J_PaymentModuleList .play-way-title {
+    height:30px;
+    line-height:30px;
+    background:#276ec6;
+    font-size:14px;
+    color:#fff;
+    padding-left:18px;
+    font-weight:bold;
+}
+
+#J_PaymentModuleList .play-way-title .expand-collapse { 
+	background-position: 30px 0px;
+}
+
+#J_PaymentModuleList .play-way-title .title {
+    line-height:30px;
+    font-size:14px;
+    color:#fff;
+    font-weight:bold;
+}
+#J_PaymentModuleList .expand-collapse {
+
+}
+
+#J_PaymentModuleList .play-way-content {
+    padding:15px 20px;
+    border:1px solid #cadeff;
+}
+#J_PaymentModuleList .select-currency {
+    height:36px;
+    line-height:50px;
+    color:#fff;
+    background:#ff8800;
+    font-size:14px;
+}
+#J_PaymentModuleList .select-currency .selected-currency {
+    background:#fff;
+    color:#333333;
+    border-radius:3px 3px 0 0;
+}
+#J_PaymentModuleList .select-currency #rmb-currency {
+    margin-left:16px;
+    padding:10px 15px 2px 15px;
+}
+#J_PaymentModuleList .select-currency #dollar-currency {
+    padding:10px 15px 2px 15px;
+}
+
+#J_PaymentModuleList .play-way-content .select-way dl {
+	display:block; 
+	width:212px; 
+	clear:both;
+}
+
+#J_PaymentModuleList .play-way-content .select-way dt {
+    height:38px;
+    line-height:38px;
+    color:#333333;
+}
+#J_PaymentModuleList .play-way-content .select-way dd {
+    display:none;
+    width:194px;
+    height:38px;
+    line-height:38px;
+    color:#666666;
+    padding-left:18px;
+    margin-bottom:1px;
+    background:url(../image/selected-way.png) no-repeat left -40px;
+}
+#J_PaymentModuleList .play-way-content .select-way dd label span {
+    padding-left:10px;
+}
+#J_PaymentModuleList .play-way-content .select-way dd.selected {
+    font-weight:bold;
+    background:url(../image/selected-way.png) no-repeat left 0;
+}
+#J_PaymentModuleList .play-way-content .way-mark-wrap {
+    width:490px;
+    margin:18px 0 0 10px;
+    line-height:22px;
+    color:#666666;
+    font-weight:bold;
+}
+#J_PaymentModuleList .play-way-content .way-title {
+	font-size:14px;
+	color:#4d4d4d;
+	height:26px;
+	line-height:26px;
+	padding-left:12px;
+    border-bottom:1px solid #d4d4d4;
+}
+#J_PaymentModuleList .play-way-content .way-mark-content {
+    margin-top:20px;
+}
+
+.way-mark-content h3 {
+
+}
+
+.way-mark-content table.bank_transfer_info {
+	width: 100%;
+	border: 1px solid #cadeff;
+	border-top: none;
+	font-weight:normal;
+}
+
+.way-mark-content table.bank_transfer_info thead {
+	text-align:left;
+	background:#d3e7ff;
+}
+
+.way-mark-content table.bank_transfer_info tbody tr:nth-of-type(2n) {
+	background:rgb(247, 247, 247);
+}
+
+.way-mark-content table.bank_transfer_info tbody tr {
+	height:24px;
+	line-height:24px;
+}
+
+.way-mark-content table.bank_transfer_info tbody tr td{
+	padding-left:4px;
+}
+
+#J_PaymentModuleList .play-way-content .way-mark-wrap dd {
+    display:none;
+}
+.odd-paypanel .go-play {
+    text-align:right;
+    margin:10px;
+}
+.odd-paypanel .go-play button {
+    background:#ff8800;
+    border:1px solid #e98007;
+    color:#fff;
+    font-size:22px;
+    border-radius:3px;
+    width:200px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+    cursor:pointer;
+}
+.traveling-wrap .bg {
+    width:100%;
+    height:4px;
+    background:#276ec6;
+    margin-top:20px;
+}
+.traveling-wrap h3 {
+    padding-left:14px;
+    height:28px;
+    line-height:28px;
+    border:1px solid #e4e4e4;
+    color:#0066ff;
+    font-size:14px;
+    font-family:'宋体', Arial, Helvetica, sans-serif;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.traveling-wrap h3.title span {
+    color:#888888;
+}
+.traveling-wrap h3.title em {
+    color:#333333;
+}
+.traveling-wrap table {
+    width:100%;
+    border:1px solid #cadeff;
+    border-top:none;
+}
+.traveling-wrap table th {
+    height:28px;
+    background:#d3e7ff;
+    color:#666666;
+    font:14px/28px'宋体', Arial, Helvetica, sans-serif;
+    border-right:1px solid #fff;
+    text-align:center;
+}
+.traveling-wrap table th.no-bo {
+    border:none;
+}
+.traveling-wrap table th.lastname {
+    width:90px;
+    text-align:left;
+    padding-left:5px;
+}
+.traveling-wrap table th.firstname {
+    text-align:left;
+}
+.traveling-wrap table tr {
+    height:30px;
+    font:12px/30px Arial, Helvetica, sans-serif;
+}
+.traveling-wrap table td {
+    padding:0 2px;
+    text-align:center;
+}
+.traveling-wrap table td.select {
+    width:84px;
+}
+.traveling-wrap table td.email {
+    width:160px;
+}
+.traveling-wrap table td.lastname.firstname {
+    width:250px;
+    text-align:left;
+}
+.traveling-wrap table td.action {
+    width:78px;
+    padding-left:2px;
+}
+.traveling-wrap table td.payables {
+    width:80px;
+    text-align:right;
+}
+.traveling-wrap table td.paid {
+    width:80px;
+    text-align:right;
+}
+.traveling-wrap table td.status {
+    width:70px;
+}
+.traveling-wrap table td .view {
+    border:none;
+    padding:0 4px;
+    width:78px;
+}
+.traveling-wrap table td .editor {
+    border:1px solid #a9a9a9;
+    padding:0 4px;
+    width:76px;
+}
+.traveling-wrap table td button {
+    height:20px;
+    line-height:20px;
+    padding:0 2px;
+    margin-right:3px;
+    border:0;
+    background:#3684c5;
+    cursor:pointer;
+    color:#ffffff;
+    border-radius:3px;
+}
+.traveling-wrap table td button.ok-btn {
+    display:none;
+}
+.traveling-wrap table td button.cancel-btn {
+    display:none;
+}
+.traveling-btn {
+    text-align:right;
+    margin:10px;
+}
+.traveling-btn button {
+    background:#ff8800;
+    border:1px solid #e98007;
+    color:#fff;
+    font-size:22px;
+    border-radius:3px;
+    width:200px;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    display:inline-block;
+    _display:inline;
+    _zoom:1;
+    cursor:pointer;
+}
+
+.addr_common_flow {
+	left:0 \9;
+	*top:30px;
+}

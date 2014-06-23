@@ -1,0 +1,57 @@
+<div id="body-content">
+	<div class="shopping-progress">
+		<div class="shopping-progress-left pngFix">
+			<span>购物流程</span>
+		</div>
+		<div class="shopping-progress-right clear">
+			<div class="one-step fl"><strong>1</strong><span>我的购物车</span></div>
+			<div class="two-step fl"><strong>2</strong><span>填写核对订单</span></div>
+			<div class="three-step fr"><strong>3</strong><span>完成支付</span></div>
+		</div>
+	</div>
+
+	
+	{{if $data.login.url !='' }}
+	<div id="LoginInfo" class="purchaser-info-wrap"></div>
+	<script type="text/javascript">
+		$().ready(function(){
+			getCheckoutModule("{{$data.login.url}}", "getCheckoutLogin", "LoginInfo");
+		});
+	</script>
+	{{/if}}
+	
+	{{* 如果收货地址信息启用则调用它 *}}
+	{{if $data.getCheckoutShipping == '1' }}
+	<div id="ShippingInfo">
+	<h1>收货地址信息</h1>
+	</div>
+	<script type="text/javascript">
+		$().ready(function(){
+			getCheckoutModule("{{$data.shipping.url}}", "getCheckoutShipping", "ShippingInfo");
+		});
+	</script>
+	{{/if}}
+	
+	{{* 游客信息和航班信息 *}}
+	<div id="PassengerFlightInfo"><!--游客信息和航班信息--></div>
+	{{if $data.flight.url !='' }}
+	<script type="text/javascript">
+        <!--  需要添加详细的条件判断  -->
+		$().ready(function(){
+			getCheckoutModule("{{$data.flight.url}}", "getCheckoutPassenger", "PassengerFlightInfo");
+		});
+	</script>
+	{{/if}}
+	
+	
+	<div id="PaymentInfo" class="tooltip" tooltip="付款方式">
+	<!--动态显示付款方式-->
+	</div>
+	
+	<div id="ContactInfo" class="tooltip" tooltip="联系人和备注信息">
+	<!--动态显示联系人和备注信息-->
+	</div>
+	
+	<div id="ProductsList" class="tooltip" tooltip="商品清单和付款方式确认"><!--动态显示商品清单等一系列需要确认的信息等--></div>
+	
+</div>

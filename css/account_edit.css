@@ -1,0 +1,141 @@
+@charset "utf-8";
+/* 首页 > 我的账户 > 编辑账户 */
+.uc-ubipanel { position:relative; padding:20px 30px; border:1px solid #C5E6F9; }
+.uc-ubifrm { width:100%; }
+.uc-ubifrm td { padding:5px 0; border-bottom:1px solid #FFF; }
+.uc-ubifrm td.hover { border-bottom:1px dashed #DDD; background:#F9F9F9; }
+.uc-ubifrm td.uc-ubifrm-label { text-align:right; }
+.uc-ubifrm td.ucchg-btm-label { text-align:center; }
+.uc-ubifrm td.vtop { vertical-align:text-top; }
+.uc-ubifrm p { color:#777; }
+.uc-ubifrm .uc-nmipt, .uc-ubifrm .uc-emlipt, .uc-ubifrm .uc-adsipt, .uc-ubifrm .uc-zipipt, .uc-ubifrm .uc-opipt { height:18px; line-height:20px; padding:3px; border:1px solid #D5D5D5; border-radius:2px; box-shadow:1px 2px 0 #EEE; }
+.uc-ubifrm .uc-reg-emlvld { display:inline-block; *display:inline; *zoom:1; *margin-bottom:5px; height:22px; margin-top:3px; line-height:22px; padding-left:10px; background-position:0 0; background-repeat:no-repeat; color:#ED5C00; }
+.uc-ubifrm .uc-reg-emlvld span { display:inline-block; *display:inline; *zoom:1; height:22px; line-height:22px; cursor:pointer; padding-right:10px; background-position:right -22px; background-repeat:no-repeat; }
+.uc-ubifrm .uc-nmipt { width:125px; margin-right:5px; }
+.uc-ubifrm .uc-emlipt { width:180px; margin-right:10px; }
+.uc-ubifrm .uc-adsipt { width:340px; }
+.uc-ubifrm .uc-zipipt { width:90px; }
+.uc-ubifrm .uc-opipt { width:410px; }
+.uc-ubifrm .uc-inputips { margin-left:5px; }
+.uc-ubifrm select { float:left; margin-right:5px; padding:2px; border:1px solid #D5D5D5; }
+.uc-ubifrm .ucchg-gender { margin-right:10px; }
+.uc-ubifrm .ucchg-showbirthday { margin-left:10px; }
+.uc-ubifrm .ucchg-gender input, .uc-ubifrm .ucchg-showbirthday input { width:12px; height:12px; overflow:hidden; margin-top:-3px; *margin-top:0;  vertical-align:middle; font-family:Arial; }
+.uc-ubifrm .iptfocus { border-color:#F60; background:#FFC; box-shadow:0 1px 1px #F60; }
+.uc-ubifrm .ucchg-savebtn { display:inline-block; *display:inline; *zoom:1; width:125px; height:28px; line-height:28px; padding-bottom:1px; overflow:hidden; text-align:center; color:#4D4D4D; background-position:0 -100px; background-repeat:no-repeat; margin:0 auto; border:0 none; cursor:pointer; }
+
+.uc-place-pop { left:0; top:0; }
+.uc-place-pop .uc-chgplace { display:inline-block; *display:inline; *zoom:1; height:24px; line-height:24px; padding:0 12px; overflow:hidden; background:#FFF; border:1px solid #CCC; cursor:pointer; }
+.uc-place-pop .uc-chgplace i { padding-right:12px; background-position:right -381px; background-repeat:no-repeat; font-style:normal; }
+
+/* 出生日期框 */
+#J_BirthdayBox{ display:inline-block;  vertical-align:middle;}
+#birthday_input {width:110px;padding-left:5px;height: 18px;line-height: 20px;background: url(../image/rili_hawaii.gif) no-repeat right #fff;} 
+.date_bir_box{font-size:12px; }
+.date_bir_box .bir_year,.date_bir_box .bir_day,.BirthMonth{ position:relative;}
+.date_bir_box .bir_year,.date_bir_box .bir_day,.bir_month{ display:inline-block; margin:0 5px; vertical-align:top;}
+.date_bir_box .placeholder_text{ position:absolute; left:5px; top:5px; color:#999;}
+.date_bir_box .bir_month .BirthMonth .month_list{ display:none; position:absolute; left:0; top:0; width:98px; background:#fff; border:solid 1px #ccc;}
+.date_bir_box input{ border:solid 1px #ccc; padding-left:3px; height:24px; line-height:24px; width:60px;}
+.date_bir_box input.warnL{ border-color:#c00;}
+.date_bir_box .bir_month{ width:100px;}
+.date_bir_box .BirthMonth .month_dis{ position:relative; height:21px; border:solid 1px #ccc; cursor:pointer; padding:3px 0 0 5px; background:url(http://www.usitrip.com/image/nav/header_bottom_bg.gif) repeat-x 0 -33px;}
+.date_bir_box .month_dis .mon_arrow{ position:absolute; right:5px; top:7px;}
+.date_bir_box .month_list ul li{ height:24px; line-height:24px; padding-left:5px; cursor:pointer;}
+.date_bir_box .month_list ul li.oncur{ background:#09f; color:#fff;}
+.date_bir_box .month_list ul li.seled{ background:#09f; color:#fff;}
+.date_bir_box p.emsg{ display:none; color:#c00; margin:5px 0 0 5px;}
+
+
+.photouploader {
+	background: -webkit-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -o-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -moz-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -ms-linear-gradient(top, #fffdfb, #ffe4c5);
+	background:linear-gradient(top,  #fffdfb, #ffe4c5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdfb', endColorstr='#ffe4c5',GradientType=0 );
+	*background:#ffeedc;
+    width: 86px;
+    height: 22px;
+	border:1px solid #ffa559;
+	border-radius: 3px;
+	margin-left: 34px;	
+	text-align:center;
+}
+.photouploader span#uploadImg {
+	color:#ED5C00;
+	cursor:pointer;
+}
+
+#ValidatingTips{
+    width:450px;
+}
+
+.successTip {
+	background:url(../image/icon/tip_right.gif) no-repeat 2px center;
+	padding-left: 16px;
+}
+
+#ValidatingTips a {
+	color: #4d90fe;
+}
+
+#ValidatingTips a:hover {
+	color:#f60;
+}
+
+#verify_phone_warp p {padding:5px 0;}
+
+#verify_phone {
+	color:#777;
+}
+
+#verify_phone input {width:50px;}
+
+#verify_phone span#GetPasswordBtn {
+	display:inline-block;
+	background: -webkit-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -o-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -moz-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: -ms-linear-gradient(top, #fffdfb, #ffe4c5);
+	background: linear-gradient(top, #fffdfb, #ffe4c5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fffdfb', endColorstr='#ffe4c5',GradientType=0 );
+	width: 50px;
+	height: 19px;
+	border: 1px solid #ffa559;
+	border-radius: 3px;
+	text-align: center;
+	margin: 0 5px;
+	cursor:pointer;
+}
+
+#countdown {color:#f60;}
+
+.required-mark {
+	color: #FF0000;
+	display: inline-block;
+	height: 15px;
+	padding-right: 3px;
+	vertical-align: middle;
+}
+
+.imgcut {
+	width:500px;
+}
+
+
+.imgcut .photouploader {
+	margin-bottom:20px;
+	margin-left:0;
+}
+
+.container {background: #eee;
+border: solid 2px #ddd;
+border-radius: 4px;
+padding: 0.6em;}
+
+.container div.frame {
+background: #fff;
+padding: 0.8em;
+border: solid 2px #ddd;
+}

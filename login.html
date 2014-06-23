@@ -1,0 +1,70 @@
+<div class="sign-panel uifix">
+	<div class="fl login-form">
+		{{$data.form_start}}
+		<table>
+			<tbody>
+				<tr>
+					<td><label for="email_address"><em class="required-star">*</em>帐号：</label></td>
+					<td><!--此输入框要关闭输入法-->
+					<div class="login-uname-box">
+                        {{if $data.tipMsg }}
+                        <div>{{$data.tipMsg}}</div>
+                        {{/if}}
+						<div class="login-email-box"><!--  -->
+							<input id="email_address" name="email_address" type="text" class="validate[required] sign-ipt" value="{{$data.email_address}}" onblur="{{$data.onblur}}"  autocomplete="off" style="ime-mode: disabled;" />
+						</div>
+						<ul id="email_suggest">
+							<li class="first_li">请选择邮箱类型</li>
+							<li></li>
+							<li>@yahoo.com.cn</li>
+							<li>@hotmail.com</li>
+							<li>@gmail.com</li>
+							<li>@163.com</li>
+							<li>@126.com</li>
+							<li>@qq.com</li>
+						</ul>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td><label for="password"><em class="required-star">*</em>密码：</label></td>
+					<td>
+					<input id="password" name="password" type="password" class="validate[required] sign-ipt" value="{{$data.password}}" /><a href="{{$data.href.password_forgotten}}" class="forget-pwd">忘记密码？</a>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+					<label for="remember-email">
+					<input name="record_user" id="remember-email" type="checkbox" value="1" {{$data.record_user_checked}} />
+					记住账号
+					</label>
+					</td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td>
+					<input type="submit" class="login-btn" value="登录" />
+					
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		{{$data.form_end}}
+	</div>
+	<div class="fl register-panel">
+		<h3>还不是usitrip用户？</h3>
+		<a href="{{$data.href.create_account}}" class="reg-btn">注册新用户</a>
+		<p>立刻享受便宜又放心的旅途乐趣。</p>
+		<dl>
+			<dt>注册走四方会员即能享受：</dt>
+			
+			{{if $data.text.new_signup_point_amount }}
+			<dd>1、免费注册，赠送{{$data.text.new_signup_point_amount}}积分！</dd>
+			{{/if}}
+			
+			<dd>2、预订产品得积分，积分可直接购买走四方产品。</dd>
+			<dd>3、享受更加体贴的个性化服务！</dd>
+		</dl>
+	</div>
+</div>

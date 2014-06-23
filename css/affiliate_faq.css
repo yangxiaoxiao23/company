@@ -1,0 +1,21 @@
+h2 {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.aff_faq {
+    padding: 10px;
+    border: 1px solid #E4E4E4;
+}
+
+.aff_faq h2 {
+    line-height: 28px;
+    border-bottom: 1px dashed #ddd;
+    background: #F8F8F8;
+    margin: 5px 0;
+    color: #30a1e6;
+}
+
+.aff_faq p {
+    line-height: 20px;
+}

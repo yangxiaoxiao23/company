@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <link href="../../js/yhbCalendar/css/calendar.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../js/yhbCalendar//calendar-debug.js"></script>
+
+<style>
+body{margin:0;}
+</style>
+
+</head>
+
+<body>
+<h3>设置日期显示格式</h3>
+yyyy-mm-dd(w)： <input  id="c1"  class="cc" /><br/>
+yyyy-mm-dd：    <input  id="c2"  class="cc" /><br/>
+yyyy-mm：       <input  id="c3"  class="cc" /><br/>
+yyyy/mm/dd(w)： <input  id="c4"  class="cc" /><br/>
+
+
+<script type="text/javascript">
+	
+	var callbackFunction = function(){
+		console.log('选择日期后，则执行的回调方法');
+	};
+	
+	var showAfterFun = function(){
+		console.log('showAfter');
+	};
+	
+	var hideAfterFun = function(){
+		console.log('hideAfter');
+	};
+	
+	var defaultTc = {
+        output: 'yyyy-mm-dd(w)'
+	};
+    $('#c1').calendar(defaultTc || {});
+
+    defaultTc = {
+        output: 'yyyy-mm-dd'
+    };
+    $('#c2').calendar(defaultTc || {});
+
+    defaultTc = {
+        output: 'yyyy-mm'
+    };
+    $('#c3').calendar(defaultTc || {});
+
+    defaultTc = {
+        output: 'yyyy/mm/dd(w)'
+    };
+    $('#c4').calendar(defaultTc || {});
+</script>
+</body>
+</html>

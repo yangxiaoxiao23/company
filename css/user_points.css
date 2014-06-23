@@ -1,0 +1,167 @@
+.mytoursRight {
+    display: inline;
+    float: left;
+    margin: 0 5px;
+    width: 745px;
+}
+.userTitle {
+    background: url("../image/nav/user_bg7.gif") repeat-x scroll center bottom rgba(0, 0, 0, 0);
+    height: 30px;
+    position: relative;
+}
+.userTitle ul {
+    overflow: hidden;
+}
+.userTitle li {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("../image/nav/user_bg9.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #CCCCCC #CCCCCC -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    cursor: pointer;
+    float: left;
+    height: 26px;
+    line-height: 26px;
+    margin-right: 4px;
+}
+.userTitle li.cur {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("../image/nav/user_bg8.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border-color: #FF5500 #FF5500 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color: #FFFFFF;
+    cursor: default;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0 25px;
+}
+.userTitle li a {
+    display: block;
+    padding: 0 25px;
+}
+.userTitle p {
+    height: 26px;
+    position: absolute;
+    right: 0;
+}
+
+h2 {
+    line-height: 24px;
+}
+
+.pointsIntro li {
+    list-style: disc inside none;
+    padding-left: 15px;
+    color: #F7860F;
+    line-height: 18px;
+}
+
+
+.infoBox {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-collapse: collapse;
+    border-color: -moz-use-text-color #AED5FF #AED5FF;
+    border-image: none;
+    border-right: 1px solid #AED5FF;
+    border-spacing: 0;
+    border-style: none solid solid;
+    border-width: 0 1px 1px;
+}
+.infoBox td {
+    border: 1px solid #C6E7FA;
+    height: 30px;
+    line-height: 30px;
+}
+.infoBox td.productListing-heading {
+    background: url("../image/nav/ui_mypoints_table_header.png") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    border: medium none;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+}
+.infoBox td.productListing-data {
+    line-height: 28px;
+    padding: 0 5px;
+}
+
+
+.ui_item {
+    border-bottom: 1px dotted #C3C3C3;
+    margin: 0 15px;
+    overflow: hidden;
+    padding: 20px 0;
+}
+.ui_rules_listitle {
+    color: #136CD1;
+    font-size: 14px;
+    line-height: 26px;
+}
+.ui_item p {
+    color: #4D4D4D;
+    line-height: 22px;
+}
+.ui_item p.idt {
+    text-indent: 2em;
+}
+.ui_item p.ui_rules_notice {
+    color: #FF6600;
+}
+.ui_rules_table {
+    border: 1px solid #E0E0E0;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 10px 0;
+    width: 100%;
+}
+.ui_rules_table th {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #F4F4F4;
+    border-color: #E0E0E0 #E0E0E0 -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+}
+.ui_rules_table td {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: -moz-use-text-color #E0E0E0 #E0E0E0;
+    border-image: none;
+    border-right: 1px solid #E0E0E0;
+    border-style: none solid solid;
+    border-width: medium 1px 1px;
+    height: 28px;
+    text-indent: 10px;
+}
+
+
+.ui_rules_wrap {
+    border: 1px solid #AED5FF;
+    padding: 5px 15px;
+}
+
+
+.last_copyright {
+    color: #FF6600;
+    line-height: 28px;
+    padding-bottom: 15px;
+}

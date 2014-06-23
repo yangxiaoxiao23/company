@@ -1,0 +1,14 @@
+# 此文件写CSS和JS的版本号。如果无可不设置！
+# 如index-1.0.1.css则设置以下值
+#CSS_VERSION = 1.0.min
+
+# login-1.1.89.js则设置以下值
+## JS_VERSION = 1.1.89
+#JS_VERSION = min
+
+# 显示前端页面下载时间true为显示，flase为不显示。主要用于显示测试压缩前和压缩后代码的执行时间！
+ALERT_HTML_JS_CSS_PARSE_TIME = flase
+
+# 是否压缩html页面为1行
+ZIP_HTML_CODE_TO_ONE_LINE = flase
+

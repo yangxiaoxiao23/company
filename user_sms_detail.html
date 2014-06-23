@@ -1,0 +1,35 @@
+{{include file='user_left.html'}}
+<script type="text/javascript">
+var del_sms_url = '{{$data.del_sms_url}}';
+</script>
+<div class="right">
+	{{include file='user_companions_public.html'}}
+	<table cellpadding="0" cellspacing="0" border="1" width="100%">
+	<tr>
+		<td>{{if $data.message}}
+		{{if $data.message.sms_type == 1}}结伴标题：<a href="{{$data.message.title_href}}" target="_blank">{{$data.message.title}}</a>{{else}}{{$data.message.title}}{{/if}}<br/>
+		{{if $data.message.reply_sms}}
+		<a href="javascript:;" onclick="art.dialog.open('{{$data.message.reply_sms}}',{title:'回复短消息！',fixed:true,lock:true,top:'50%'})">回复</a>
+		{{/if}}
+		<div style="width:100%;"><table cellpadding="0" border="1" cellspacing="0" style="float:{{if $data.message.status == 1}}left{{else}}right{{/if}};margin-bottom:3px;">
+		<tr><td>by {{$data.message.customers.customers_name_cn}} {{$data.message.sms_time}}</td></tr>
+		<tr><td>{{$data.message.sms_content}}</td></tr>
+		<tr><td><a href="javascript:;" onclick="del_sms({{$data.message.sms_id}},'travel_companion')">删除</a>
+		</td></tr>
+		</table></div>
+		{{section name=key loop=$data.reply_list}}
+		<div style="clear:both;">
+		<table cellpadding="0" border="1" cellspacing="0" style="float:{{if $data.reply_list[key].status == 1}}left{{else}}right{{/if}};margin-bottom:3px;">
+		<tr><td>by {{$data.reply_list[key].customers.customers_name_cn}} {{$data.reply_list[key].sms_time}}</td></tr>
+		<tr><td>{{$data.reply_list[key].sms_content}}</td></tr>
+		<tr><td><a href="javascript:;" onclick="del_sms({{$data.reply_list[key].sms_id}},'reply')">删除</a></td></tr>
+		</table>
+		</div>
+		{{/section}}
+		{{else}}
+		您查看的短信已经删除或者不存在！
+		{{/if}}
+		</td>
+	</tr>
+	</table>
+</div>

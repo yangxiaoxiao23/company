@@ -1,0 +1,73 @@
+<div class="register-panel">
+        	<div class="register-tipsbox">
+                <div class="register-tips">
+                    <p>提示：如果你已经注册"usitrip"会员，请直接<a href="{{$data.login_href}}">登录</a></p>
+                    <i class="tiprole"></i>
+                </div>
+            </div>
+			{{$data.reg_form}}
+			{{$data.hidden_input}}
+            <table class="register-form">
+                
+                    <tbody>
+                        <tr>
+                            <td width="220"><label for="reg-email"><b>*</b>常用邮件地址：</label></td>
+                            <td><input type="text" id="reg-email" class="reg-ipt" name="email_address" style="ime-mode: disabled;"/><span class="reg-iptips">请输入您常用的电子邮箱，将用于登录，接受订单通知等。</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="reg-pwd"><b>*</b>设置密码：</label></td>
+                            <td><input type="password" id="reg-pwd" class="reg-ipt" name="password"  /><span class="reg-iptips">5-12个字符，可以由数字、英文、符号组成。</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="reg-repwd"><b>*</b>确认密码：</label></td>
+                            <td><input type="password" id="reg-repwd" class="reg-ipt" name="confirmation"  /><span class="reg-iptips">请再输入一次密码。</span></td>
+                        </tr>
+                        <tr>
+                            <td><label for="reg-mobile">手机号码：</label></td>
+                            <td id="mobile">
+                            </td>
+                            <!-- <input type="text" id="reg-mobile" class="reg-ipt" name="mobilephone" style="ime-mode: disabled;" /><span class="reg-iptips">请输入正确的电话号码！</span> -->
+                        </tr>
+						{{if $smarty.const.VERIFICATION_CODE_ENABLE === '1'}}
+                        <tr>
+                            <td><label for="reg-vcode"><b>*</b>验证码：</label></td>
+                            <td><input type="text" id="reg-vcode" class="reg-vipt" name="verification_code" style="ime-mode: disabled;" /><span class="reg-vimg"><img id="vcode_img" src="{{$data.vcode_href}}" onclick="this.src='{{$data.vcode_href}}?t=' + ((new Date()).getTime()).toString();"/></span></td>
+                        </tr>
+						{{/if}}
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="submit" class="reg-sbtn" value="同意以下协议并注册" /></td>
+                        </tr>
+                    </tbody>
+            </table>
+			</form>
+            <div class="reg-agreement">
+                <p>点击上面的"同意以下协议并注册"，即表示您同意接受下面的usitrip客户协议。</p>
+                <textarea class="reg-agreement-textarea">注册协议</textarea>
+            </div>
+        </div>
+<script type="text/javascript">
+$(document).ready(function(){
+    new usitrip.widget.MobilePhoneField({
+        el:'#mobile',
+        initValue : {
+            phoneWidth:160
+        },
+        name:'mobilephone'
+    });
+	$('input.reg-ipt').focus(function(){
+		$('input.reg-ipt').removeClass('reg-focus');
+		$(this).addClass('reg-focus');
+	});	
+	$('input.reg-vipt').focus(function(){
+		$('input.reg-vipt').removeClass('reg-vfocus');
+		$(this).addClass('reg-vfocus');
+	});
+	$('input.reg-ipt').blur(function(){
+		$(this).removeClass('reg-focus');
+	});
+	$('input.reg-vipt').blur(function(){
+		$(this).removeClass('reg-vfocus');
+	});
+});
+</script>

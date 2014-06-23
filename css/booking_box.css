@@ -1,0 +1,147 @@
+﻿@charset "utf-8";
+
+
+.clear {zoom:1;}
+.clear:after{display:block;clear:both;content:"";visibility:hidden;height:0}
+
+/* 购物面板的css */
+#J_BookingBoxForm{}
+#J_BookingBoxForm .sel_box ul{position:absolute; display:none; background-color:#fff; width:228px; overflow-y:scroll; overflow-x:hidden; max-height:250px; _height:250px; top:21px; left:-1px;border:solid 1px #ccc;}
+#J_BookingBoxForm .sel_box ul li{ height:20px; line-height:20px; border:solid 1px #fff; padding-left:5px; /*width:165px;*/ overflow:hidden;}
+#J_BookingBoxForm .sel_box ul li.hover{ height:20px; line-height:20px; border-style:solid; border-width:1px 0; border-color:#ccc; background:#efefef;}
+
+#J_BookingBoxForm .sel_box_m ul{position:absolute;z-index: 12; padding-bottom:5px; display:none; background-color:#fff; width:229px; overflow-y:scroll; overflow-x:hidden; max-height:250px; _height:250px; top:21px; left:-1px;_left:-144px;border:solid 1px #ccc;}
+#J_BookingBoxForm .sel_box_m ul li{ height:22px; line-height:20px; border:solid 1px #fff; padding-left:5px; width:165px; overflow:hidden;}
+#J_BookingBoxForm .sel_box_m ul li label{ width:100%; height:100%; display:block; cursor:pointer; }
+#J_BookingBoxForm .sel_box_m ul li label.hover{ height:20px; line-height:20px; border-style:solid; border-width:1px 0; border-color:#ccc; background:#efefef;}
+#J_BookingBoxForm .sel_box_m ul li label input{ vertical-align:middle; margin-right:2px;}
+#J_BookingBoxForm .disabled{ color:#999;}
+#J_BookingBoxForm .selected{ color:#f60;}
+#J_BookingBoxForm .hover{ color:#FF6600;}
+#J_BookingBoxForm .selectspan {cursor:pointer; width:208px; display:inline-block; background: url("/tpl/www/image/grey-disclosure-arrow-up-down.png") no-repeat scroll 218px center #fff; box-shadow:2px 2px 2px #ddd inset; border:solid 1px #ccc; padding:0px 10px; line-height:20px; height: 20px;}
+#J_BookingBoxForm .slel_box{ margin-bottom:5px;}
+#J_BookingBoxForm .end-date {font-size:12px;height:20px;line-height:20px;padding-left:30px;color:#777;display:none;margin-bottom:5px;}
+
+/* 上车地址 */
+#J_BookingBoxForm .train_box{ position:relative; z-index:5;}
+#J_BookingBoxForm .train_box .train_list{ position:absolute; display:none; width:400px; background:#fff; border:solid 3px #feae11; box-shadow:2px 2px 3px #ccc;}
+#J_BookingBoxForm .train_box .train_list dt{ height:24px; line-height:24px; padding-left:10px; font-weight:bold; background:#ffedcc; position:relative; border-bottom:solid 1px #ccc;}
+#J_BookingBoxForm .train_box .train_list dt a.t_cancel{ position:absolute; top:0; right:0; display:block; height:24px; line-height:24px; width:24px; text-align:center; font-family:"新宋体"; font-weight:bold; font-size:20px; text-shadow:1px 1px 1px #ccc; color:#feae11;}
+#J_BookingBoxForm .train_box .train_list dt a.t_cancel:hover{ text-decoration:none; color:#e37124; background:#f5d9a6;}
+#J_BookingBoxForm .train_box .train_list dl dd{ height:24px; line-height:24px; padding-left:5px; border-bottom:solid 1px #ccc; overflow:auto;}
+#J_BookingBoxForm .train_box .train_list dl dd.oncur,#J_BookingBoxForm .train_box .train_list dl dd.hover{ background:#ebebeb; }
+#J_BookingBoxForm .train_box .train_list dl dd label{ display:block; cursor:pointer;}
+#J_BookingBoxForm .train_box .train_list dl dd label input{ margin-right:5px; vertical-align:middle;}
+#J_BookingBoxForm .train_box .train_list p.train_btns{ text-align:center; padding:5px 0 10px 0;}
+#J_BookingBoxForm .train_box .train_list .train_pages{ padding:5px 0 0 10px;}
+#J_BookingBoxForm .train_box .train_list .train_pages a{ display:none; height:20px; width:40px; text-align:center; line-height:18px; padding:0 10px; color:#000; background:#fffce1; border:solid 1px #ffedcc;}
+#J_BookingBoxForm .train_box .train_list .train_pages a:hover{ text-decoration:none; background:#fde69f; border-color:#f4c064;}
+#J_BookingBoxForm .train_box .train_list .train_pages a,t_prev{ float:left;}
+#J_BookingBoxForm .train_box .train_list .train_pages a.t_next{ float:right; margin-right:10px;}
+#J_BookingBoxForm .train_box .train_list .train_l_box{ position:relative;}
+#J_BookingBoxForm .train_box .train_list .train_l_box .abso{ position:absolute; top:0; left:0; width:400px;}
+#J_BookingBoxForm .train_box .train_list .ctrl_h{ height:125px; overflow:hidden;}
+
+/* 加订酒店弹出层通用样式 */
+.book_common_flow{ position:absolute; display:none; width:400px; background:#fff; border:solid 3px #feae11; box-shadow:2px 2px 3px #ccc; left:0;}
+.book_common_flow dt{ height:24px; line-height:24px; padding-left:10px; font-weight:bold; background:#ffedcc; position:relative; border-bottom:solid 1px #ccc;}
+.book_common_flow dt a.bc_cancel{ position:absolute; top:0; right:0; display:block; height:24px; line-height:24px; width:24px; text-align:center; font-family:"新宋体"; font-weight:bold; font-size:20px; text-shadow:1px 1px 1px #ccc; color:#feae11;}
+.book_common_flow dt a.bc_cancel:hover{ text-decoration:none; color:#e37124; background:#f5d9a6;}
+.book_common_flow dl dd{ height:24px; line-height:24px; padding-left:5px; border-bottom:solid 1px #ccc; overflow:auto;}
+.book_common_flow dl dd.oncur,.book_common_flow dl dd.hover{ background:#ebebeb; }
+.book_common_flow .bc_list{ position:relative; height:125px; overflow-x:hidden; overflow-y:auto;
+scrollbar-arrow-color: #FFEDCC; /*三角箭头的颜色*/
+scrollbar-face-color: #FEAE11; /*立体滚动条的颜色（包括箭头部分的背景色）*/
+scrollbar-3dlight-color: #FEAE11; /*立体滚动条亮边的颜色*/
+scrollbar-highlight-color: #FEAE11; /*滚动条的高亮颜色（左阴影）*/
+scrollbar-shadow-color: #FEAE11; /*立体滚动条阴影的颜色*/
+scrollbar-darkshadow-color: #FEAE11; /*立体滚动条外阴影的颜色*/
+scrollbar-track-color: #FFEDCC; /*立体滚动条背景颜色*/
+scrollbar-base-color:#FEAE11; /*滚动条的基色*/
+}
+.book_common_flow .bc_list::-webkit-scrollbar-thumb{background:#FEAE11;}
+.book_common_flow .bc_list::-webkit-scrollbar-track-piece{background:#FFEDCC;}
+.book_common_flow .bc_list::-webkit-scrollbar{width:12px;}
+
+.book_common_flow .ctrl_h{ height:125px; overflow:hidden;}
+.book_common_flow .bc_list dl.abso{ position:absolute; top:0; left:0; width:400px;}
+.book_common_flow .bc_list dl dd label{ display:block; cursor:pointer;}
+.book_common_flow .bc_list dl dd label.disabled span{ color:#ccc;}
+.book_common_flow .bc_detail .bc_dlist { display:none;}
+.book_common_flow .bc_detail .bc_dlist .bc_de_title a{ font-weight:normal; color:#327ef6; margin-left:20px;}
+.book_common_flow .bc_list dl dd label input{ margin-right:5px; vertical-align:middle;}
+.book_common_flow p.h_list_btns{ text-align:center; padding:5px 0 10px 0;}
+.book_common_flow .h_list_pages{ padding:5px 0 0 10px;}
+.book_common_flow .h_list_pages a{ display:none; height:20px; width:40px; text-align:center; line-height:18px; padding:0 10px; color:#000; background:#fffce1; border:solid 1px #ffedcc;}
+.book_common_flow .h_list_pages a:hover{ text-decoration:none; background:#fde69f; border-color:#f4c064;}
+.book_common_flow .h_list_pages a,t_prev{ float:left;}
+.book_common_flow .h_list_pages a.t_next{ float:right; margin-right:10px;}
+
+/* 加订酒店 */
+#J_BookingBoxForm .book_hotel{ margin-bottom:10px;position: relative;z-index: 70;padding-top: 5px;}
+#J_BookingBoxForm .book_hotel .book_btn{ display:block; background: url("../image/hotelExtend.gif") repeat scroll 0 0 transparent; color: #FFFFFF; display: block; font-weight: bold; height: 22px; padding-top:3px; padding-left: 40px; width: 98px; cursor:pointer;}
+#J_BookingBoxForm .book_hotel label.b_title{ width:80px; height:20px; padding-top:3px; line-height:12px; display:inline-block; vertical-align:top;}
+#J_BookingBoxForm .book_hotel .b_hotel{ display:none;}
+#J_BookingBoxForm .book_hotel .b_hotel .book_title{ font-size:14px; font-weight:bold; color:#F7860F; margin-top:10px;}
+#J_BookingBoxForm .book_hotel .b_hotel .book_title .no_book{ font-size:12px; color:#327EF6; font-weight:normal; margin-left:10px; cursor:pointer;}
+#J_BookingBoxForm .book_hotel .b_hotel li{ margin-top:5px;position:relative;}
+#J_BookingBoxForm .book_hotel .b_hotel .date_bg, #J_hotel_check_out_date .date_bg{ background:url(../image/rili_hawaii.gif) no-repeat right #fff; height:22px;}
+#J_BookingBoxForm .book_hotel .after-label, #J_BookingBoxForm .book_hotel .before-label{display:none;}
+#J_BookingBoxForm .book_hotel .after-label a, #J_BookingBoxForm .book_hotel .before-label a {color: #327EF6;}
+
+#J_BookingBoxForm .selectspan span.cont_text{ width:210px;_width:150px; /*padding:0 10px;*/ height:20px; display:inline-block; top:0; left:0; overflow:hidden;}
+#J_BookingBoxForm p.sel_title{/*width:140px; */height:20px; padding-top:3px; line-height:12px;}
+#J_BookingBoxForm span.shadow_box,#J_BookingBoxForm input.shadow_box{box-shadow:2px 2px 2px #ddd inset; width:158px; overflow:hidden; display:inline-block; cursor:pointer; padding:0 10px; cursor:pointer; border:solid 1px #ccc;line-height:20px; height: 20px; background:#fff; border-radius:0;}
+
+#J_BookingBoxForm input.shadow_box{width:208px;}
+#J_BookingBoxForm #J_Room{ position:relative; margin-bottom:10px;z-index:90;}
+#J_BookingBoxForm #J_Room .sel_rooms{ vertical-align:middle;}
+#J_BookingBoxForm #J_Room .room_list_box{ display:none; position:absolute; padding-top:10px; padding-left:10px; left:31px; _left:0;background:#fff; border:solid 3px #feae11; box-shadow:2px 2px 3px #ccc;z-index:11;}
+#J_BookingBoxForm #J_Room .room_list_box p.room_btns{ text-align:center; padding:5px 0 10px 0;}
+
+#J_hotel_check_out_date_input {width:208px;box-shadow: 2px 2px 2px #ddd inset;overflow: hidden;display: inline-block;cursor: pointer;padding: 0 10px;cursor: pointer;border: solid 1px #ccc;line-height: 20px;height: 20px;border-radius: 0;}
+/* 确认房间信息显示 */
+.room_info_box {padding-left:31px;padding-right: 31px;}
+.room_info_box ul li, .sel_info_m ul li{width:218px;height:18px; line-height:18px; background:#fff; border:solid 1px #ccc; padding:0 5px; margin-top:5px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;text-indent: 5px;}
+.room_info_box ul li span, .sel_info_m ul li span{ margin-right:15px;}
+
+#J_BookingBoxForm .rbtn_ok{display:inline-block; border:none; color:#fff; width:60px; height:20px; padding-top:1px; text-align:center; font-size:12px; font-weight:bold; background:url(../image/rooms_btn.png) left top no-repeat; margin-right:10px;}
+#J_BookingBoxForm .rbtn_cancel{display:inline-block; border:none; color:#fff; width:60px; height:20px; padding-top:1px; text-align:center; font-size:12px; font-weight:bold; background:url(../image/rooms_btn.png) right top no-repeat;}
+#J_BookingBoxForm #J_Room .tra_com{ margin-left:10px; cursor:pointer;}
+#J_BookingBoxForm #J_Room .tra_com .check_tra{ vertical-align:middle;}
+
+#J_BookingBoxForm #J_RoomList{ padding:5px;}
+#J_BookingBoxForm #J_RoomList li{ padding:3px 0; width:330px; margin:0 3px; padding:7px 0; border-bottom:dashed 1px #ccc; position:relative;}
+#J_BookingBoxForm #J_RoomList li span{ display:inline-block; margin-right:5px;}
+#J_BookingBoxForm #J_RoomList li em{ font-family:"新宋体"; cursor:pointer; display:none; position:absolute; right:0; top:10px; width:20px; height:20px; text-align:center; line-height:18px;}
+
+/* 总价格 */
+.total_price_box{ padding-bottom:10px;}
+.total_price_box .total_pr{ color:#F7860F; font-size:36px; font-family:Tahoma;}
+.total_price_box .total-other {padding:5px 0;}
+.total_price_box .total-other .otherPr {padding-right:10px;}
+
+.box_num {background:url(../image/icon_num.gif);width: 26px;height: 42px;float:left;margin-top:5px;margin-right:5px;
+}
+.box_num.start_time{}
+.box_num.room_info {background-position: 0 -42px;}
+.product_attribute{position: relative;z-index: 80;}
+.product_attribute .box_num{background-position: 0 -84px;z-index: 88;}
+
+
+.hotel_check_out_time{padding-left: 31px;margin-bottom:5px;}
+.slel_box.title_checkbox, .slel_box.title_radio, .slel_box.dep_add{padding-left:31px;margin-bottom:10px;}
+#J_BookingBoxForm div.slel_box.dep_add > p.sel_title {float:left;}
+#J_dAddressBoxParent .dep-add-status {width:110px;color: #327ef6;cursor: pointer;font-weight:normal;font-size:12px;}
+#J_dAddressBoxParent .dep-add-status:hover {text-decoration:underline;}
+
+
+.sel_rooms_num{color: #327ef6;cursor:pointer;float: left; position: absolute; top: -30px; left: 100px;}
+.sel_rooms_num:hover{text-decoration:underline;}
+.sel_box_m span.title_content {color:#327ef6;cursor:pointer;}
+.sel_box_m span.title_content:hover{text-decoration:underline;}
+.sel_title{font-weight: bold;}
+#J_BookingBoxForm input#book_out, #J_BookingBoxForm input#book_in{width:158px;}
+.sel_info_m{z-index:83}
+.b_hotel.b_before{z-index:78;position: relative;}
+.b_hotel.b_after{z-index:73;position: relative;}

@@ -1,0 +1,743 @@
+<script type="text/javascript">
+//产品ajax动作的目标url
+var JS_productInfoUrl = "{{$JS_productInfoUrl}}";
+//产品id
+var JS_ProductsId = "{{$JS_ProductsId}}";
+</script>
+
+		{{*前台订单归属跟踪代码*}}
+		{{if $product.innerUrlBox}}
+		{{$product.innerUrlBox}}
+		{{/if}}
+		
+		<div class="pro-cont-wrap uifix">
+            <div class="pro-cont-hd">
+            	<h2 class="fl pro-cont-tit">{{$product.info.products_name}}{{*产品名称*}} [{{$product.info.products_model}}] {{*产品型号*}}</h2>
+            </div>
+            <div class="pro-cont-info uifix">
+            	{{*产品图片显示区域*}}
+				<div class="fl pro-cont-picslide left">
+					<div class="tag"><b>买2送2</b><b>买2送1</b></div>{{*优惠标签*}}
+					
+					<div class="slider">
+						<div id="BigImage" class="bigImage">
+						<a title="{{$product.info.productsImageSrc}}" href="{{$product.info.productsImageSrc}}" id="lightBoxImg_0"><img title="" src="{{$product.info.productsImageSrc}}"></a>
+						{{section name=i loop=$product.info.imagesList}}
+						<a title="{{$product.info.imagesList[i].html_content}}" href="{{$product.info.imagesList[i].imageSrc}}" id="lightBoxImg_{{$smarty.section.i.iteration}}"><img title="" src="{{$product.info.imagesList[i].imageSrc}}"></a>
+						{{/section}}
+						
+						</div>
+						<div class="scrollBar">
+							<a id="PreBtn" onfocus="this.blur()" class="goLeft" href="javascript:;"></a>
+							<div id="Scroll" class="scroll">
+								<ul>
+									 <li class="on"><img src="{{$product.info.productsImageThumbnailsSrc}}"></li>
+									{{section name=i loop=$product.info.imagesList}}
+									 <li><img src="{{$product.info.imagesList[i].imageThumbnailsSrc}}"></li>
+									{{/section}}
+								</ul>
+							</div>
+							<a id="NextBtn" onfocus="this.blur()" class="goRight rightOn" href="javascript:;"></a>
+						</div>
+					</div>
+				</div>
+				
+                <div class="fr rel pro-cont-cnt">
+                	<table class="pro-info-table">
+                    	<tbody>
+                        	{{if $productProjectName.titleModel}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleModel}}：</td>
+                                <td>{{$product.info.products_model}}</td>
+                            </tr>
+                            {{/if}}
+							
+							{{if $productProjectName.titleDeparture}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleDeparture}}：</td>
+                                <td>{{$product.info.startCityStr}}</td>
+                            </tr>
+							{{/if}}
+							
+                            {{if $productProjectName.titleEndCity}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleEndCity}}：</td>
+                                <td>{{$product.info.endCityStr}}</td>
+                            </tr>
+							{{/if}}
+							
+                            {{if $productProjectName.titleViaAttractions}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleViaAttractions}}：</td>
+                                <td>{{$product.info.attractionsCityStr}}</td>
+                            </tr>
+							{{/if}}
+							
+                            {{if $productProjectName.titleDepartureDate}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleDepartureDate}}：</td>
+                                <td>{{$product.info.departureString}}</td>
+                            </tr>
+							{{/if}}
+							
+							{{if $product.info.typeIcons}}
+							<tr>
+                            	<td class="info-tdtit">促销活动：</td>
+                                <td class="info-oreder">
+								{{foreach from=$product.info.typeIcons item=array name=foo}}
+									<a href="javascript:void(0);" class="tooltip to" tooltip="{{$array.tips}}">{{$array.text}}</a>
+								{{/foreach}}
+							</td>
+                            </tr>
+							{{/if}}
+							
+                            {{if $productProjectName.titleProductsSmall}}
+							<tr>
+                            	<td class="info-tdtit">{{$productProjectName.titleProductsSmall}}：</td>
+                                <td class="info-oreder">{{$product.info.products_small_description}}</td>
+                            </tr>
+							{{/if}}
+							
+                        </tbody>
+                    </table>
+                    
+                    <div class="pro-price-panel">
+                    	<p class="pro-price-start">{{$product.info.priceTag}}{{*产品价格标签，注意内含html代码*}}</p>
+                        
+						{{if $product.info.display_room_option==1}}
+						<div class="tooltip pro-price-tips" tooltip="起价说明起价说明起价说明起价说明起价说明起价说明起价说明">起价说明</div>
+						{{/if}}
+						
+                        <p>赠{{$points_num_str}}<a href="">积分</a></p>
+                    	<p>满意度:<b class="statis"><span id="ProductRate">{{$product.reviews.top.ratingTotal}}</span>%</b>
+					</div>
+              		<ul class="pro-info-comments">
+						<li>浏览数量：<a href="javascript:void(0);"><span id="ViewedNum">0</span></a></li>
+						<li>问题咨询：<a href="javascript:void(0);"><span id="QuestionNum">0</span></a></li>
+                        <li>结伴同游：<a href="javascript:void(0);"><span id="TravelCompanionNum">0</span></a></li>
+                        <li>用户点评：<a href="javascript:void(0);"><span id="ReviewNum">0</span></a></li>
+                    </ul>
+					{{* 更新浏览数量、问题咨询、结伴同游和用户点评等数据 *}}
+					<script type="text/javascript">
+					$().ready(function(){
+						PI.getViewedReviewPhotoQuestionNum("{{$JS_ViewedReviewPhotoQuestionNumUrl}}","{{$JS_ViewedReviewPhotoQuestionNumProductsId}}");
+					});
+					</script>
+                </div>
+				
+            </div>
+            
+			{{if $product.info.products_stock_status =="0"}}
+				<div class="pro-order-panel uifix">
+				该行程已经售完，暂停预订。如果您需要的话，请在下方的文本框中输入您的Email地址,点击“线路恢复时通知我”按钮，当线路恢复预订时我们会邮件通知您！ 
+				</div>
+			{{else}}
+				<div class="pro-order-panel uifix">
+					{{if $productProjectName.titleDepartureDate}}
+					<div class="fl pro-group-date">
+						<div class="pro-order-hd">
+							<h3 class="fl">{{$productProjectName.titleDepartureDate}}与价格明细</h3>(点击日历上价格可以进行预订)
+						</div>
+						<div id="divCalendar" class="cont"><noscript><p style="color:#F00">您没有开启javascript功能</p></noscript></div>
+						{{* 载入大日历框数据 *}}
+						<script type="text/javascript">
+						//var data = data || [];
+						//new lwkCalendar('divCalendar','availabletourdate',data);
+						$().ready(function(){
+							PI.createProductBigCalendarBox("{{$JS_BookingUrl}}",JS_ProductsId);
+						});
+						</script>
+						<div id="price_ajax_response" class="otherCurrency" style="display:none"></div>
+					</div>
+					{{/if}}
+					
+					<div class="fr pro-group-order">
+						<div class="pro-order-hd">
+							<h3 class="fl">立即订购</h3>
+						</div>
+						
+						{{* 动态载入BookingBox数据并生成相应的表单元素 *}}
+						<div id="J_BookingBox" class="pro-order-list"></div>
+						<script type="text/javascript">
+						$(document).ready(function(){
+							var GET = URL.getParame();
+							var url = "{{$JS_BookingUrl}}";
+							if(!GET['products_id']){
+								GET['products_id'] = JS_ProductsId;
+							};
+							var pid = GET['products_id'];
+							delete GET['products_id'];
+							G.getBookingBox(url,pid,"J_BookingBox", GET);
+						});	
+						</script>
+	
+						
+						<div class="pro-order-booking">
+							<ul class="pro-order-addfav">
+								<li class="fav"><a href="#">加入收藏夹</a></li>
+								<li class="post"><a href="#">发布结伴同游帖子</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			{{/if}}
+			
+        </div>
+        <div class="pro-cont-box uifix">
+        	<div class="pro-cont-main uifix"><!--fl-->
+            	<div class="uifix">
+                	<ul class="pro-cont-infotab" id="J_proContab1">
+                        <li id="anchor1" class="current"><a href="javascript:;">{{$productProjectName.titleContents}}</a></li>
+                        <li><a href="javascript:;">价格说明</a></li>
+                        <li><a href="javascript:;">如何预订</a></li>
+                        <li><a href="javascript:;">注意事项</a><b class="menu-note">注</b></li>
+                        <li><a href="javascript:;">用户点评</a></li>
+                        <li><a href="javascript:;">用户咨询</a></li>
+                        <li><a href="javascript:;">视频资料</a></li>
+                    </ul>
+                   
+                </div>
+				
+			<div class="xm_detail_box">
+				 <div class="pro-cont-infobox uifix xm_dlist">
+                    	<div class="trip-cnt">
+                        	<div class="trip-printout"><a href="{{$hrefPrintItinerary}}">打印{{$productProjectName.titleContents}}</a></div>
+							{{* 产品提示 *}}
+							{{if $product.info.products_notes}}
+							<div class="route-note">{{$product.info.products_notes}}</div>
+							{{/if}}
+							{{* 产品描述 *}}
+							{{if $product.travels && $product.travels[0].travel_name}}
+								{{section name=i loop=$product.travels}}
+								<div class="trip-cnt-contmod uifix">
+									<div class="trip-cnt-hd">
+										<h3><span>第{{$product.travels[i].days_id}}天</span> {{$product.travels[i].travel_name}}</h3>
+									</div>
+									<div class="trip-cnt-bd">
+										{{if $product.travels[i].travel_image}}
+											<img src="{{$product.travels[i].travel_image}}" alt="" width="160" /><!--height="130"-->
+										{{/if}}										
+										
+										{{if $product.travels[i].travel_hotel}}
+										<p><b><span>入住酒店：</span>{{if $product.travels[i].travelHotels}}{{$product.travels[i].travelHotels}}{{else}}{{$product.travels[i].travel_hotel}}{{/if}}</b> 或者同等级酒店 </p>
+										{{/if}}
+										
+										{{$product.travels[i].travel_content|nl2br}}
+									</div>
+								</div>
+								{{/section}}
+							{{else}}
+							<div class="trip-cnt-contmod uifix">
+								{{$product.info.products_description}}
+							</div>
+							{{/if}}
+                        </div>
+                    </div>
+				
+				<div class="uifix mt10 xm_dlist">
+					<ul class="pro-cont-infotab">
+                        <li class="current"><a href="javascript:;">价格说明</a></li>
+                    </ul>
+					<div class="pro-cont-infobox uifix">
+						<div class="trip-price">
+							{{ * 此处已经注释
+							<div class="trip-price-view">
+								<table>
+									<thead>
+										<tr>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+											<th>
+												<div class="trip-price-box">
+													<a href="#">双人一房间</a>
+													<div class="trip-price-tips">
+														<i class="tips-role">&nbsp;</i>
+														<p>2张Full sized小型双人床</p>
+														<p>(137 x 190厘米)</p>
+														<p>或1张Queen sized大床</p>
+														<p>(152 x 203厘米)</p>
+													</div>
+												</div>
+											</th>
+										</tr>
+									</thead>
+									<script type="text/javascript">
+									$(document).ready(function(){
+										$('.trip-price-box').find('a').hover(function(){
+											$(this).parent().find('.trip-price-tips').stop(true, true).show();
+										},function(){
+											$(this).parent().find('.trip-price-tips').stop(true, true).hide();
+										});
+									});
+									</script>
+									<tbody>
+										<tr>
+											<td>$480/人</td>
+											<td>$480/人</td>
+											<td>$480/人</td>
+											<td>$480/人</td>
+											<td>$480/人</td>
+											<td>$480/人</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							* }}
+							
+							<div class="trip-price-info">
+								{{$product.info.products_pricing_special_notes}}
+								{{* 标准格式
+								<p>
+									*本行程提供“买二送二”优惠:<br />
+									*三人或四人同住一个房间时，享受”买二送二”优惠。<br />
+									*三人/房（总价）=四人/房（总价）=双人/房（总价）<br />
+								</p>
+								*}}
+								
+								<div class="trip-price-contain">
+									<h3>费用包括</h3>
+									{{$product.info.products_other_description}}
+									{{* 标准格式
+									<ul>
+										<li>税金；</li>
+										<li>5晚酒店住宿, 所有酒店提供标准间, 双人床；</li>
+										<li>豪华空调巴士，机场接送；</li>
+									</ul>
+									*}}
+								</div>
+								
+								<div class="trip-price-notcontain">
+									<h3>费用不包括</h3>
+									{{$product.info.products_package_excludes}}
+									{{* 标准格式
+									<ul>
+										<li>您往返出发地和机场的机票；</li>
+										<li>所有个人费用（洗衣费、电话费等）和饮食；</li>
+										<li>行程中的自费门票项目（仅供参考，若更改,恕不另行通知）： 
+											<p>纽约帝国大厦 -- 成人:$25, 儿童（11岁以下）:$19（7-11岁）免费（6岁以下）， 老人（62岁以上): $22<br /> 
+											纽约大都会博物馆 -- 成人:$25, 儿童(11岁以下):免费，老人(62岁以上): $17</p>
+										</li>
+									</ul>
+									*}}
+								</div>
+								<div class="trip-price-des">
+									<h3>订购流程</h3>
+									{{$product.bookingProcessAndOrdinance.bookingProcess}}
+								</div>
+								<div class="trip-price-des">
+									<h3>订购条例</h3>
+									{{$product.bookingProcessAndOrdinance.Ordinance}}									
+								</div>
+							</div>
+						</div>
+                    </div>
+				</div>
+				
+				{{* 如何预订已经OK *}}
+				<div class="uifix mt10 xm_dlist">
+					<ul class="pro-cont-infotab">
+                        <li class="current"><a href="javascript:;">如何预订</a></li>
+                    </ul>
+					<div class="pro-cont-infobox uifix">
+						<div class="trip-booking">
+							<p class="booking-agreement">在您预订行程前，请仔细阅读<a target="_blank" href="{{$product.howBooking.order_agreement_href}}">订购协议</a>和<a target="_blank" href="{{$product.howBooking.change_plan_href}}">变更取消条例</a>！</p>
+							<h3>订购步骤详解：</h3>
+							<ul>
+								<li>一、您可以通过各种方式搜寻到您需要的行程，具体请点击<a target="_blank" href="{{$product.howBooking.order_process_href}}">预订流程</a>了解详情，或可直接联系我们的客服咨询了解。</li>
+								<li>二、找到心仪的行程后，请认真填写各类订单信息，并点击按钮“立即预订”，还可直接联系客服协助电话预订。</li>
+								<li>三、在您预订成功后，系统会发一份自动生成的预订单到您所填写的Email邮箱里。</li>
+								<li>四、您可以选择信用卡、Paypal、支付宝等方式进行在线支付，或者现金、支票、银行转账等其他方式线下支付，订单确认收到款项后我司方可安排确认具体的行程位置。</li>
+								<li>五、在您支付成功后的1-4个工作日内，我们会将相应的行程确认信或者电子参团凭证发到您的邮箱。收到后请您仔细核对信息，若有异议，请48小时内联系走四方，若无异议，则视同为信息正确无误。</li>
+								<li>六、旅行前请务必打印并携带好您的参团凭证及各类有效证件，上有参团的详细内容及地接公司紧急联络电话等重要信息。</li>
+								<li>七、结束您的愉悦旅程后，您可以对行程进行点评，分享旅途中的点滴，更可获取相应的<a target="_blank" href="{{$product.howBooking.points_href}}">积分奖励</a>，将来还可享受最高100%的优惠折扣。</li>
+							 </ul>
+							 <h3>支付方式：<span>(<a target="_blank" href="{{$product.howBooking.payment_href}}">查看全部支付方式</a>)</span></h3>
+							 <table class="booking-paytype-table">
+								<tbody>
+									<tr>
+										<td class="paystep-type">
+											<img src="{{$product.howBooking.image_path}}image/booking_step_visa.jpg" alt="" />
+										</td>
+										<td>
+											<p>我们接受Visa、MasterCard、American Express、Discover及Debt卡，支持币种为美元。实时到帐，无任何手续费。另外，本网站已安装SSL证书，并通过了安全认证，您可以放心使用。</p>
+										</td>
+									</tr>
+									<tr>
+										<td class="paystep-type">
+											<img src="{{$product.howBooking.image_path}}image/booking_step_alipay.jpg" alt="" />
+										</td>
+										<td>
+											<p>我们还为您提供了支付宝支付方式，没有支付宝帐户也可以通过支付宝平台合作的网银进行支付。</p>
+										</td>
+									</tr>
+									<tr>
+										<td class="paystep-type">
+											<img src="{{$product.howBooking.image_path}}image/booking_step_bank.jpg" alt="" />
+										</td>
+										<td>
+											<p>除了以上方式，我们还支持支票支付、美国银行转账和电汇、中国银行转账。</p>
+											<p class="booking_step_bank_type"><a href="{{$product.howBooking.payment_href}}" target="_blank">查看所有银行&gt;&gt;</a></p>
+										</td>
+									</tr>
+								</tbody>
+							 </table>
+						</div>
+                    </div>
+				</div>
+				
+				<div class="uifix mt10 xm_dlist">
+					<ul class="pro-cont-infotab">
+                        <li class="current"><a href="javascript:;">注意事项</a></li>
+                    </ul>
+					<div class="pro-cont-infobox uifix">
+						<div class="trip-note">
+							{{* <h3>特别事项</h3> *}}
+							<div class="trip-note-cont">
+								{{$product.info.products_package_special_notes}}
+								{{* 标准格式
+								<p>1. 我们建议您在收到确认电子旅游票后再预订您的机票，在订购完机票后请回到本网站<a href="#">www.usitrip.com</a> “我的账户”里面补填机票信息以便导游接机。</p>
+								<p>2. 按出发日不同,行程次序可能前后稍作调整。</p>
+								*}}
+							</div>
+						</div>
+                    </div>
+				</div>
+				
+				<div class="uifix mt10 xm_dlist">
+                	<ul class="pro-cont-infotab" id="J_proContab2">
+                        <li class="current"><a href="javascript:;">用户点评</a></li>
+                    </ul>
+                    <div class="pro-cont-infobox uifix">
+                    	<div class="trip-reviews">
+                        	{{* 用户评论头部 *}}
+							<div class="uifix reviews-box">
+								<a href="#" class="reviewButton">我要点评</a>
+                        		<div class="satisfaction">
+									<p><strong>客户总体满意度</strong></p>
+									<p><em>{{$product.reviews.top.ratingTotal}}%</em></p>
+									<p>已有<span class="ReviewNum">100</span>人点评</p>
+								</div>
+								<ul class="progress">
+									<li>
+										<span>订购过程：</span>
+										<div class="progressbarWrap">
+											<div class="progressbarLoad" style="width: {{$product.reviews.top.bookingRatingAvg}}%;">{{$product.reviews.top.bookingRatingAvg}}%</div>
+										</div>
+										<span><b>{{$product.reviews.top.bookingRatingAvg}}%</b>({{$product.reviews.top.bookingGoodComment}}人满意)</span>
+									</li>
+									<li>
+										<span>行程安排：</span>
+										<div class="progressbarWrap">
+											<div class="progressbarLoad" style="width: {{$product.reviews.top.travelRatingAvg}}%;">{{$product.reviews.top.travelRatingAvg}}%</div>
+										</div>
+										<span><b>{{$product.reviews.top.travelRatingAvg}}%</b>({{$product.reviews.top.travelGoodComment}}人满意)</span>
+									</li>
+								</ul>
+                        	</div>
+							{{* 用户评论列表 *}}
+							<div class="review-list">
+								<ul id="J_reviewListUl" class="uifix">
+									{{section name=i loop=$product.reviews.list}}
+									<li class="review-item">
+										<div class="sl">
+											<span>满意度</span><br />
+											<b>{{$product.reviews.list[i].ratingTotal}}%</b>
+										</div>
+										<div class="sr">
+											<p class="si"><span class="r"><em>订购：{{$product.reviews.list[i].booking_rating_text}}</em><em>行程：{{$product.reviews.list[i].travel_rating_text}}</em></span><strong>{{$product.reviews.list[i].customers_name}}</strong>({{$product.reviews.list[i].date_added|date_format:"%Y年%m月%d日"}})</p>
+											<p class="st">{{$product.reviews.list[i].reviews_text}}</p>
+										</div>
+									</li>
+									{{/section}}
+								</ul>
+								<div id="J_reviewMoreButton" class="viewMore">
+									<span>加载更多用户点评</span>
+									<em style="display:none">加载中……</em>
+									<i style="display:none">没有更多了</i>
+								</div>
+							</div>
+							<script type="text/javascript">
+							$(document).ready(function(){
+								PI.getReviewList(JS_productInfoUrl, JS_ProductsId);
+							});
+							</script>
+							
+                        </div>
+                    </div>
+                </div>
+				
+				<div class="uifix mt10 xm_dlist">
+                	<ul class="pro-cont-infotab">
+                        <li class="current"><a href="javascript:;">用户咨询</a></li>
+                    </ul>
+						<div class="trip-consulting">
+							<div class="uifix tc-search">
+								<div class="tc-search-l">
+									<p><b>咨询前请先搜索，方便又快捷：</b></p>
+									<div class="tc-search-form">
+										<form action="{{$product.questions.formAction}}">
+											<input type="text" class="tc-search-ipt" placeholder="输入您想了解问题的关键字" />
+											<button type="submit" class="tc-search-button">搜索</button>
+										</form>
+									</div>
+								</div>
+								<div class="tc-search-r">
+									<p>网站使用、线路预订、操作流程和电子参团凭证更多信息请查看帮助中心！</p>
+								</div>
+							</div>
+							{{*用户咨询列表*}}
+							<div id="J_questionsListDiv" class="uifix tc-list">
+								{{section name=i loop=$product.questions.list}}
+								<div class="tc-cmtbox">
+									{{*问题*}}
+									<div class="uifix tc-cmtask">
+										<div class="tc-cmtavator">
+											<span class="tc-cmtavatorPic">
+												<img src="{{$product.questions.list[i].imageSrc}}" alt="" />
+											</span>
+											<p>{{$product.questions.list[i].customers_name}}</p>
+										</div>
+										<div class="tc-cmtQuestion">
+											<p class="tc-cmtQi"><strong>{{$product.questions.list[i].question}}</strong></p>
+											<p class="tc-cmtDater">{{$product.questions.list[i].date}}</p>
+										</div>
+									</div>
+									{{*解答*}}
+									{{if $product.questions.list[i].answers}}
+									{{section name=n loop=$product.questions.list[i].answers}}
+									<div class="tc-cmtanswer">
+										<i class="role">&nbsp;</i>
+										<div class="tc-cmtanswerUser">
+											<span class="tc-cmtanswerPic"><img src="{{$product.questions.list[i].answers[n].imageSrc}}" alt="走四方旅游资深顾问" /></span>
+											<p>走四方旅游资深顾问</p>
+										</div>
+										<div class="tc-cmtanswerCont">
+											<p class="tc-cmtanswerThx">尊敬的{{$product.questions.list[i].customers_name}}，您好！感谢您对走四方网的支持。</p>
+											<div class="contText">
+												<p>{{$product.questions.list[i].answers[n].ans}}</p>
+											</div>
+											<p class="tc-cmtanswerDater">{{$product.questions.list[i].answers[n].date}}</p>
+										</div>
+									</div>
+									{{/section}}
+									{{/if}}
+								</div>
+								{{/section}}
+								
+							</div>
+							<div class="viewMore" id="J_questionMoreButton">
+								<span>加载更多用户咨询</span>
+								<em style="display:none">加载中……</em>
+								<i style="display:none">没有更多了</i>
+							</div>
+							<script type="text/javascript">
+							$(document).ready(function(){
+								PI.getQuestionList(JS_productInfoUrl, JS_ProductsId);
+							});
+							</script>
+						</div>
+				</div>
+				{{if $product.info.products_video}}
+				<div class="uifix mt10 xm_dlist">
+                	<ul class="pro-cont-infotab">
+                        <li class="current"><a href="javascript:;">视频资料</a></li>
+                    </ul>
+					<div class="trip-videos">
+						<div class="video" title="{{$product.info.products_video}}"><!--<img src="images/video.jpg" /> src="http://player.youku.com/player.php/sid/XMzU2ODQ1NTA4/v.swf"//-->
+                 		<embed wmode="Opaque" src="{{$product.info.products_video}}" allowFullScreen="true" quality="high" width="450" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+                		</div>
+					</div>
+				</div>
+				{{/if}}
+				</div>
+            </div>
+            <div class="pro-cont-side uifix"><!--fr-->
+            	<!--
+				<div class="hmod">
+                	<div class="hmhd">
+                        <span class="hotonline"><em>7*24</em>小时在线</span>
+                        <h3 class="hmtit">联系方式</h3>
+                    </div>
+                	<ul class="contactMod">
+                        <li class="col1">美加免费：<span class="hcblue">1-888-887-2816</span></li>
+                        <li class="col2">国际热线：<span class="hcblue">225-754-4328</span></li>
+                        <li class="col3">中国免费：<span class="hcblue">4006-333-926</span></li>
+                        <li class="col4">台湾：<span class="hcblue">(02)40502999</span>转<span class="hcblue">8991020868</span></li>
+                        <li class="col5">电子邮箱：<span class="hcblue">service@usitrip.com</span></li>
+                    </ul>
+                    <a href="#" class="advLink">
+                        <h4>出境旅游顾问</h4>
+                        <p>7*24小时在线咨询</p>
+                    </a>
+                </div>
+				-->
+                
+				<div class="hmod">
+                	<div class="hmhd">
+                    	<ul class="fr hmixbtn">
+                            <li><a href="javascript:" onclick="art.dialog.open('{{$product.companions.send_href}}',{title:'{{if $data.is_login != 'true'}}快速登录{{else}}发起新结伴{{/if}}',fixed:true,lock:true,top:'50%'});">我要发布</a></li>
+                        </ul>
+                    	<h3 class="hmtit">结伴同游</h3>
+                    </div>
+                    <ul class="hcomplist">
+                        {{if $product.companions.info}}
+							{{foreach from=$product.companions.info item=array }}
+								<li><span>{{$array.time|date_format:"%m月%d日"}}</span><a href="{{$array.href}}">{{$array.title}}</a></li>
+							{{/foreach}}
+								<li><p class="more"><a href="{{$product.companions.more_href}}">更多结伴同游&gt;&gt;</a></p></li>
+						{{else}}
+								<li><a href="javascript:" p-type="iframe" class="popup" popup="{{$product.companions.send_href}}">暂无结伴，快去发布吧！</a></li>
+						{{/if}}
+                    </ul>
+                </div>
+				
+                <div class="hmod">
+                	<div class="hmhd">
+                    	<h3  class="hmtit">您浏览过的线路</h3>
+                    </div>
+                    <ul class="pro-cont-lineviewed">
+                    	<li><span>$906.00</span><a href="#">纽约,旧金山,哈佛大学,硅谷十四...</a></li>
+                        <li><span>$906.00</span><a href="#">纽约,旧金山,哈佛大学,硅谷十四...</a></li>
+                    </ul>
+                </div>
+                <!--
+				<div class="hmod">
+                	<div class="hmhd">
+                    	<h3  class="hmtit">您也许还会关注这些</h3>
+                    </div>
+                    <ul class="pro-cont-favlist uifix">
+                        <li>
+                            <div class="fl pro-cont-favpic">
+                                <a href="#"><img src="_product/pro-cont-fav.jpg" alt="title" /></a>
+                            </div>
+                            <div class="pro-cont-favcnt">
+                            	<p><a href="#">拉斯维加斯,旧金山,大峡谷,十七里黄金海岸五...</a></p>
+                                <p><b>$351.00</b></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fl pro-cont-favpic">
+                                <a href="#"><img src="_product/pro-cont-fav.jpg" alt="title" /></a>
+                            </div>
+                            <div class="pro-cont-favcnt">
+                            	<p><a href="#">拉斯维加斯,旧金山,大峡谷,十七里黄金海岸五...</a></p>
+                                <p><b>$351.00</b></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fl pro-cont-favpic">
+                                <a href="#"><img src="_product/pro-cont-fav.jpg" alt="title" /></a>
+                            </div>
+                            <div class="pro-cont-favcnt">
+                            	<p><a href="#">拉斯维加斯,旧金山,大峡谷,十七里黄金海岸五...</a></p>
+                                <p><b>$351.00</b></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fl pro-cont-favpic">
+                                <a href="#"><img src="_product/pro-cont-fav.jpg" alt="title" /></a>
+                            </div>
+                            <div class="pro-cont-favcnt">
+                            	<p><a href="#">拉斯维加斯,旧金山,大峡谷,十七里黄金海岸五...</a></p>
+                                <p><b>$351.00</b></p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="fl pro-cont-favpic">
+                                <a href="#"><img src="_product/pro-cont-fav.jpg" alt="title" /></a>
+                            </div>
+                            <div class="pro-cont-favcnt">
+                            	<p><a href="#">拉斯维加斯,旧金山,大峡谷,十七里黄金海岸五...</a></p>
+                                <p><b>$351.00</b></p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+				-->
+                <div class="hmod zero-margin-right">
+                	<div class="hmhd">
+                    	<h3  class="hmtit"><a href="#">纽约</a>出发的行程还有</h3>
+                    </div>
+                    <ul class="pro-cont-lineviewed">
+                    	<li><span>$906.00</span><a href="#"> 华盛顿,费城,白宫,仙人洞两日游...</a></li>
+                        <li><span>$906.00</span><a href="#"> 华盛顿,费城,白宫,仙人洞两日游...</a></li>
+                        <li><span>$906.00</span><a href="#"> 华盛顿,费城,白宫,仙人洞两日游...</a></li>
+                        <li><span>$906.00</span><a href="#"> 华盛顿,费城,白宫,仙人洞两日游...</a></li>
+                        <li><span>$906.00</span><a href="#"> 华盛顿,费城,白宫,仙人洞两日游...</a></li>
+                    </ul>
+                </div>
+               <!--
+			    <div class="hmod">
+                	<div class="getsale">
+                        <h3>免费获得旅游折扣信息</h3>
+                        <form>
+                            <input type="text" class="getsale_email" placeholder="您的E-mail地址">
+                            <input type="submit" class="getsale_sbtn" value="提交">
+                        </form>
+                    </div>
+                </div>
+                <div class="adbox">
+                	<a href="#"><img src="_product/pro-cont-r1.jpg" width="265"></a>
+                    <a href="#"><img src="_product/pro-cont-r2.jpg" width="265"></a>
+                </div>
+				-->
+            </div>
+        </div>

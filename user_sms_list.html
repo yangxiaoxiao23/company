@@ -1,0 +1,50 @@
+{{* 我发起的结伴邀请 *}}
+{{include file='user_left.html'}}
+<div class="right">
+	{{include file='user_companions_public.html'}}
+	<div class="xmenu">
+		<a href="{{$data.companion_url}}">结伴同游短消息</a>
+		<a href="{{$data.message_url}}">站内短消息</a>
+	</div>
+	<table width="100%" border="1" cellpadding="0" cellspacing="0">
+    	<tr>
+        	<th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>{{if $data.type == 'travel_companion'}}结伴标题{{else}}消息内容{{/if}}</th>
+            {{*<th>消息内容</th>*}}
+            <th>(发送/接收)人</th>
+            <th>时间</th>
+            <th>操作</th>
+        </tr>
+        {{section name=key loop=$data.list}}
+        <tr>
+        	<td><input type="checkbox" id="del{{$data.list[key].id}}" value="{{$data.list[key].id}}" name="sis_ids[]"></td>
+          <td>{{if $data.list[key].is_read == '0' || $data.list[key].new_msg == 1}}<img alt="收到的信息" title="收到的信息" src="http://www.usitrip.com/image/icons/News_receive.gif" id="icons_2239"/>{{else}}
+          <img alt="收到的信息" title="收到的信息" src="http://www.usitrip.com/image/icons/News_read.gif" id="icons_2239"/>{{/if}}</td>
+		  {{if $data.list[key].sms_type == 1}}
+          <td><a href="{{$data.list[key].title_href}}" target="_blank">{{$data.list[key].title}}</a></td>
+		  {{else}}
+          <td><a href="{{$data.list[key].show_detail_url}}">{{$data.list[key].sms_content|truncate:25}}</a></td>
+		  {{/if}}
+          <td>{{if $data.list[key].status == 0}}接收人：{{$data.list[key].to_customers}}{{else}}发送人：{{$data.list[key].from_customers}}{{/if}}</td>
+          <td>{{$data.list[key].sms_time}}</td>
+            <td><a href="{{$data.list[key].show_detail_url}}">查看</a>{{if $data.list[key].reply_sms}}&nbsp;<a href="javascript:;" onclick="{{if $data.list[key].other_side_has_delete == false}}art.dialog.open('{{$data.list[key].reply_sms}}',{title:'回复短消息！',fixed:true,lock:true,top:'50%'}){{else}}alert('对方已经删除此信息！无法回复！');{{/if}}">回复</a>{{/if}}</td>
+        </tr>
+        {{/section}}
+    </table>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+    	<tr>
+    		<td width="50%" style="text-align:left"><input type="checkbox" onclick="select_all_checkboxs('my_msm_form','sis_ids[]',this)">全选 删除 标记为已读</td>
+            <td width="50%" style="text-align:right"><a href="{{$data.show_all_url}}">全部</a> <a href="{{$data.show_receive_url}}">收到的信息</a> <a href="{{$data.show_send_url}}">发送的信息</a></td>
+    	</tr>
+        <tr>
+        <td>{{section name=key loop=$data.pages.pages_list}}
+        {{if $data.pages.pages_list[key].selected == 1}}
+        <a>{{$data.pages.pages_list[key].text}}</a>
+        {{else}}
+        <a href="{{$data.pages.pages_list[key].href}}">{{$data.pages.pages_list[key].text}}</a>
+        {{/if}}
+        {{/section}}</td>
+        </tr>
+    </table>
+</div>

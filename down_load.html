@@ -1,0 +1,49 @@
+<div id="abouts">
+    {{include file="../www/templates/about_left.html"}}
+    <div class="abouts_right" id="right">
+        <div class="aboutsTit">
+            <ul>
+                <li>下载专区</li>
+            </ul>
+        </div>
+        <div class="aboutsCont ">
+
+            <div class="download_box_list">
+                {{foreach from=$data.downloadFile_list item=file key=key}}
+                <div class="d_box">
+                    <table cellpadding="2" cellspacing="0" border="0" width="100%">
+                        <tr>
+                            <td width="10%"><img alt="" src="image/download/{{$file.icon}}"/></td>
+                            <td width="45%">
+                                <table cellpadding="2">
+                                    <tr>
+                                        <td>{{$file.file_name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{$file.cn_name}}</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="15%">
+                                <table>
+                                    <tr>
+                                        <td>下载次数</td>
+                                    </tr>
+                                    <tr>
+                                        <td><span id="number_{{$key}}">{{$file.click}}</span>次</td>
+                                    </tr>
+                                </table>
+                            </td>
+                            <td width="30%">
+                                <a href="down_load.html?file_id={{$file.file_id}}">
+                                    <img alt="" src="image/download/down_icon_03.gif"
+                                         onclick="document.getElementById('number_{{$key}}').innerHTML=parseInt(document.getElementById('number_{{$key}}').innerHTML)+1;"/></a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                {{/foreach}}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+.right{width:735px;float:left;padding-left:10px;}
+.right .TabPanelGroup_myjb{background: url("../image/nav/user_bg7.gif") repeat-x center bottom;height: 30px;padding: 0;}
+.right .TabPanelGroup_myjb .Tab_1_myjb{float:left;padding:0px 15px;margin-right:3px; background: url("../image/nav/user_bg9.gif") repeat-x;border-color: #E4E4E4 #E4E4E4;border-image: none;border-style: solid solid none;border-width: 1px 1px 0;height: 26px;line-height: 26px;}
+.right .TabPanelGroup_myjb .Tab_1_myjb a{ text-decoration:none;color:#000;}
+.right .TabPanelGroup_myjb .TabbedPanelsTabSelected_myjb{background: url("../image/nav/user_bg8.gif") repeat-x;border-color: #FF5500 #FF5500;border-image: none;border-style: solid solid none;border-width: 1px 1px 0;color: #FFFFFF;font-size: 14px;font-weight: bold;}
+.right .TabPanelGroup_myjb .TabbedPanelsTabSelected_myjb a{color:#fff;}
+td,th{font-size:12px;padding:3px 5px;}

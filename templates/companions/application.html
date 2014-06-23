@@ -1,0 +1,153 @@
+<form onsubmit="submit_travel_companion_app(); return false;" id="travel_companion_app_form" enctype="multipart/form-data" method="post">
+						<input type="hidden" value="{{$data.t_companion_id}}" name="t_companion_id" id="t_companion_id"/>
+						<input type="hidden" name="formid" id="formid" value="{{$data.sessiontoken}}"/>
+						<div>
+							
+							<div class="jb_fb_tc_tab">
+								<table style="padding:0 16px;clear:both;">
+									<tbody>
+										<tr>
+											<td><span>姓名：</span></td>
+											<td><input type="text" style="font-size:14px; display:none;" class="display_filed" value="{{$data.customers_info.customers_name_cn}}" name="tca_cn_name" onblur="this.value = simplized(this.value);">
+												<label id="tca_cn_name_label">{{$data.customers_info.customers_name_cn}}</label></td>
+											<td>请采用真实姓名，将用于填写下单信息。</td>
+										</tr>
+										<tr>
+											<td><span>英文名：</span></td>
+											<td><input type="text" style="ime-mode: disabled; font-size:14px;" class="display_filed" value="{{$data.customers_info.customers_name_en}}" name="tca_en_name" onblur="this.value = simplized(this.value);">
+												<label id="tca_en_name_label"></label></td>
+											<td>请采用与护照一致的姓名，将用于填写下单信息。</td>
+										</tr>
+										<tr>
+											<td><span>性别：</span></td>
+											<td><select style="font-size:14px;" class="display_filed" name="tca_gender">
+													<option value="1"{{if $data.customers_info.customers_gender == 'm'}} selected=""{{/if}}>男</option>
+													<option value="2"{{if $data.customers_info.customers_gender == 'f'}} selected=""{{/if}}>女</option>
+												</select>
+												<label id="tca_gender_label"></label></td>
+											<td></td>
+										</tr>
+										<tr>
+											<td><span>邮箱：</span></td>
+											<td><input type="text" style="ime-mode: disabled; font-size:14px; display:none;" class="display_filed" value="{{$data.customers_info.customers_email_address}}" name="email_address" onblur="this.value = simplized(this.value);">
+												<label id="email_address_label">{{$data.customers_info.customers_email_address}}</label></td>
+											<td>&nbsp;</td>
+										</tr>
+										<tr>
+											<td><span>电话：</span></td>
+											<td><input type="text" style="ime-mode: disabled; font-size:14px;" class="display_filed" value="{{$data.customers_info.customers_telephone}}" name="tca_phone" onblur="this.value = simplized(this.value);">
+												<label id="tca_phone_label"></label></td>
+											<td>非必填</td>
+										</tr>
+										<tr>
+											<td><span>人数：</span></td>
+											<td>{{if $data.people_groups == 1}}男性{{else}}人数{{/if}}
+												<input class="display_filed" type="text" style="ime-mode: disabled; font-size:14px;" size="2" name="tca_people_man" >
+												{{if $data.people_groups == 1}}女性
+												<input class="display_filed" type="text" style="ime-mode: disabled; font-size:14px;" size="2" name="tca_people_woman" >
+												小孩
+												<input class="display_filed" type="text" style="ime-mode: disabled; font-size:14px;" size="2" name="tca_people_child" >
+												{{/if}} </td>
+											<td>请输入预计结伴人数。</td>
+										</tr>
+										<tr>
+											<td><span>留言：</span></td>
+											<td colspan="2"><textarea  style="font-size:14px;" class="textarea_fb_bt" title="请输入你的兴趣爱好或对结伴同游者的期望" rows="5" cols="30" name="tca_content">请输入你的兴趣爱好或对结伴同游者的期望</textarea>
+												<br>
+												<!--<p class="in_text">你还可以输入<span>100</span>字</p>--></td>
+										</tr>
+										<tr>
+											<td align="center" colspan="3"><input class="jb_fb_all" type="image" src="/tpl/www/image/button_set.gif" style="border:0px;" value="发布"/>
+												</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</form>
+<script type="text/javascript">
+//让弹出层与本窗体自适应
+$(document).ready(function(){
+	console.log('js=' + (document.body||document.documentElement).clientHeight);
+	console.log('window=' + $(window).height());
+	console.log('body=' + $(body).height());
+	console.log('document=' + $(document).height());
+	console.log('#body=' + $('#body').height());
+	parent.G.popup.set_size('566',$(document).height());
+});
+
+function display_filed(form_id,class_key,show_hideen){
+	var form = document.getElementById(form_id);
+	for(i=0; i<form.length; i++){
+		if(form.elements[i].className.indexOf(class_key)>-1){
+			if(show_hideen=='show'){
+				form.elements[i].style.display = "";
+				document.getElementById(form.elements[i].name+'_label').style.display = "none";
+			}else{
+				form.elements[i].style.display = "none";
+				document.getElementById(form.elements[i].name+'_label').style.display = "";
+			}
+		}
+	}
+	parent.G.popup.set_size('566',$(document).height());
+}
+function submit_travel_companion_app(){
+	var t_companion_id = $('#t_companion_id').val().trim();
+	var formid = $('#formid').val().trim();
+	var tca_cn_name = $('input[name="tca_cn_name"]').val().trim();
+	var tca_en_name = $('input[name="tca_en_name"]').val().trim();
+	var tca_gender = $('select[name="tca_gender"]').val().trim();
+	var email_address = $('input[name="email_address"]').val().trim();
+	var tca_phone = $('input[name="tca_phone"]').val().trim();
+	var tca_people_man = $('input[name="tca_people_man"]').val().trim();
+{{if $data.people_groups == 1}}
+	var tca_people_woman = $('input[name="tca_people_woman"]').val().trim();
+	var tca_people_child = $('input[name="tca_people_child"]').val().trim();
+{{else}}
+	var tca_people_woman = '0';
+	var tca_people_child = '0';
+{{/if}}
+	var tca_content = $('textarea[name="tca_content"]').val().trim();
+	if (t_companion_id != '' && formid != '' && tca_cn_name != '' && tca_en_name != '' && email_address != '' && tca_people_man != '' && tca_content != '') {
+	
+		$.post('{{$data.application_url}}',{
+			't_companion_id':t_companion_id,
+			'formid':formid,
+			'tca_cn_name':tca_cn_name,
+			'tca_en_name':tca_en_name,
+			'tca_gender':tca_gender,
+			'email_address':email_address,
+			'tca_phone':tca_phone,
+			'tca_people_man':tca_people_man,
+			'tca_people_woman':tca_people_woman,
+			'tca_people_child':tca_people_child,
+			'tca_content':tca_content
+		},function(r){
+			if(r.status == 0) {
+				alert('申请成功!');
+				parent.G.popup.reload();
+			} else {
+				alert(r.errmsg);
+			}
+		},'json');
+	} else {
+		alert('error');
+	}
+	return false;
+}
+
+function show_site_inner_sms_layer(to_customers_id, type_name, key_id){
+	var form = document.getElementById('site_inner_sms_form');
+	if(to_customers_id <1 || key_id<1 ){ alert('no to_customers_id ro key_id!'); return false; }
+	form.elements['type_name'].value = type_name;
+	form.elements['key_id'].value = key_id;
+	form.elements['to_customers_id'].value = to_customers_id;
+	form.elements['sms_content'].value = "";
+	
+	document.getElementById('site_inner_sms_layer').style.display='block';
+}
+
+function send_site_inner_sms(){
+
+}
+</script>

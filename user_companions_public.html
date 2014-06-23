@@ -1,0 +1,34 @@
+<ul class="TabPanelGroup_myjb">
+	{{if $data.menu.companion.my_message.href }}
+	<li title="my_companions_message" tabindex="0" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_message'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_message.href}}">收到的信息</a>
+	</li>
+	{{/if}}
+	{{if $data.menu.companion.my_release.href}}
+	<li title="my_companions_sent" tabindex="1" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_sent'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_release.href}}">发起的结伴同游</a>
+	</li>
+	{{/if}}
+	{{if $data.menu.companion.my_application.href}}
+	<li title="my_companions_applied" tabindex="2" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_applied'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_application.href}}">申请的结伴同游</a>
+	</li>
+	{{/if}}
+	{{*
+	{{if $data.menu.companion.my_invite.href}}
+	<li title="my_companions_sent_invite" tabindex="3" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_sent_invite'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_invite.href}}">发起的结伴邀请</a>
+	</li>
+	{{/if}}
+	{{if $data.menu.companion.my_receive_invite.href}}
+	<li title="my_companions_receive_invite" tabindex="4" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_receive_invite'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_receive_invite.href}}">收到的结伴邀请</a>
+	</li>
+	{{/if}}
+	*}}
+	{{if $data.menu.companion.my_reply.href}}
+	<li title="my_companions_reply" tabindex="4" class="Tab_1_myjb {{if $data.menu.companion.current == 'my_companions_reply'}}TabbedPanelsTabSelected_myjb{{/if}}">
+		<a href="{{$data.menu.companion.my_reply.href}}">回复的结伴同游</a>
+	</li>
+	{{/if}}
+</ul>

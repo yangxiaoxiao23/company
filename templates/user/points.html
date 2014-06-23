@@ -1,0 +1,137 @@
+{{include file='user_left.html'}}
+<div class="mytoursRight">
+    <div class="userTitle">
+        <ul>
+            <li class="cur">积分奖励概要</li>
+        </ul>
+    </div>
+
+    <div style="border:1px solid #AED5FF;padding:10px 2px;">
+        {{if $data.customers.customers_validation != 1}}
+        <div style="margin:0 auto;border:1px solid #ffe0ab;padding:40px 90px;background:#fffeed;">
+            <p>您的账号目前还未激活，请登录您的邮箱 {{$data.customers.customers_email_address}} 查收激活信，并及时激活账号。将额外获得{{$data.activation_points}}走四方积分奖励！</p>
+            <p>
+            <input type="button" onclick="__usitrip.reSendValidationEmail('{{$data.customers_validation}}')" style="vertical-align:middle; " title=" Send Validation Mail " value="再次发送激活邮件"/>
+            <form id="inputcode" name="inputcode" method="post"
+                  action="{{$data.customers_validation}}">
+                <span style="color:#7f7f79;font-size:12px;padding-right:15px;">或输入您的验证码进行激活！</span>
+                <input type="text" maxlength="10" size="18"
+                       style="margin-top:2px;border:1px solid #cdd2d6;background:#FFFFFF;padding:1px 5px;font-size:14px;font-family:tahoma;"
+                       name="customers_validation_code"
+                       onblur="this.value = simplized(this.value);">
+
+                <input type="submit" style="vertical-align:middle; "
+                       title=" Enter Validation Code " alt="Enter Validation Code"
+                       value="确认激活"><input
+                    type="hidden" value="inputcode" id="action" name="action"></form>
+            </p>
+        </div>
+        {{/if}}
+        <p>总积分： {{$data.points}} 价值： ${{$data.points_to_money}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将要过期的积分
+            <b style="color:#FF0000">0</b>（一个月内）
+        </p>
+        <div class="title titleSmall">
+            <h3>以下是您的积分统计和最近5项积分历史记录。 [<a href="{{$data.menu.integral.details.href}}">查看所有积分记录</a>]</h3>
+        </div>
+        {{if $data.list}}
+        <table width="100%" cellspacing="0" cellpadding="0" border="0" class="infoBox">
+            <tbody>
+            <tr class="productListing-heading">
+                <td class="productListing-heading">日期</td>
+                <td width="10%" class="productListing-heading">&nbsp;</td>
+                <td class="productListing-heading">积分记录</td>
+                <td class="productListing-heading">积分状态</td>
+                <td align="right" class="productListing-heading">分值</td>
+            </tr>
+            {{section name=key loop=$data.list.list}}
+            <tr title="查看详细资料&nbsp;{{$data.list.list[key].related_key_id}}"
+                {{if $data.list.list[key].href}}
+                onclick="document.location.href='{{$data.list.list[key].href}}'" style="cursor:pointer"
+                {{/if}}
+                onmouseout="rowOutEffect(this)" onmouseover="rowOverEffect(this)"
+                class="moduleRow">
+                <td width="13%" class="productListing-data">{{$data.list.list[key].date_added|date_format:"%Y-%m-%d"}}{{* %H:%M:%S"*}}</td>
+                <td nowrap="nowrap" class="productListing-data">{{$data.list.list[key].title}}</td>
+                <td nowrap="nowrap" class="productListing-data">{{$data.list.list[key].points_comment}}</td>
+                <td class="productListing-data">{{$data.list.list[key].points_status}}</td>
+                <td align="right" class="productListing-data">{{$data.list.list[key].points_pending}}</td>
+            </tr>
+            {{/section}}
+            </tbody>
+        </table>
+        {{/if}}
+        <div class="ui_item">
+            <h3 class="ui_rules_listitle">积分兑换方式</h3>
+
+            <p>
+                客户订购产品时，在付款结账页面会有对应的“兑换”的窗口，可以看到客户目前的积分总数、对应现金及本订单可使用的最高积分数等信息。点击“确定兑换”按钮后，系统自动为客户计算出折扣金额，展示积分优惠后订单实付的总价，确认抵换“去支付”后，积分即已兑换成现金并相应扣除，客户只需直接支付优惠折扣后的余额即可。</p>
+        </div>
+        <div class="ui_item">
+            <h3 class="ui_rules_listitle">积分赚取规则</h3>
+
+            <p>用户通过完成在走四方旅游网上的一系列操作后就可获得相应积分。大致规则如下：</p>
+            <table class="ui_rules_table">
+                <thead>
+                <tr>
+                    <th>用户行为</th>
+                    <th>来源说明</th>
+                    <th>积分累计</th>
+                    <th>积分限定</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>注册</td>
+                    <td>新用户注册</td>
+                    <td>+{{$data.new_signup_point_amount}}积分</td>
+                    <td>只记一次</td>
+                </tr>
+                <tr>
+                    <td>验证邮箱</td>
+                    <td>用户验证注册邮箱</td>
+                    <td>+{{$data.validation_account_point_amount}}积分</td>
+                    <td>只记一次</td>
+                </tr>
+                <tr>
+                    <td>订购产品</td>
+                    <td>订购走四方旅游产品、线路行程、酒店等</td>
+                    <td>+1美元={{$data.points_per_amount_purchase}}积分</td>
+                    <td>无限制</td>
+                </tr>
+                <tr>
+                    <td>点评</td>
+                    <td>点评旅游行程、酒店住宿、分享旅途感受、景点评论等（需验证通过）</td>
+                    <td>+{{$data.use_points_for_reviews}}积分/条</td>
+                    <td>每天上限{{$data.every_day_max_num_for_add_points_for_reviews}}条</td>
+                </tr>
+                <tr>
+                    <td>调查问卷</td>
+                    <td>参与填写走四方旅游网不定期的问卷调查</td>
+                    <td>数额不等</td>
+                    <td>只记一次</td>
+                </tr>
+                <tr>
+                    <td>不定期活动</td>
+                    <td>各类精彩活动即将推出</td>
+                    <td>数额不等</td>
+                    <td>待定</td>
+                </tr>
+                <tr>
+                    <td>建议&amp;bug发现</td>
+                    <td>审核确认用户所提出有效建议或发现走四方网bug</td>
+                    <td>数额不等</td>
+                    <td>无限制</td>
+                </tr>
+                </tbody>
+            </table>
+            <p class="ui_rules_notice">一切刷积分行为都将受到正义的制裁！</p>
+        </div>
+        <div class="ui_item">
+            <h3 class="ui_rules_listitle">积分消费折扣限额规则</h3>
+
+            <p>1.客户在首次订购产品时，只能使用{{$data.first_points}}以上的积分部分。二次及以上的消费，则再无任何限制。</p>
+
+            <p>2.走四方积分的兑换比例为：{{$data.points_to_usd_points}}积分={{$data.points_to_usd_usd}}美元，无上限，有多少兑多少，积分越高现金折扣越高，甚至可以免费换取旅行团，完全享受到最高100%的优惠！</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div id="abouts">
+    {{include file="../www/templates/links_left.html"}}
+    <div class="abouts_right">
+        <div class="aboutsTit">
+            <ul>
+                <li>友情链接</li>
+            </ul>
+        </div>
+        <div class="aboutsCont ">
+            <div class="about9_1">
+                <h4 class="font_size14 color_blue"><strong>友情连接(QQ: 2355652791或2355652784)</strong></h4>
+
+                <div class="cont" style="border-bottom:0;">
+                    <ul>
+                        {{foreach from=$data.link_name item=curr_id key=key}}
+                        {{if $key % '4' eq 0 && $key neq 0 }}</ul><ul>{{/if}}
+                        <li class="link_list"> <a href="{{$curr_id.website_url}}" target="_blank" title="{{$curr_id.website_name}}">
+                            {{$curr_id.website_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

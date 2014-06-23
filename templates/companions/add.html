@@ -1,0 +1,203 @@
+<div id="CreateNewCompanionCon">
+	<form onSubmit="Submit_Companion('CompanionForm'); return false" id="CompanionForm" name="CompanionForm" method="post" action="{{$data.save_companions_url}}">
+        <h3>结伴同游信息</h3>
+        <p>（以下信息必填）<input type="hidden" value="{{$data.categories_id}}" id="categories_id" name="categories_id"><input type="hidden" value="{{$data.products_id}}" id="products_id" name="products_id"></p>
+        {{*<p><span>结伴类型：</span>{{section name=key loop=$data.type}}
+            <label for="type_jieban{{$data.type[key].type_id}}"><input type="radio" max-people="{{$data.people_max}}" value="{{$data.type[key].type_id}}" id="type_jieban{{$data.type[key].type_id}}" name="type_jieban"{{if $smarty.section.key.index == 0}} checked=""{{/if}}>
+            {{$data.type[key].type_name}}</label>
+            {{/section}}
+        </p>*}}
+        <p><span>结伴标题：</span><input type="text" class="c_txt" title="请为活动输入结伴标题" class="required text_fb_bt" value="请为活动输入结伴标题" name="t_companion_title" style="color:#bbbbbb;width:380px;padding:3px; " /></p>
+        {{if $data.products_title == ''}}
+        <p><span>出&nbsp;发&nbsp;地：</span><select onChange="getCity(this)" src="{{$data.getCityUrl}}" id="start_city" name="start_city" style="border:1px solid #d5d5d5; width:380px; padding:3px;">
+<option selected="selected" value="0">请选择</option>
+			{{section name=key loop=$data.startCity}}
+            <option value="{{$data.startCity[key].id}}">{{$data.startCity[key].name}}</option>
+            {{/section}}
+        </select></p>
+        <p><span>景　　点：</span><select onChange="getProducts(this)" multiple="multiple" src="{{$data.getCityUrl}}" id="attraction" name="attraction" style="border:1px solid #d5d5d5; width:380px; padding:3px;">
+            <option selected="selected" value="0">请选择</option>
+        </select></p>
+        {{/if}}
+        <p><span>旅游线路：</span>{{if $data.products_title == ''}}<select onChange="set_products_id(this)" style="border:1px solid #d5d5d5; width:380px; padding:3px;height:60px;overflow:hidden;" multiple="multiple" id="products_select" name="products_names">
+            <option selected="selected" value="0">请选择旅游线路</option>
+        </select>{{else}}{{$data.products_title}}{{/if}}</p>
+        {{*<div id="in_line">
+            <table><tr><td nowrap="nowrap"></td>
+        <td>
+        	<p>{{if $data.products_title == ''}}区域：<select onChange="getCity(this)" id="area" name="area" src="{{$data.getCityUrl}}" style="width:100px;">
+            <option selected="selected" value="0">请选择区域</option>
+                    {{section name=key loop=$data.categories}}
+            <option value="{{$data.categories[key].id}}">{{$data.categories[key].name}}</option>
+                    {{/section}}
+        </select>
+<br/>
+        <span>结束地:</span><select onChange="getCity(this)" src="{{$data.getCityUrl}}" id="end_city" name="end_city">
+            <option selected="selected" value="0">请选择</option>
+        </select><p/>
+       {{else}}{{$data.products_title}}{{/if}}</td></tr></table></div>*}}
+        {{*<div id="in_other" style="display:">
+        <p>
+            <span>出 发 &nbsp;地：</span>
+            <span class="uc-chgplace" id="ucSelectProvince"><i>州/省</i></span>
+            <span class="uc-chgplace" id="ucSelectCity">
+                <i>城市</i>
+                <input type="hidden" name="start_city_other" id="start_city_other"/>
+            </span>
+            <span>目的地：</span>
+            <span class="uc-chgplace" id="ucSelectProvinceEnd">
+                <i>州/省</i>
+                <input type="hidden" name="end_city_province" id="end_city_province"/>
+            </span>
+            <span class="uc-chgplace" id="ucSelectCityEnd">
+                <i>城市</i>
+                <input type="hidden" name="end_city_other" id="end_city_other" />
+            </span>
+        </p>
+        <script type="text/javascript">
+        
+        
+            /* 加载国家选项卡数据 */
+            var CountryData = {{$data.zones}};
+            $('#ucSelectProvinceEnd').creatTabs({
+                data : CountryData,
+                func : function(){
+                    $('#ucSelectProvinceEnd > i').html($('#ucSelectProvinceEnd').attr('countrytxt'));
+                    var pid = $('#ucSelectProvinceEnd').attr('sid');
+                    var url = '{{$data.ajaxCity}}';
+                    $.post(url, {'action':'getCity', 'zone_id':pid }, function(json){
+                        CityData = json;
+                        if(json.tag.length == 0){
+                            $('#ucSelectCityEnd').unbind('click');
+                            return false;
+                        }else{	
+                            $('#ucSelectCityEnd').creatTabs({
+                                data : json,
+                                func : function(){ $('#ucSelectCityEnd > i').html($('#ucSelectCityEnd').attr('countrytxt')); }
+                            });
+                            $('#ucSelectCityEnd').click();
+                        }
+                    }, 'json');
+                }
+            });	
+            
+            
+            $('#ucSelectProvince').creatTabs({
+                data : CountryData,
+                func : function(){ ProvinceSelectd(); }
+            });	
+            /* 选择了省份后加载城市数据 */
+            var ProvinceData=[];
+            function ProvinceSelectd(){
+                $('#ucSelectProvince > i').html($('#ucSelectProvince').attr('countrytxt'));
+                $('#ucSelectCity > i').html('城市');
+                var pid = $('#ucSelectProvince').attr('sid');
+                ProvinceData.defaultId = pid;
+                var url = '{{$data.ajaxCity}}';
+                $.post(url, {'action':'getCity', 'zone_id':pid }, function(json){
+                    CityData = json;
+                    if(json.tag.length == 0){
+                        $('#ucSelectCity').unbind('click');
+                        return false;
+                    }else{	
+                        $('#ucSelectCity').creatTabs({
+                            data : json,
+                            func : function(){ CitySelectd(); }
+                        });
+                        $('#ucSelectCity').click();
+                    }
+                }, 'json');
+                
+            }
+            /* 选择了城市后的操作 */
+            function CitySelectd(){ 
+                $('#ucSelectCity > i').html($('#ucSelectCity').attr('countrytxt'));
+                var CityId = $('#ucSelectCity').attr('sid');
+                CityData.defaultId = CityId;
+            }			
+        </script>*}}
+       {{*  <div><span>计划景点：</span><div style="display:inline-block"><input type="text" class="c_txt" value="" name="addressId" id="addressId" /></div></div>
+        <script type="text/javascript">$(function(){$("#addressId").tokenInput("{{$data.destination_href}}", {
+searchDelay: 0,
+animateDropdown: false,
+theme: "facebook"
+});});</script>
+       <p><span>计划游玩天数：</span><input type="text" class="c_txt" /></p>
+        </div>*}}
+        
+        <p class="moretips"><span>附加说明：</span><textarea title="请输入你的兴趣爱好或对结伴同游者的期望" id="t_companion_content" class="required textarea_fb_bt" wrap="soft" rows="" cols="" name="t_companion_content" style="border:1px solid #d5d5d5; width:380px; padding:3px; margin:0; height:30px;" >请输入你的兴趣爱好或对结伴同游者的期望</textarea></p>
+        <p><span>出行时间：</span>
+        	<label style="display:inline-block" id="s_date"><input type="text" class="c_txt text_time" id="hope_departure_date" autocomplete="off" onClick="flightsCalendar('hope_departure_date','s_date')" name="hope_departure_date" /></label>&nbsp;-	<label style="display:inline-block"n id='e_date'><input type="text" class="c_txt text_time" autocomplete="off" id="hope_departure_date_end" onClick="flightsCalendar('hope_departure_date_end','e_date')" name="hope_departure_date_end" /></label>
+        </p>
+        <p><span>现有人数：</span>{{if $data.people_groups == 1}}男{{/if}}
+                        <select id="now_people_man" name="now_people_man">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        {{if $data.people_groups != 1}}人{{/if}}
+                        {{if $data.people_groups == 1}}
+                        女
+                        <select name="now_people_woman" id="now_people_woman">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        小孩
+                        <select name="now_people_child" id="now_people_child">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        {{/if}} <span>期望伴友：</span> {{if $data.people_groups == 1}}男{{/if}}
+                        <select id="hope_people_man" name="hope_people_man">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        {{if $data.people_groups != 1}}人{{/if}}
+                        {{if $data.people_groups == 1}}
+                        女
+                        <select id="hope_people_woman" name="hope_people_woman">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        小孩
+                        <select id="hope_people_child" name="hope_people_child">
+                            <option selected="selected" value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        {{/if}}
+                </p>
+        <p><input type="checkbox" value="1" name="open_ended"/>
+                <span class="more_jb"> 欢迎更多人申请结伴。</span>
+        </p>
+        {{if $data.payment_open == 1}}
+        <p><input type="hidden" value="0" id="who_payment" name="who_payment"/>
+            <span>支付方式：</span><a title="0" onClick="set_hidden_field_val(this);" href="javascript:void(0)" class="a_sex_del" id="who_payment_0">AA制</a>&nbsp;<a title="1" onClick="set_hidden_field_val(this);" href="javascript:void(0)" class="a_sex_fav" id="who_payment_1">我支付</a></p>
+        {{/if}}
+        <h3>我的基本信息</h3>
+        <label>（以下信息非必填）</label>
+        <p><span>姓　　名：</span><input type="text" class="c_txt" title="请输入姓名" style="width: 160px;" class="text_fb_bt" value="{{$data.customers_info.customers_name}}" name="customers_name" id="customers_name"/><p>
+        <p><span>性　　别：</span><input type="radio" title="请选择您的性别" {{if $data.customers_info.t_gender == 1}} checked="" {{/if}} value="1" name="t_gender"/>男&nbsp;&nbsp;<input type="radio" title="请选择您的性别" {{if $data.customers_info.t_gender == 2}} checked="" {{/if}} value="2" name="t_gender"/>女</p>
+        <p><span>邮　　箱：</span><input type="text" class="c_txt" title="请输入您的电子邮箱" style="width: 160px;" class="required text_fb_bt" value="{{$data.customers_info.email_address}}" name="email_address"  id="email_address"/>
+        <p><span>电　　话：</span><input type="text" class="c_txt" style="width: 160px;" value="{{$data.customers_info.customers_phone}}" class="text_fb_bt" name="customers_phone" id="customers_phone"/></p>
+        <p><span>个人介绍：</span><textarea onFocus="Check_Onfocus(this)" id="personal_introduction" class="textarea_fb_bt" title="请输入你的个人介绍" wrap="soft" rows="" cols="50" name="personal_introduction" onBlur="this.value = simplized(this.value); Check_Onblur(this)">请输入你的个人介绍</textarea></p>
+        {{if $data.is_top == '1'}}
+        <p><label for="set_top_box" style="cursor:pointer"><input id="set_top_box" type="checkbox" name="set_top_box" value="1"  onClick="not_set_top(this)"  />设置结伴帖置顶显示</label><span id="set_top_radio" style="display:none;">(将扣除{{$data.is_top_point}}积分/天)&nbsp;您的当前积分是{{$data.user_point}}
+                    <input type="radio" name="t_top_day" value="1" checked=""  />
+                    1天&nbsp;&nbsp;
+                    <input type="radio" name="t_top_day" value="2" class=""  />
+                    2天&nbsp;&nbsp;
+                    <input type="radio" name="t_top_day" value="3" class=""  />
+                    3天</span>
+        </p>
+        {{/if}}
+        <p align="left" style="color:red">温馨提示：发布成功后请注意登录您的帐户，在【我的结伴同游】-【我收到的信息】中查看回复信息。</p>
+        <p align="center">
+            <button id="submit_button" class="jb_fb_all" type="submit">发布</button>
+        </p>
+	</form>
+</div>

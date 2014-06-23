@@ -1,0 +1,858 @@
+{{include file='user_left.html'}}
+{{* 当前页面的ajax提交的url地址 *}}
+{{* 注意：此模板添加了快速安全校验添加与更新的安全码信息，可保证用户输入的信息不被恶意注入到其他用户的数据表中！有关安全码可查：fromVerificationCode、flightAddCheckCode、verificationCode、flights_verificationCode和checkcode等*}}
+
+<script type="text/javascript">
+var ajaxCurrentUrl = "{{$data.href.ajaxCurrentUrl}}";
+</script>
+<div class="fr ucont">
+	<ul class="ucm-tab">
+		<li class="current"><a href="javascript:void(0);">{{if $data.orderInfo.isTravelCompanion == true}} 结伴同游 {{/if}}订单详情</a></li>
+	</ul>
+	<div class="odd-status">
+		<p>订单编号：{{$data.orderInfo.orders_id}}<span class="status-text">状态：</span><strong>{{$data.orderStatus}}</strong></p>
+	</div>
+	<div class="odd-panel">
+		<div class="odd-hd order-person"><h3>订购人信息</h3></div>
+		<div class="odd-contxt">
+			<span class="odd-infoitem">姓名：<strong>{{$data.orderCustomer.customers_name}}</strong></span>
+			<span class="odd-infoitem">电话：<strong>{{$data.orderCustomer.customers_telephone}}</strong></span>
+			<span class="odd-infoitem">邮箱：<strong>{{$data.orderCustomer.customers_email_address}}</strong></span>
+		</div>
+	</div>
+		<div class="odd-panel">
+		<div class="odd-hd"><span class="fr">订单日期：{{$data.orderInfo.date_purchased|date_format:"%Y年%m月%d日"}}</span><h3>订单详情</h3></div>
+		<div class="odd-contxt">
+		
+		{{* 订单产品循环列表start{ *}}
+		{{section name=i loop=$data.orderProducts}}
+			
+			<div class="odd-proinfo">
+				<div class="odd-proinfo-hd uifix">
+					{{* 电子参团凭证打印按钮，参团凭证发送之后才能打印 *}}
+					{{if $data.orderProducts[i].eticketConfirmed == 1 }}
+					<a href="{{$data.orderProducts[i].eticketHref}}" class="odd-proinfo-print"><span>打印电子参团凭证</span></a>
+					{{/if}}
+					
+					<h4><span>{{$smarty.section.i.index+1}}、</span>[{{$data.orderProducts[i].orders_products_id}}]<a href="{{$data.orderProducts[i].href}}" target="_blank">{{$data.orderProducts[i].products_name}}</a></h4>
+				</div>
+				<div class="odd-proinfo-des">
+					<div class="odd-proinfo-descont">
+						
+						<p>
+							<span class="attr">{{* 旅游团号 *}}{{$data.orderProducts[i].projectName.titleModel}}：</span><span class="val"><b>{{$data.orderProducts[i].products_model}}</b></span>
+							{{if $data.orderProducts[i].isTravelCompanion =='1' && $data.orderProducts[i].projectName.titleTravelCompanions}}
+								<span class="traveling-together">{{$data.orderProducts[i].projectName.titleTravelCompanions}}{{* 结伴同游*}}</span>
+							{{/if}}
+						</p>
+						
+						{{if $data.orderProducts[i].projectName.titleDepartureDate}}
+						<p><span class="attr">{{* 出发时间 *}}{{$data.orderProducts[i].projectName.titleDepartureDate}}：</span><span class="val">{{$data.orderProducts[i].products_departure_date|date_format:"%Y年%m月%d日"}}</span></p>
+						{{/if}}
+						
+						{{if $data.orderProducts[i].projectName.titleCheckoutDate}}
+						<p><span class="attr">{{* 酒店的退房时间 *}}{{$data.orderProducts[i].projectName.titleCheckoutDate}}：</span><span class="val">{{$data.orderProducts[i].hotel_checkout_date|date_format:"%Y年%m月%d日"}}</span></p>
+						{{/if}}
+						{{if $data.orderProducts[i].DepartureAddressJsonData && $data.orderProducts[i].projectName.titleDepartureAddress}}
+						<form id="J_DepartureAddressEdit_{{$smarty.section.i.index}}">
+						<p><span class="attr">{{* 乘车地点 *}}{{$data.orderProducts[i].projectName.titleDepartureAddress}}：</span>
+							<input type="hidden" name="action" value="departureAddressUpdate" />
+							<input type="hidden" name="safeCode" value="{{$data.orderProducts[i].fromVerificationCode}}" />
+							<input type="hidden" name="opid" value="{{$data.orderProducts[i].orders_products_id}}" />
+							<input type="hidden" name="tprrid_old" value="{{$data.orderProducts[i].productsDepartureAddress[0].tour_provider_regions_id}}" />
+							<label id="T_DepartureAddress_{{$smarty.section.i.index}}">						
+							{{if $data.isHostPerson && $data.orderProducts[i].showEditDepartureAddressButton == 1 && $data.orderProducts[i].DepartureAddressJsonData}}
+								<script>
+								$(document).ready(function(){
+									/*									$('#T_DepartureAddress_{{$smarty.section.i.index}}').creatAddr({data:{{$data.orderProducts[i].DepartureAddressJsonData}}, func : function(){ updateDepartureAddress{{$smarty.section.i.index}}(); } });
+									function updateDepartureAddress{{$smarty.section.i.index}}(){
+										var safeCode = '{{$data.orderProducts[i].fromVerificationCode}}';
+										var url = ajaxCurrentUrl;
+										var data = G.get_form_data('J_DepartureAddressEdit_{{$smarty.section.i.index}}');
+										$.post(url, data, function(json){
+											if(json['OK']=='1'){
+												//alert('修改成功！');
+												$('#T_DepartureAddress_{{$smarty.section.i.index}}').html('<button type="button">修改</button> ' + $('#T_DepartureAddress_{{$smarty.section.i.index}}').attr('time') + ', ' + $('#T_DepartureAddress_{{$smarty.section.i.index}}').attr('area') + ', ' + $('#T_DepartureAddress_{{$smarty.section.i.index}}').attr('addr'));											
+											}else if(json['errorMsg']){
+												alert(json['errorMsg']);
+											}
+										}, 'json');									
+									}*/
+									;(function(){
+										var data = {{$data.orderProducts[i].DepartureAddressJsonData}};
+										var addressJson = {};
+										addressJson['addressName'] = data['addressName'];
+										addressJson['defaultVal'] = data['defaultVal'];
+										addressJson['regionName'] = data['regionName'];
+										addressJson['list'] = data['list'];
+										addressJson['departure_address_id'] = data['defaultVal'];
+										addressJson['dRegion'] = data['defaultRegionId'];
+										
+										var addressEl = $('#T_DepartureAddress_{{$smarty.section.i.index}}');
+										
+										var addressField_{{$smarty.section.i.index}} = new usitrip.product.Address({
+											data: addressJson,
+											targetEl: addressEl
+										});
+										
+										addressEl.live('click', function(){
+											addressField_{{$smarty.section.i.index}}.show();
+											$(this).css({
+												position: 'relative',
+												'z-index': 1
+											});
+										});
+										
+										var fun = function(targetEl, event){
+											this.hide();
+											addressEl.css({
+												position: 'static'
+											});
+											event.stopPropagation();
+										};
+										
+										addressField_{{$smarty.section.i.index}}.on('cancelBtn', fun);
+										
+										addressField_{{$smarty.section.i.index}}.on('closeBtn', fun);
+										var callfn = function(selected){
+											var url = ajaxCurrentUrl;
+											var data = G.get_form_data('J_DepartureAddressEdit_{{$smarty.section.i.index}}');
+											$.post(url, data, function(json){
+												if(json['OK']=='1'){
+													addressEl.find('span.val').text(selected.join(',')).parent().attr({
+														area: selected[0],
+														time: selected[1],
+														addr: selected[2]
+													});
+												}else if(json['errorMsg']){
+													alert(json['errorMsg']);
+												}
+											}, 'json');
+										}
+										
+										addressField_{{$smarty.section.i.index}}.on('okBtn',fun);
+										
+										addressField_{{$smarty.section.i.index}}.on('okBtn', function(targetEl, event){
+											var selected = this.getValue();
+											if(selected.length < 3){
+												return ;
+											}
+											callfn(selected);
+										});
+									})();
+								});
+								</script>
+								<button class="modify" type="button">修改</button>
+							{{/if}}
+							<span class="val">{{$data.orderProducts[i].productsDepartureAddress[0].region}},{{$data.orderProducts[i].productsDepartureAddress[0].departure_time}},{{$data.orderProducts[i].productsDepartureAddress[0].address}}</span>
+							</label>
+						</p>
+						</form>
+						{{/if}}
+						{{if $data.orderProducts[i].projectName.titleDeparture}}
+						<p><span class="attr">{{* 出发城市 *}}{{$data.orderProducts[i].projectName.titleDeparture}}：</span><span class="val">{{$data.orderProducts[i].startCitys}}</span></p>
+						{{/if}}
+						
+						{{if $data.orderProducts[i].projectName.titleEndCity}}
+						<p><span class="attr">{{* 结束城市 *}}{{$data.orderProducts[i].projectName.titleEndCity}}：</span><span class="val">{{$data.orderProducts[i].endCitys}}</span></p>
+						{{/if}}
+						
+						{{if $data.orderProducts[i].projectName.titleContactPhone}}
+						<p><span class="attr">{{ *当日游客手机*}}{{$data.orderProducts[i].projectName.titleContactPhone}}：</span><span class="val"><b>{{$data.orderProducts[i].contact_phone}}</b></span></p>
+						{{/if}}
+						
+						
+						<p><span class="attr">总房间数量：</span><span class="val">{{$data.orderProducts[i].roomNum}}</span></p>
+						{{* 具体房间信息 *}}
+						
+						<p><span class="attr">房间一成人数：</span><span class="val">12未完成</span></p>
+						
+						<p><span class="attr">房间总费用：</span><span class="val">${{$data.orderProducts[i].products_room_price}}</span></p>
+						
+						{{* 产品属性 *}}
+						{{if $data.orderProducts[i].Attributes}}
+							{{section name=k loop=$data.orderProducts[i].Attributes}}
+								<div class="clear">
+                                	<p class="attr fl">{{$data.orderProducts[i].Attributes[k].title}}：</p>
+									<div class="val pro-val fl"><!--<b>-->
+                                    	
+                                            {{section name=l loop=$data.orderProducts[i].Attributes[k].option_values}}
+                                            	<p>
+                                                    {{$data.orderProducts[i].Attributes[k].option_values[l].options_values_name}}
+                                                    {{if $data.orderProducts[i].Attributes[k].option_values[l].options_values_price}}
+                                                        {{$data.orderProducts[i].Attributes[k].option_values[l].options_values_price}}
+                                                    {{/if}}
+                                                </p>
+                                            {{/section}}
+									<!--</b>-->
+                                    </div>
+								</div>
+							{{/section}}
+						{{/if}}
+					</div>
+					<div class="odd-proinfo-cost">
+						<div class="clear">
+                        	<p class="fl"><b>行程费用：</b></p>
+							<p class="fr"><strong class="proprice">${{$data.orderProducts[i].final_price}}</strong></p>
+                        </div>
+                        
+						<div class="clear">
+                        	<p class="fl"><b>支付状态：</b></p>
+							<p class="fr"><em class="payoff" style="color:{{$data.orderProducts[i].paymentStatusColor}}">{{$data.orderProducts[i].paymentStatus}}</em></p>
+                        </div>
+                        
+                        <div class="clear">
+                        	<p class="fl"><b>流程状态：</b></p>
+							<p class="fr"><em class="payon" style="color:{{$data.orderProducts[i].processStatusColor}}">{{$data.orderProducts[i].processStatus}}</em></p>
+                        </div>			
+					</div>
+				</div>
+				
+				{{* 游客信息，只有行程和酒店才需要游客信息。电子邮箱不可修改！！！ *}}
+				{{if $data.orderProducts[i].needGuests === true }}
+				<ul class="odd-proinfo-useritems uifix">
+					{{section name=k loop=$data.orderProducts[i].guests}}
+						<li id="J_guests_show_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" class="useritem">
+                        	<div class="pass-title pngFix">
+                                <div class="action-modify fr">
+                                    {{if $data.orderProducts[i].showEditGuestButton == 1 && $data.isHostPerson}}
+                                        <button class="edit" type="button">编辑</button> 
+                                    {{/if}}
+                                </div>
+                                <span class="tourist-no">{{$smarty.section.k.index+1}}</span>
+                                <strong>游客{{$smarty.section.k.index+1}}</strong>
+                            </div>
+                            
+                            
+                            
+                                {{if $data.orderProducts[i].showEditGuestButton == 1}}
+                                
+                                    <form id="J_guests_edit_form_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}">
+                                        <input type="hidden" name="action" value="editGuestsConfirm" />
+                                        <input type="hidden" name="verificationCode" value="{{$data.orderProducts[i].fromVerificationCode}}" />
+                                        <input type="hidden" name="opid" value="{{$data.orderProducts[i].orders_products_id}}" />
+                                        <input type="hidden" name="orders_products_guests_id" value="{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" />
+                                        <input type="hidden" name="is_child" value="{{$data.orderProducts[i].guests[k].is_child}}" />                                   
+                                {{/if}}
+                            <div class="detail">
+                                    <ul class="clear">
+                                    	{{if $data.orderProducts[i].guests[k].email != ''}}
+	                                    	<li class="desc">
+                                            	<span class="attr">email：</span>
+                                                <span class="val">
+												<!--<input type="text" name="email" class="view" readonly="readonly" value="{{$data.orderProducts[i].guests[k].email}}">-->
+												{{$data.orderProducts[i].guests[k].email}}
+												</span>
+                                        	</li>
+                                        {{/if}}
+                                        <li class="desc">
+                                            <span class="attr">姓(拼音或英文)：</span>
+                                            <span class="val"><input type="text" name="lastname" class="view" readonly="readonly" value="{{$data.orderProducts[i].guests[k].lastname}}"></span>
+                                        </li>
+                                        
+                                        <li class="desc">    
+                                            <span class="attr">名(拼音或英文)：</span>
+                                            <span class="val"><input type="text" name="firstname" class="view" readonly="readonly" value="{{$data.orderProducts[i].guests[k].firstname}}" /></span>
+                                        </li>
+                                        
+                                        <li class="desc {{if $data.orderProducts[i].guests[k].mobile_phone == ''}} empty {{/if}}">    
+                                            <span class="attr">电话：</span>
+                                            <div class="val mobile-phone" id="mobile-phone_{{$smarty.section.i.index}}_{{$smarty.section.k.index}}"></div>
+                                        </li>
+                                        
+                                        <li class="desc">    
+                                            <span class="gender">性别：</span>
+                                            <span class="val">
+                                            	<span class="view-gender">{{$data.orderProducts[i].guests[k].genderString}}</span>
+                                                <span class="editor-gender">
+                                                	<label><input type="radio" name="gender" {{if $data.orderProducts[i].guests[k].gender=="m"}} checked {{/if}} value="m"/>男</label>
+                                                    <label><input type="radio" name="gender" {{if $data.orderProducts[i].guests[k].gender=="f"}} checked {{/if}} value="f"/>女</label>
+                                                </span>
+                                            </span>
+                                        </li>
+                                        
+                                        <li class="desc {{if $data.orderProducts[i].guests[k].birth_date == ''}} empty {{/if}}">
+                                            <span class="attr">出生日期：</span>
+                                            <span class="val"><input type="text" class="view" readonly="readonly" id="birth_date_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" name="birth_date" value="{{$data.orderProducts[i].guests[k].birth_date|date_format:"%Y-%m-%d"}}" /></span>
+                                            <script type="text/javascript">
+												(function(){												
+													var el = $('#birth_date_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}');
+													var cfg = {
+														today: "<?= date('Y-m-d')?>",
+														dispalyMonths:1,
+														readout: true,
+														showBefore: function(){
+															if(el.attr('readOnly')) {
+																return false;
+															}
+														},
+														range: '{{$data.orderProducts[i].minAllowBirthDate}}:{{$data.orderProducts[i].maxAllowBirthDate}}'
+													};
+												
+													el.calendar(cfg);
+												})();
+											</script>
+                                        </li>   
+                                        
+                                        
+                                        <li class="desc {{if $data.orderProducts[i].guests[k].body_height == '0'}} empty {{/if}}">
+                                            <span class="attr">身高：</span>
+                                            <span class="val"><input type="text" name="body_height" class="view height" readonly="readonly" value="{{$data.orderProducts[i].guests[k].body_height}}"> CM</span>
+                                        </li>
+                                        
+                                        
+                                        <li class="desc {{if $data.orderProducts[i].guests[k].body_weight == '0'}} empty {{/if}}">
+                                            <span class="attr">体重：</span>
+                                            <span class="val"><input type="text" name="body_weight" class="view weight" readonly="readonly" value="{{$data.orderProducts[i].guests[k].body_weight}}"> KG</span>
+                                        </li>
+                                        
+                                        
+                                        <li class="desc {{if $data.orderProducts[i].guests[k].is_single_pu == ''}} empty {{/if}}">      
+                                            <span class="attr"><label><input name="is_single_pu" value="1" class="is_single_pu" type="checkbox" {{if $data.orderProducts[i].guests[k].is_single_pu == '1'}} checked="checked" {{/if}}>单人配房</label></span>
+                                         </li>
+                                        
+                                    </ul>
+                                    <div class="action-save">                                    	
+                                        <button class="save" type="submit">保存</button>	
+                                        <button class="cancel" type="reset">取消</button>
+                                    </div>
+                            </div>
+                            
+                            <script>
+								var a = this;
+								new usitrip.widget.MobilePhoneField({
+									el: '#mobile-phone_{{$smarty.section.i.index}}_{{$smarty.section.k.index}}',
+									tipson: false,
+									initValue: {
+										phoneValue: '{{$data.orderProducts[i].guests[k].mobile_phone}}',
+										zhWidth:30,
+										phoneWidth:110
+									},
+									name: 'mobile_phone',
+									areaAttr: {
+										readOnly: true
+									},
+									phoneAttr: {
+										readOnly: true
+									},
+									border: false
+								});
+							</script>
+                            
+                            
+                            {{if $data.orderProducts[i].showEditGuestButton == 1}}
+                                 </form>
+                            {{/if}}
+                                                
+                            <!--
+							<p><span>游客{{$smarty.section.k.index+1}}：</span>{{$data.orderProducts[i].guests[k].firstname}}, {{$data.orderProducts[i].guests[k].lastname}}</p>
+							<p><span>性别：</span>{{$data.orderProducts[i].guests[k].genderString}}</p>
+							{{if $data.orderProducts[i].guests[k].is_child=='1'}}
+							<p><span>儿童出生日期：</span>{{$data.orderProducts[i].guests[k].birth_date|date_format:"%Y年%m月%d日"}}</p>
+							{{/if}}
+							{{if $data.orderProducts[i].showEditGuestButton == 1}}
+							<p>
+							<input type="button" class="odd-edit-uibtn modify" onclick="jQuery('#J_guests_show_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}').hide();jQuery('#J_guests_edit_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}').show();" value="修改" />
+							</p>
+							{{/if}}
+                            
+                            -->
+						</li>	
+                        
+                        <!--
+                        				
+						{{if $data.orderProducts[i].showEditGuestButton == 1}}
+						<li id="J_guests_edit_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" style="display:none">
+						<form id="J_guests_edit_form_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}">
+						<input type="hidden" name="action" value="editGuestsConfirm" />
+						<input type="hidden" name="verificationCode" value="{{$data.orderProducts[i].fromVerificationCode}}" />
+						<input type="hidden" name="opid" value="{{$data.orderProducts[i].orders_products_id}}" />
+						<input type="hidden" name="orders_products_guests_id" value="{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" />
+						<input type="hidden" name="is_child" value="{{$data.orderProducts[i].guests[k].is_child}}" />
+						<p><span>游客{{$smarty.section.k.index+1}}：</span>姓<input name="firstname" value="{{$data.orderProducts[i].guests[k].firstname}}" />名<input name="lastname" value="{{$data.orderProducts[i].guests[k].lastname}}" /></p>
+						<p><span>性别：<select name="gender"><option {{if $data.orderProducts[i].guests[k].gender=="m"}} selected="selected" {{/if}} value="m">男</option><option {{if $data.orderProducts[i].guests[k].gender=="f"}} selected="selected" {{/if}} value="f">女</option></select></span>
+						</p>
+						{{if $data.orderProducts[i].guests[k].is_child=='1'}}
+						<p><span id="s_birth_date_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}">儿童出生日期：<input id="birth_date_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}" name="birth_date" value="{{$data.orderProducts[i].guests[k].birth_date|date_format:"%Y-%m-%d"}}" onclick="birthDateCalendar(this.id, $(this).parent().attr('id') , '{{$data.orderProducts[i].minAllowBirthDate}}', '{{$data.orderProducts[i].maxAllowBirthDate}}');" />
+						{{$data.orderProducts[i].max_allow_child_age}}
+						</span></p>
+						{{/if}}
+						
+						<p><span><button type="submit">保存</button><button type="button" onclick="jQuery('#J_guests_show_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}').show();jQuery('#J_guests_edit_{{$data.orderProducts[i].guests[k].orders_products_guests_id}}').hide();">取消</button></span></p>
+						</form>
+						</li>
+						
+						{{/if}}
+                        -->
+					{{/section}}
+				</ul>
+				{{/if}}
+				{{* 航班信息，只有行程这些才需要填写航班 *}}
+				{{if $data.orderProducts[i].needFlights === true }}
+				<div class="odd-flights">
+					<div class="odd-flights-hd">
+						<span class="shirink-btn" title="隐藏" onclick="$('#flightsContent_{{$smarty.section.i.index}}').toggle()">隐藏</span>
+						{{if $data.orderProducts[i].showAddFlightButton == 1 && $data.isHostPerson}}
+						<a href="javascript:void(0)" onclick="add_one_flight('{{$data.href.ajaxCurrentUrl}}', 'J_addFlightsUl_{{$smarty.section.i.index}}', updateGuestsLi, '{{$data.orderProducts[i].orders_products_id}}');" class="odd-flights-edit"><span>增加航班信息</span></a>
+						{{/if}}
+						<div class="odd-flights-tit fl"><strong>航班信息</strong>建议您在确保行程订购成功之后再购买机票</div>
+					</div>
+					{{* 此ul的内容应该由ajax动态载入，记住！ *}}
+					<div id="flightsContent_{{$smarty.section.i.index}}">
+					<form id="J_addFlightsForm_{{$smarty.section.i.index}}" style="{{if 1}}display:none{{/if}}">
+						<input type="hidden" name="orders_products_id" value="{{$data.orderProducts[i].orders_products_id}}" />
+						<input type="hidden" name="flightAddCheckCode" value="{{$data.orderProducts[i].fromVerificationCode}}" />
+						<input type="hidden" name="action" value="flightAddConfirm" />
+						
+						<ul id="J_addFlightsUl_{{$smarty.section.i.index}}">
+						
+						{{* 新增航班信息注意：1.如果用户选择了“参团日自行入住酒店”那么接机的信息全部忽略；2.如果用户选择了“行程结束自行离团”那么送机的信息也全部忽略！3.如果第1点的条件不成立，则接机信息少一项都不能提交并提示对应的错误信息；4.如果第2点不成立，则送机信息一项都不能少！*}}
+						</ul>
+						<div class="action-save"><button class="ok" type="submit">确定</button></div>
+					</form>
+					
+                    {{if $data.orderProducts[i].flights|@count > 0}}
+                    <ul class="flight-info-wrap">
+					{{section name=k loop=$data.orderProducts[i].flights}}
+                            <li  id="ulFlight_{{$data.orderProducts[i].flights[k].orders_flight_id}}" class="flight-list">
+                                <div class="flight-title">
+                                	<div class="action-modify fr">
+                                        {{if $data.isHostPerson}}
+                                        <button type="button" name="editFlight" flightid="{{$data.orderProducts[i].flights[k].orders_flight_id}}" opid="{{$data.orderProducts[i].orders_products_id}}" checkcode="{{$data.orderProducts[i].fromVerificationCode}}">修改</button>{{* 注意：此按钮添加了id和校验码信息，不可随便换按钮！*}}
+                                        {{/if}}
+                                    </div>
+                                	<span>航班{{$smarty.section.k.index+1}}</span>                                   
+                                </div>
+                                
+                                <div class="clear">
+                                    <div class="flight-con">
+                                        <p>乘坐此航班的乘客</p>
+                                        
+                                        <div class="passenger">
+                                             <ul class="js-passenger-option{{$smarty.section.k.index+1}} clear">
+                                                {{assign var=ids value=","|explode:$data.orderProducts[i].flights[k].orders_products_guests_ids}}
+                                                {{foreach item=id from=$ids}}
+                                                	{{foreach item=guest from=$data.orderProducts[i].guests}}
+                                                    	{{if $guest.orders_products_guests_id == $id}}
+                                                			<li>{{$guest.lastname}} {{$guest.firstname}}</li>
+                                                        {{/if}}
+                                                	{{/foreach}}
+                                                {{/foreach}}
+                                             </ul>
+                                        </div>
+                                        
+                                        <div class="aerobus-info">
+                                            <h3>接机航班</h3>
+                                            <table>
+                                            	<caption>
+                                                	<label><input type="checkbox" onclick="javascript:return false;" 
+                                                {{if $data.orderProducts[i].flights[k].self_define_reach == '1'}}
+                                                checked
+                                                {{/if}}/>参团日自行入住酒店</label>
+                                                	
+                                                </caption>
+                                                <tbody>
+                                                <tr>
+                                                    <td class="attr">接机日期：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].arrival_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">航空公司：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].airline_name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">接机航班：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].flight_no}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">接机机场：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].airport_name}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">到达时间：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].arrival_time_hour}}:{{$data.orderProducts[i].flights[k].arrival_time_minute}}</td>
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flight-con">
+                                        <p>乘坐此航班的乘客</p>
+                                        <div class="passenger">
+                                             <ul class="js-passenger-option{{$smarty.section.k.index+1}} clear">
+                                                {{assign var=ids value=","|explode:$data.orderProducts[i].flights[k].orders_products_guests_ids_departure}}
+                                                {{foreach item=id from=$ids}}
+                                                	{{foreach item=guest from=$data.orderProducts[i].guests}}
+                                                    	{{if $guest.orders_products_guests_id == $id}}
+                                                			<li>{{$guest.lastname}} {{$guest.firstname}}</li>
+                                                        {{/if}}
+                                                	{{/foreach}}
+                                                {{/foreach}}
+                                             </ul>
+                                        </div>
+                                        <div class="aerobus-info">
+                                            <h3>送机航班</h3>
+                                            <table>
+                                            	<!-- 改checkbox效果采用背景图片来做 ,checkbox没有readOnly 且 -->
+                                            	<caption><label><input type="checkbox" onclick="javascript:return false;" 
+                                                {{if $data.orderProducts[i].flights[k].self_define_departure == '1'}}
+                                                checked
+                                                {{/if}}
+                                                />行程结束自行离团</label></caption>
+
+                                                <tbody><tr>
+                                                    <td class="attr">送机日期：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].departure_date}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">航空公司：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].airline_name_departure}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">送机航班：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].flight_no_departure}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">送机机场：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].airport_name_departure}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="attr">到达时间：</td>
+                                                    <td class="val">{{$data.orderProducts[i].flights[k].departure_time_hour}}:{{$data.orderProducts[i].flights[k].departure_time_minute}}</td>
+                                                </tr>
+                                            </tbody></table>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </li>
+                        
+                    
+						<!--
+                        <dl id="ulFlight_{{$data.orderProducts[i].flights[k].orders_flight_id}}" class="odd-flights-list uifix">
+                        	<dt>
+                            	<p>
+                                	<strong>航班{{$smarty.section.k.index+1}}</strong>
+                            	</p>
+                                <div class="action">
+                                	<button type="button" name="editFlight" flightid="{{$data.orderProducts[i].flights[k].orders_flight_id}}" opid="{{$data.orderProducts[i].orders_products_id}}" checkcode="{{$data.orderProducts[i].fromVerificationCode}}">修改</button>{{* 注意：此按钮添加了id和校验码信息，不可随便换按钮！*}}
+                                </div>
+                            </dt>
+                            
+                            <dd class="arrival-flight">
+                            	<p>乘坐此航班的乘客</p>
+                                <p class="passenger">kenjin jin</p>
+                            </dd> 
+                            
+                            <dd class="departure-flight">
+                            	<p>乘坐此航班的乘客</p>
+                                <p class="passenger">kenjin jin</p>
+                            </dd>
+                        	
+							<dd><span>&nbsp;</span>{{if $data.orderProducts[i].flights[k].self_define_reach}}您已选择<b>参团日自行入住酒店</b>{{/if}}</dd>
+							<dd><span>&nbsp;</span>{{if $data.orderProducts[i].flights[k].self_define_departure}}您已选择<b>行程结束自行离团</b>{{/if}}</dd>
+							<dd><span>接机日期：</span>{{$data.orderProducts[i].flights[k].arrival_date}}</dd>
+							<dd><span>送机日期：</span>{{$data.orderProducts[i].flights[k].departure_date}}</dd>
+							<dd><span>航空公司：</span>{{$data.orderProducts[i].flights[k].airline_name}}</dd>
+							<dd><span>航空公司：</span>{{$data.orderProducts[i].flights[k].airline_name_departure}}</dd>
+							<dd><span>接机航班：</span>{{$data.orderProducts[i].flights[k].flight_no}}</dd>
+							<dd><span>送机航班：</span>{{$data.orderProducts[i].flights[k].flight_no_departure}}</dd>
+							<dd><span>接机机场：</span>{{$data.orderProducts[i].flights[k].airport_name}}</dd>
+							<dd><span>送机机场：</span>{{$data.orderProducts[i].flights[k].airport_name_departure}}</dd>
+							<dd><span>到达时间：</span>{{$data.orderProducts[i].flights[k].arrival_time_hour}}:{{$data.orderProducts[i].flights[k].arrival_time_minute}}</dd>
+							<dd><span>出发时间：</span>{{$data.orderProducts[i].flights[k].departure_time_hour}}:{{$data.orderProducts[i].flights[k].departure_time_minute}}</dd>
+							{{if $data.orderProducts[i].showEditFlightButton == 1}}
+							<dd><span><button type="button" name="editFlight" flightid="{{$data.orderProducts[i].flights[k].orders_flight_id}}" opid="{{$data.orderProducts[i].orders_products_id}}" checkcode="{{$data.orderProducts[i].fromVerificationCode}}">修改</button>{{* 注意：此按钮添加了id和校验码信息，不可随便换按钮！*}}</span>&nbsp;</dd>
+							{{/if}}
+						</dl>
+						{{if ($smarty.section.k.index+1) < $smarty.section.k.loop}}
+						<hr />
+						{{/if}} -->
+					{{/section}}
+                    
+                    </ul>
+                    {{/if}}
+					</div>
+				</div>
+				{{/if}}
+				
+			</div>
+			
+		{{/section}}
+		{{* 订单产品循环列表end} *}}
+		
+		</div>
+	</div>
+	
+	<div class="odd-panel" style="display:none{{* 暂时隐藏此列表 *}}">
+		<div class="odd-hd"><h3>产品清单<strong>[{{$data.orderProducts|@count}}]</strong></h3></div>
+		<table class="odd-proitem-table">
+			<thead>
+				<tr>
+					<th>产品名称</th>
+					<th>支付状态</th>
+					<th>流程状态</th>
+					<th>小计</th>
+				</tr>
+			</thead>
+			<tbody>
+				{{* 产品清单循环 *}}
+				{{section name=i loop=$data.orderProducts}}
+				<tr>
+					<td>
+						<p><a href="{{$data.orderProducts[i].href}}" target="_blank">{{$smarty.section.i.index+1}}.{{$data.orderProducts[i].products_name}} [{{$data.orderProducts[i].products_model}}]</a></p>
+					{{if $data.orderProducts[i].projectName.titleDepartureDate}}
+						<p><b>
+						{{$data.orderProducts[i].projectName.titleDepartureDate}}：
+						{{$data.orderProducts[i].products_departure_date|date_format:"%m/%d/%Y"}}
+						</b></p>
+					{{/if}}
+						<p>总房间数量：{{$data.orderProducts[i].roomNum}}</p>
+						<p>房间内成人数量1：3  总房间数量1未完成开发</p>
+						<p>房间总费用：${{$data.orderProducts[i].products_room_price}}</p>
+					</td>
+					<td align="center">
+						<b class="odd-proitem-green" style="color:{{$data.orderProducts[i].paymentStatusColor}}">{{$data.orderProducts[i].paymentStatus}}</b>
+					</td>
+					<td align="center">
+						<b class="odd-proitem-green" style="color:{{$data.orderProducts[i].processStatusColor}}">{{$data.orderProducts[i].processStatus}}</b>
+					</td>
+					<td align="center">
+						${{$data.orderProducts[i].final_price}}
+					</td>
+				</tr>
+				{{/section}}
+			</tbody>
+		</table>
+	</div>
+	<div class="odd-panel">
+		<div id="J_Message" class="odd-hd odd-hand"><p class="expand-collapse fr pngFix">收起</p><h3>我的留言<strong>[{{$data.orderMessage|@count}}]</strong></h3></div>
+		<div id="J_MessageList" class="odd-contxt">
+			<div class="odd-comments ">
+				{{* 订单留言循环 *}}
+				{{section name=i loop=$data.orderMessage}}
+				<p>{{$data.orderMessage[i].message|nl2br}}</p>
+                <p class="time"><span title="{{$data.orderMessage[i].addtime}}">{{$data.orderMessage[i].addtime|date_format:"%m/%d/%Y %T"}}</span></p>
+				{{/section}}
+				
+			</div>
+		</div>
+		{{if $data.isHostPerson}}
+		<div class="odd-comments-editor clear">
+			<form id="J_message_form" action="" method="post" enctype="multipart/form-data" target="_self" onsubmit="return false">
+			<p>留言：</p>
+			<input name="action" type="hidden" value="submitMessage" />
+			<input name="safeCode" type="hidden" value="{{$data.orderSafeCode}}" />
+			<input name="oID" type="hidden" value="{{$data.orderInfo.orders_id}}" />
+			<textarea name="message" cols="100" rows="5" wrap="virtual"></textarea>
+			<div class="action"><button type="submit" class="odd-comment-submit gradient" >提交留言</button></div>
+			<script type="text/javascript">
+			$('#J_message_form').submit(function(){
+				var data = G.get_form_data(this.id);
+				var url = window.location.toString();
+				$.post(url, data, function(json){
+					if(json['OK'] == '1'){
+						alert('添加成功！'); window.location.reload(true);
+					}else if(json['errorMsg']){
+						alert(json['errorMsg']);
+					}
+				},'json');
+				return false;
+			});
+			</script>
+			</form>
+		</div>
+		{{/if}}
+		
+	</div>
+	<div class="odd-panel">
+		<div id="oddlogshd" class="odd-hd odd-hand"><p style="background-position:30px -27px;"class="expand-collapse fr pngFix">展开</p><h3>订单状态更新记录<strong>[{{$data.orderStatusHistory|@count}}]</strong></h3></div>
+		<div id="oddlogslist" class="odd-contxt hide">
+			<ul class="odd-logs uifix">
+				{{* 订单状态更新记录循环 *}}
+				{{section name=i loop=$data.orderStatusHistory}}
+				<li>
+					<span class="odd-log-date">{{$data.orderStatusHistory[i].date_added|date_format:"%m/%d/%Y"}}</span>
+					<span class="odd-log-status">{{$data.orderStatusHistory[i].statusName}}</span>
+					<span class="odd-log-tips">{{$data.orderStatusHistory[i].comments|nl2br}}</span>					
+				</li>
+				{{/section}}
+			</ul>
+		</div>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			$('#oddlogshd').toggle(function(){
+				$('#oddlogslist').slideDown(60);
+				$(this).find('p').html('收起').css({
+					'background-position': '30px 2px'
+				});
+			},function(){
+				$('#oddlogslist').slideUp(60);
+				$(this).find('p').html('展开').css({
+					'background-position': '30px -27px'
+				});
+			});
+			
+			$('#J_Message').toggle(function(){
+				$('#J_MessageList').slideUp(50).next().slideUp(50);
+				$(this).find('p').html('展开').css({
+					'background-position': '30px -27px'
+				});
+			},function(){
+				$('#J_MessageList').slideDown(50).next().slideDown(50);
+				$(this).find('p').html('收起').css({
+					'background-position': '30px 2px'
+				});
+			});
+		});
+		</script>
+	</div>
+	
+	{{* 结伴同游付款 *}}
+	{{if $data.orderInfo.isTravelCompanion == true && $data.TravelCompanionPayList}}
+	<div class="traveling-wrap">
+        <form action="{{$data.href.ajaxCurrentUrl}}" method="post" enctype="multipart/form-data" name="travel_companion_pay_form" id="travel_companion_pay_form">
+            <input name="action" type="hidden" value="updateTravelCompanionGuests" />
+            <input name="safeCode" type="hidden" value="{{$data.orderSafeCode}}" />
+            <input name="oID" type="hidden" value="{{$data.orderInfo.orders_id}}" />
+        <ul>        
+        {{section name=i loop=$data.TravelCompanionPayList}}
+        	<li>
+            	<p class="bg"></p>
+    			{{if $data.TravelCompanionPayList|@count != 1}}
+                <h3 class="title gradient"><span>{{$smarty.section.i.index+1}}、</span>[{{$data.TravelCompanionPayList[i].Products.Model}}]{{$data.TravelCompanionPayList[i].Products.Name}}{{* 产品名称 *}}<em>(结伴同游子订单信息)</em></h3>				{{else}}
+                <h3 class="title gradient"><em>结伴同游子订单信息</em></h3>
+                {{/if}}
+                <table>
+                    <tr>
+                        <th scope="col">选择我付款</th>
+                        <th scope="col">结伴邮箱</th>
+                        <th scope="col" class="no-bo lastname">参团人姓</th>
+                        <th scope="col" class="firstname">参团人名</th>
+                        <th scope="col">&nbsp;</th>
+                        <th scope="col">应付款</th>
+                        <th scope="col">已付</th>
+                        <th scope="col" class="no-bo">付款状态</th>
+                    </tr>
+                    {{section name=k loop=$data.TravelCompanionPayList[i].Guests}}
+                    <tr>
+                        <td class="select"><input type="checkbox" name="otc_id[]" value="{{$data.TravelCompanionPayList[i].Guests[k].orders_travel_companion_id}}" {{$data.TravelCompanionPayList[i].Guests[k].checkedStr}} onclick="alert(&quot;把此用顾客付款人设当前用户并刷新页面！&quot;);" /></td>
+                        <td class="email">{{$data.TravelCompanionPayList[i].Guests[k].email}}</td>
+                        <td class="lastname">
+                        <input type="text" class="view" readOnly="readOnly" name="g_lastname[{{$data.TravelCompanionPayList[i].Guests[k].orders_products_guests_id}}]" value="{{$data.TravelCompanionPayList[i].Guests[k].lastname}}" />
+                        </td>
+                        <td class="firstname">
+                        <input type="text"  class="view" readOnly="readOnly" name="g_firstname[{{$data.TravelCompanionPayList[i].Guests[k].orders_products_guests_id}}]" value="{{$data.TravelCompanionPayList[i].Guests[k].firstname}}" />
+                        <input type="hidden" name="g_safe_code[{{$data.TravelCompanionPayList[i].Guests[k].orders_products_guests_id}}]" value="{{$data.TravelCompanionPayList[i].Guests[k].guestSafeCode}}" />
+                        </td>
+                        <td class="action">
+                        	<button type="submit" class="ok-btn">确认</button>
+	                        <button type="button" class="cancel-btn">取消</button>
+	                        <button type="button" class="modify-btn">修改</button>
+                        </td>
+                        <td class="payables">{{$data.TravelCompanionPayList[i].Guests[k].payablesStr}}</td>
+                        <td class="paid">{{$data.TravelCompanionPayList[i].Guests[k].paidStr}}</td>
+                        <td class="status">{{$data.TravelCompanionPayList[i].Guests[k].statusStr}}</td>
+                    </tr>
+                    {{/section}}
+                </table>
+        </li>
+        {{/section}}
+        </ul>
+        </form>
+	</div>
+	{{/if}}
+	
+	<div class="odd-paypanel uifix">
+		<div class="odd-pay-counts clear">
+			
+			{{* 优惠选择模块 *}}
+			{{if $data.Ot_Input_List && $data.isHostPerson}}
+            <ul class="dis-item">
+                {{section name=i loop=$data.Ot_Input_List}}
+                    {{if $data.Ot_Input_List[i]}}
+                        {{$data.Ot_Input_List[i]}}
+                    {{/if}}	
+                {{/section}}
+            </ul>
+			{{/if}}
+			
+			{{* 订单总价信息组，这块信息在完全付款完毕前都要从新计算价格并更新到订单总价表！！！此处用表格处理比较好 *}}
+            <div style="float:right;">
+                <div id="J_cartTotal" class="total_details money-total">
+                    {{section name=i loop=$data.orderTotals}}
+                        <p><label>{{$data.orderTotals[i].title}}</label><em>{{$data.orderTotals[i].text}}</em></p>
+                    {{/section}}
+                </div>
+                
+                <div id="payable">
+                	<p><label>已付款：</label><em class="odd-payed">${{$data.orderInfo.orders_paid}}</em></p>
+                    <p><label>还需付款：</label><em class="odd-needpay">${{$data.orderNeedPay}}</em></p>
+                </div>
+            </div>
+		</div>
+        
+        {{if $data.PaymentsList}}
+             <form name="J_PaymentModuleListForm" action="" enctype="multipart/form-data" method="post">
+        {{/if}}     
+        
+		<div id="J_PaymentModuleList">
+        	<div class="play-way-title">
+                <span class="title">支付方式</span>
+                <span class="play-expand-collapse expand-collapse fr pngFix">收起</span>
+             </div>
+             <div class="play-way-content">
+                 <div class="select-currency">
+                    <span id="rmb-currency" class="selected-currency">￥人民币</span>
+                    <span id="dollar-currency">$美元</span>
+                 </div>
+                 <div class="clear">
+                 	<div class="select-way fl">
+                        {{if $data.PaymentsList}}
+                                <dl>
+                                <dt>请选择支付方式</dt>
+                                {{section name=i loop=$data.PaymentsList}}
+                                <dd currency="{{$data.PaymentsList[i].CurrencyString}}" class="pngFix" index="{{$smarty.section.i.index}}"><label><input name="payments_id" type="radio" value="{{$data.PaymentsList[i].id}}"/> <span>{{$data.PaymentsList[i].module}}</span></label></dd>
+                                {{/section}}
+                                </dl>
+                        {{/if}}
+                    </div>
+                    <div class="way-mark-wrap fl">
+                    	{{if $data.PaymentsList}}
+                    	<dl class="desc">
+                        	{{section name=i loop=$data.PaymentsList}}
+                        	<dd  index="{{$smarty.section.i.index}}" class="desc-dd">
+                                <div class="way-title">
+                                    <span class="js-selected-way-text">{{$data.PaymentsList[i].fields.title}}</span>
+                                </div>
+                                
+                                <div class="way-mark-content">
+                                    {{$data.PaymentsList[i].fields.field}}
+                                </div>
+                            </dd>
+                            {{/section}}
+                        </dl>
+                        {{/if}}
+                    </div>
+                  </div> 
+             </div>   
+		</div>
+        {{if $data.PaymentsList}}
+                <input name="orders_id" type="hidden" value="{{$data.orderInfo.orders_id}}" />
+                <input name="money" type="hidden" value="{{$data.orderNeedPay}}" />{{* 美元 *}}
+                <input name="action" type="hidden" value="topay" />
+                <div class="go-play">
+                	<button class="odd-paybtn" type="submit">确认去付款</button>
+                </div>
+            </form>
+        {{/if}}
+        
+        <div class="traveling-btn">
+            <button  type="submit">结伴同游付款</button>
+        </div>
+        
+	</div>
+</div>
+{{if $data.Ot_Js_Code}}
+	{{$data.Ot_Js_Code}}
+{{/if}}

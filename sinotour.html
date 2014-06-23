@@ -1,0 +1,87 @@
+<div id="abouts">
+    {{include file="../www/templates/links_left.html"}}
+    <div class="abouts_right">
+        <div class="aboutsTit">
+            <ul>
+                <li>景点介绍</li>
+            </ul>
+        </div>
+        <div class="aboutsCont ">
+            <div class="about5_1">
+                <div class="imgs"><span><a href="{{$data.niuyuelvyou}}">美国东海岸</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img17.jpg" alt="美国东海岸" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        {{foreach from=$data.sub_cat_name.25 item=sub_cat key=num}}
+                        <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="about5_1 background_f9f9f9">
+                <div class="imgs"><span><a href="{{$data.luoshanjilvyou}}">美国西海岸</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img18.jpg" alt="美国西海岸" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        {{foreach from=$data.sub_cat_name.24 item=sub_cat key=num}}
+                        <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="about5_1">
+                <div class="imgs"><span><a href="{{$data.xiaweiyilvyou}}">夏威夷</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img19.jpg" alt="夏威夷" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        <ul>
+                            {{foreach from=$data.sub_cat_name.33 item=sub_cat key=num}}
+                            <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                            {{/foreach}}
+                        </ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="about5_1 background_f9f9f9">
+                <div class="imgs"><span><a href="{{$data.wengehualvyou}}">加拿大</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img20.jpg" alt="加拿大" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        {{foreach from=$data.sub_cat_name.54 item=sub_cat key=num}}
+                        <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+
+
+            </div>
+            <div class="about5_1">
+                <div class="imgs"><span><a href="{{$data.china}}">中国</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img21.jpg" alt="中国" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        {{foreach from=$data.sub_cat_name.194 item=sub_cat key=num}}
+                        <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+
+            </div>
+            <div class="about5_1 background_f9f9f9">
+                <div class="imgs"><span><a href="{{$data.ouzhoulvyou}}">欧洲</a></span><a href="#"><img
+                        src="/tpl/www/image/nav/abouts_img22.jpg" alt="欧洲" width="200" height="172"/></a></div>
+                <div class="lists">
+                    <ul>
+                        {{foreach from=$data.sub_cat_name.157 item=sub_cat key=num}}
+                        <li><a href="{{$sub_cat.href}}">{{$sub_cat.category_name}}</a></li>
+                        {{/foreach}}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

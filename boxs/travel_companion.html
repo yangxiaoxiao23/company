@@ -1,0 +1,23 @@
+<div class="hmod {{$data.box.travel_companion.class}}">
+	<div class="hmhd noborder">
+    	<!--
+		<ul class="fr hmixbtn">
+			<li><a href="{{$data.box.travel_companion.help_href}}">帮助</a></li>
+			<li><a href="javascript:" onclick="art.dialog.open('{{$data.box.travel_companion.send_href}}',{title:'{{if $data.is_login != 'true'}}快速登录{{else}}发起新结伴{{/if}}',fixed:true,lock:true,top:'50%'});">我要发布</a></li>
+		</ul> -->
+        
+        <h3 class="fl hmtit">结伴同游</h3>
+        
+        <div class="fl hmixbtn">
+        	<div><span class="send pngFix"><a href="javascript:" onclick="art.dialog.open('{{$data.box.travel_companion.send_href}}',{title:'{{if $data.is_login != 'true'}}快速登录{{else}}发起新结伴{{/if}}',fixed:true,lock:true,top:'50%'});">我要发布</a></span></div>
+        	<div><span class="help"><a href="{{$data.box.travel_companion.help_href}}">帮助&gt;&gt;</a></span></div>
+        </div>
+        
+		
+	</div>
+	<ul class="hcomplist">
+		{{foreach from=$data.box.travel_companion.info item=array }}
+		<li><span>{{$array.time|date_format:"%m月%d日"}}</span><a href="{{$array.href}}"  class="pngFix">{{$array.title}}</a></li>
+		{{/foreach}}
+	</ul>
+</div>

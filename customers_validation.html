@@ -1,0 +1,53 @@
+{{if $data.validation_status != 'success'}}
+<table cellspacing="0" cellpadding="0" border="0" bgcolor="#C0E1F6" style="width:740px;margin:10px auto;background:#FFFFFF;">
+	<tbody>
+	
+	{{if $data.validation_status }}
+	<tr>
+		<td height="30" style="width:290px;text-align:right;"><img alt="操作失败!" style="float:right;vertical-align:top;" src="/tpl/www/image/notice.jpg"></td>
+		<td valign="middle" style="width:450px;"><h2 style="font-family:'Microsoft Yahei';" id="valtxt"> &nbsp;{{if $data.validation_status == 'no validation code'}}请输入验证码！{{elseif $data.validation_status == 'failure'}}您输入的验证码错误!{{elseif $data.validation_status == 'verified'}}您的帐号已经激活！不需要重复激话！{{/if}} </h2>
+			<script type="text/javascript">
+                var dom = document.getElementById("valtxt");
+                var domtxt = dom.innerHTML;
+                if(domtxt.indexOf('，') != -1){
+                    var s1 = domtxt.split('，')[0];
+                    var s2 = domtxt.split('，')[1];
+                    var domstyle = '';
+                    domstyle += '<span style="font-size:18px;color:#FF6600;">' + s1 + '</span><br />';
+                    domstyle += '<span style="font-size:14px;color:#1962ca;">' + s2 + '</span>';
+                    dom.innerHTML = domstyle;
+                }
+            </script></td>
+	</tr>
+	{{/if}}
+	<tr>
+		<td><img width="1" height="1" border="0" alt="" src="/tpl/www/image/pixel_trans.gif"></td>
+	</tr>
+	<tr>
+		<td height="30" style="padding:40px 90px 10px 90px;border-left:1px solid #ffe0ab;border-top:1px solid #ffe0ab;border-right:1px solid #ffe0ab;background:#fffeed;" colspan="2"><p style="margin:0;padding:0;line-height:24px;font-size:12px;">您的账号目前还未激活，请登录您的邮箱 {{$data.customers.customers_email_address}}  查收激活信，并及时激活账号。<br>
+				将额外获得{{$data.activation_points}}走四方积分奖励！</p></td>
+	</tr>
+	<tr>
+		<td valign="top" nowrap="" height="30" style="padding:0 90px 40px 90px;font-size:14px;border-left:1px solid #ffe0ab;border-bottom:1px solid #ffe0ab;border-right:1px solid #ffe0ab;background:#fffeed;" colspan="2"><input type="button" style="vertical-align:middle; " onclick="__usitrip.reSendValidationEmail('{{$data.customers_validation}}')" title=" Send Validation Mail " value="再次发送激活邮件">
+			<form id="inputcode" name="inputcode" method="post" action="{{$data.customers_validation}}">
+				<span style="color:#7f7f79;font-size:12px;padding-right:15px;">或输入您的验证码进行激活！</span>
+				<input type="text" maxlength="10" size="18" style="margin-top:2px;border:1px solid #cdd2d6;background:#FFFFFF;padding:1px 5px;font-size:14px;font-family:tahoma;" value="" name="customers_validation_code" onblur="this.value = simplized(this.value);">
+				<input type="submit" style="vertical-align:middle; " title=" Enter Validation Code " value="确认激活">
+				<input type="hidden" value="inputcode" id="action" name="action">
+			</form></td>
+	</tr>
+	</tbody>
+</table>
+{{else}}
+<table border="0" cellpadding="0" cellspacing="0" bgcolor="#ffffff" style="width:740px;margin:10px auto;background:#FFFFFF;">
+
+  <tbody><tr>
+    <td height="30" valign="top" nowrap="" style="width:230px;padding:20px 10px 15px 100px;text-align:right;">
+	<img src="/tpl/www/image/success.jpg" alt="OK">
+	</td>
+    <td valign="middle" style="width:510px;font-size:14px;">
+	<h2>恭喜，您的帐号已成功通过验证！</h2>
+	<a class="btn btnOrange" href="{{$data.user_manage_url}}" style="margin-top:8px;text-align:center;">继 续</a>	</td>
+  </tr>
+</tbody></table>
+{{/if}}

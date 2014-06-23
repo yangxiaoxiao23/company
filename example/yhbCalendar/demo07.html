@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="../../js/yhbCalendar/css/calendar.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../js/yhbCalendar//calendar-debug.js"></script>
+
+    <style>
+        body{margin:0;}
+        #d1{position: absolute;left:10px;bottom: 20px;}
+        #d2{position: absolute;right:10px;bottom: 20px;}
+    </style>
+
+</head>
+
+<body>
+<h3>autoPosition的用法</h3>
+true表示 日期控件在最右边或者最下面显示不全的时候，是否通过自动定位，让其能够显示完整。
+<br/>
+
+<div id="d1">autoPosition:true <input  id="c1"  class="cc" /></div>
+
+<div id="d2">autoPosition:false <input  id="c2"  class="cc" /></div>
+
+<script type="text/javascript">
+
+    var callbackFunction = function(){
+        console.log('选择日期后，则执行的回调方法');
+    };
+
+    var showAfterFun = function(){
+        console.log('showAfter');
+    };
+
+    var hideAfterFun = function(){
+        console.log('hideAfter');
+    };
+
+    var defaultTc = {
+        autoPosition:true
+    };
+    $('#c1').calendar(defaultTc || {});
+
+    defaultTc = {
+        autoPosition:false
+    };
+    $('#c2').calendar(defaultTc || {});
+</script>
+</body>
+</html>

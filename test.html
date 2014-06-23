@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>�ޱ����ĵ�</title>
+<script src="http://www.yhb.com/ext/jquery/jquery-1.4.2.js"" type="text/javascript"></script>
+<script src="http://www.yhb.com/tpl/www/js/usitripjs/usitripjs-code.js" type="text/javascript"></script>
+<script src="http://www.yhb.com/tpl/www/js/usitripjs/util/usitrip.Compare.js"  type="text/javascript"></script>
+
+<style>
+    td {border:1px solid #ccc;width:200px;}
+
+</style>
+
+
+<script>
+	/*
+    $(function(){
+        var o = $('#com-td').find('tr:nth-child(1) > td');
+        var e = $('#com-td').find('tr:nth-child(2) > td');
+    
+        Usitrip.Compare.toCompare(o, e, 'td');
+    
+    });
+    
+    $(function(){
+        var o = $('#com-text').find('tr:nth-child(1) > td');
+        var e = $('#com-text').find('tr:nth-child(2) > td');
+    
+        Usitrip.Compare.toCompare(o, e, 'text');
+    
+    });
+    
+    
+    $(function(){
+        var o = $('#com-space').find('tr:nth-child(1) > td');
+        var e = $('#com-space').find('tr:nth-child(2) > td');
+    
+        Usitrip.Compare.toCompare(o, e, ' ');
+    
+    });
+    
+    $(function(){
+        var o = $('#com-douhao').find('tr:nth-child(1) > td');
+        var e = $('#com-douhao').find('tr:nth-child(2) > td');
+    
+        Usitrip.Compare.toCompare(o, e, ',');
+    
+    }); */
+	
+	$(function(){
+        var o = $('#com-tr1').find('tr');
+        var e = $('#com-tr2').find('tr');
+    
+        Usitrip.Compare.toCompare(o, e, 'tr', ',' ,'first');
+    
+    });
+    
+    
+    
+</script>
+</head>
+
+<body>
+
+    <table id="com-td">
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>abcdu111endjd</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+        
+    </table>
+    <br/>
+    <br/>
+    <br/>
+    <table id="com-text">
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>adcd</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+    </table>
+    
+    
+    <br/>
+    <br/>
+    <br/>
+    <table id="com-space">
+        <tr>
+            <td>abc efg kid</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>adc efg kil</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+    </table>
+    
+    
+    <br/>
+    <br/>
+    <br/>
+    <table id="com-douhao">
+        <tr>
+            <td>abc,efg,kid</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>adc,efg,kil</td>
+            <td>123124</td>
+        </tr>
+        
+        <tr>
+            <td>abcduendjd</td>
+            <td>123124</td>
+        </tr>
+    </table>
+	
+	
+	<br/>
+    <br/>
+    <br/>
+    <table id="com-tr1">
+        <tr>
+            <td class="first">abc</td>
+			<td>ead</td>
+        </tr>
+        
+        <tr>
+            <td class="first">ade,itu</td>
+        </tr>
+        
+        <tr>
+            <td class="first">ade,itu</td>
+        </tr>
+    </table>
+	
+	
+	<br/>
+    <br/>
+    <br/>
+    <table id="com-tr2">
+        <tr>
+            <td class="first">udj</td>
+			<td>abc</td>
+        </tr>
+        
+        <tr>
+            <td class="first">ade,ued</td>
+        </tr>
+    </table>
+    
+</body>
+</html>

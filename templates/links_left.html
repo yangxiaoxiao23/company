@@ -1,0 +1,22 @@
+<script type="text/javascript">
+    jQuery(document).ready(
+            function () {
+                //".abouts_left",".abouts_right"
+                var h1 = jQuery('.abouts_left').outerHeight();
+                var h2 = jQuery('.abouts_right').outerHeight();
+                var mh = Math.max(h1, h2);//取最大的值
+                jQuery('.abouts_left,.abouts_right').height(mh);
+            }
+    );
+</script>
+
+<div id="left" class="abouts_left">
+    <div class="column">
+        <div class="tit"><h2>走四方旅游网</h2></div>
+        <div class="cont">
+            <ul id="faqLink">
+                {{$data.left_nav.li_info}}
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,469 @@
+<div id="private-custom-wrap">
+    <div class="custom-banner">
+        <img src="tpl/www/image/private1.jpg" alt="走四方个性化定制"/>
+    </div>
+    <div class="custom-step">
+        <div class="clear">
+            <div class="title fl">
+                <img src="tpl/www/image/step.jpg"/>
+            </div>
+            <div class="step fl">
+                <div class="clear">
+                    <div class="step1 fl">
+                        <p>1 填写表格</p>
+                        <span>&nbsp;&nbsp;&nbsp;提交定制需求</span>
+                    </div>
+                    <div class="step2 fl">
+                        <p>2 顾问24小时内</p>
+                        <span>&nbsp;&nbsp;&nbsp;与您联系商量行程</span>
+                    </div>
+                    <div class="step3 fl">
+                        <p>3 制定行程</p>
+                        <span>&nbsp;&nbsp;&nbsp;并确定价格</span>
+                    </div>
+                    <div class="step4 fl">
+                        <p>4 开启您的专享之旅</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <p class="tooltip">
+            除了拨打热线电话，您也可以联系我们的顾问VIP专线，随时进行专业咨询。国际总机（60热线）：
+            <span class="phone-number">1-626-898-7800 </span>中国：<span class="phone-number">4006-333-926</span>
+        </p>
+    </div>
+
+    <div id="custom-feature">
+        <div>
+            <div class="feature-block  clear">
+                <div class="seltion fl">
+                    <div class="img-wrap"><a href="{{$data.packet_group}}#form"><img src="tpl/www/image/private3.jpg"/></a>
+                    </div>
+                    <div class="text">
+                        <p class="title">定制流程</p>
+
+                        <p class="disp">旅行不需要来去匆匆，找合适的时间、去自己想去的地方，用心去旅行，才能拥有最完美的旅行体验。走四方为您私人定制旅行计划，实现您的旅行梦想。</p>
+
+                        <div class="action"><a href="{{$data.packet_group}}#form">立即定制</a></div>
+                    </div>
+                    <h2>定制流程</h2>
+                </div>
+                <div class="seltion fr">
+                    <div class="img-wrap"><a href="{{$data.default_391}}"><img src="tpl/www/image/private4.jpg"/></a>
+                    </div>
+                    <div class="text">
+                        <p class="title">私人包车</p>
+
+                        <p class="disp">专属车辆：全美50个州，自由安排行程，多种车型随时随地满足各种出行需求，车辆包含$1000万商业保险！<br/>
+                            专属司导：当地专业的司机及导游，全程无语言障碍。
+                        </p>
+
+                        <div class="action"><a href="{{$data.default_391}}">立即定制</a></div>
+                    </div>
+                    <h2>私人包车</h2>
+                </div>
+            </div>
+
+            <div class="feature-block clear">
+                <div class="seltion fl">
+                    <div class="img-wrap"><a href="{{$data.packet_group}}#form"><img src="tpl/www/image/private5.jpg"/></a>
+                    </div>
+                    <div class="text">
+                        <p class="title">专属导游</p>
+
+                        <p class="disp">资深导游，给您专业的景点讲解、英文翻译、贴心的旅程帮助，让您全程无忧的享受自己的旅途。</p>
+
+                        <div class="action"><a href="{{$data.packet_group}}#form">立即定制</a></div>
+                    </div>
+                    <h2>专属导游</h2>
+                </div>
+                <div class="seltion fr">
+                    <div class="img-wrap"><a href="{{$data.default_345}}"><img src="tpl/www/image/private6.jpg"/></a>
+                    </div>
+                    <div class="text">
+                        <p class="title">门票秀票</p>
+
+                        <p class="disp">各大主题乐园、旅游景点、精彩Show都是不可错过的精彩行程。走四方提供所有门票、秀票，独家特惠，自由选购。
+                        </p>
+
+                        <div class="action"><a href="{{$data.default_345}}">立即定制</a></div>
+                    </div>
+                    <h2>门票 秀票</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="height: 1px;"><a name="form">&nbsp;</a></div>
+    <div class="custom-options">
+        <img src="tpl/www/image/private8.jpg"/>
+    </div>
+</div>
+
+<div class="custom-cnt fix" id="setp1">
+{{$data.form_start}}
+{{$data.hidden_input}}
+<ul class="custom-form">
+<li>
+    <table>
+        <tbody>
+        <tr>
+            <td width="215">&nbsp;</td>
+            <td>
+                <label for="to_city">出游目的地：</label>
+                <textarea name="to_city" cols="20" rows="5" wrap="5" class="iparea"
+                          id="to_city" title="出游目的地必须填写！" placeholder="可填写多个目的地，用,号隔开。如：纽约，洛杉矶" required></textarea>
+
+                <span id="greenok-to_city" class="validation_right"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>出发日期：</label>
+                {{$data.yearListData}}年
+                {{$data.monthListData}}月
+                <em class="equired">*</em>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label form="days">行程天数：</label>
+                <input onblur=" if(this.value&gt;1){jQuery('#visa_part').css('display','');}else{jQuery('#visa_part').css('display','none');}"
+                       id="days" title="请填写行程天数！" style=" width:50px;" type="text" name="days"
+                       class="iptext" required>
+                <span class="iptcheck"> 天</span><em class="equired">*</em>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>出游人数：</label>
+                <span class="checkage">成人<input
+                        onblur=" if(this.value&gt;1){jQuery('#visa_part').css('display','');}else{jQuery('#visa_part').css('display','none');}"
+                        id="homan" title="请填写成人数！" style=" width:50px;" type="text" name="homan"
+                        class="iptext" required></span>
+                <span class="checkage">儿童(0-12岁)<input type="text" name="child" id="child" title="请填写儿童数！"
+                                                       style=" width:50px;height:18px;line-height:18px;background:#fff;padding:0 3px;border:1px solid #7f9db9;"></span>
+                <em class="equired">*</em></td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>酒店标准：</label>
+                <label for="common" class="iptcheck">
+                    <input type="radio" name="hotal_type" value="经济标准酒店" checked="checked" id="common">
+                    经济标准酒店
+                </label>
+                <label for="high" class="iptcheck">
+                    <input type="radio" name="hotal_type" value="豪华商务酒店" id="high">
+                    豪华商务酒店
+                </label>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>酒店房间：</label>
+                <input onblur=" if(this.value&gt;1){jQuery('#visa_part').css('display','');}else{jQuery('#visa_part').css('display','none');}"
+                       id="room_num" title="请填写房间数！" style=" width:50px;" type="text" name="room_num">
+                <span class="iptcheck"> 间</span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>用车类型：</label>
+                                <span class="checkage">
+                                    <label for="7" class="iptcheck">7座
+                                        <input type="radio" name="cart_type" value="7座" checked="checked" id="7">
+                                    </label>
+                                    <label for="15" class="iptcheck">15座平顶VAN
+                                        <input type="radio" name="cart_type" value="15座平级" id="15">
+                                    </label>
+                                    <label for="12" class="iptcheck">12座或15座高顶奔驰
+                                        <input type="radio" name="cart_type" value="12座或15座高级" id="12">
+                                    </label>
+	                                <label for="25" class="iptcheck">25座
+                                        <input type="radio" name="cart_type" value="25座" id="25">
+                                    </label>
+                                    <label for="32" class="iptcheck">32座
+                                        <input type="radio" name="cart_type" value="32座" id="32">
+                                    </label>
+                                    <label for="56" class="iptcheck">56座
+                                        <input type="radio" name="cart_type" value="56座" id="56">
+                                    </label>
+                                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>出发城市：</label>
+                <input type="text" name="departure_city" value="" id="departure_city" title="出发城市必须填写！">
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>结束城市：</label>
+                <input type="text" name="end_city" value="" id="end_city" title="结束城市必须填写！">
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>已有签证：</label>
+                                <span class="checkage">
+                                    <label for="has" class="iptcheck">是
+                                        <input type="radio" name="visa" value="是" checked="checked" id="has">
+                                    </label>
+                                </span>
+                                <span class="checkage">
+                                    <label for="nonhas" class="iptcheck">否
+                                        <input type="radio" name="visa" value="否" id="nonhas">
+                                    </label>
+                                </span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>预算花费：</label>
+                <input type="text" name="budget_dollar" value="" id="budget_dollar" style=" width:50px;">
+                <span class="iptcheck"> 美元</span>
+                <span class="iptcheck"> 或 </span>
+                <input type="text" name="budget_rmb" value="" id="budget_rmb" style=" width:50px;">
+                <span class="iptcheck"> 人民币</span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+</li>
+<li>
+    <table>
+        <tbody>
+        <tr>
+            <td width="215">
+                <h3>我的联系方式：</h3>
+            </td>
+            <td><label for="people">联系人：</label>
+                <input type="text" name="people" value="" class="iptext"
+                       id="people" title="联系人必须填写！" required>
+                <em class="equired">*</em></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <label>&nbsp;</label>
+                <span class="checkage"><label for="man" class="iptcheck">先生 <input type="radio" name="sex" value="先生"
+                                                                                   checked="checked"
+                                                                                   id="man"></label></span>
+                <span class="checkage"><label for="woman" class="iptcheck">女士 <input type="radio" name="sex"
+                                                                                     value="女士"
+                                                                                     id="woman"></label></span>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><label for="telephone">联系电话：</label>
+                <input type="text" name="telephone" class="iptext" id="telephone" title="请输入正确的电话号码！" required>
+                <em class="equired">*</em></td>
+        </tr>
+        <tr>
+            <td width="215">&nbsp;</td>
+            <td><label for="email">常用邮箱：</label>
+                <input type="text" name="email" value="" class="iptext" id="email" title="邮箱地址未填写或者填写不正确！" required>
+                <em class="equired">*</em></td>
+
+        </tr>
+        </tbody>
+    </table>
+</li>
+<li>
+    <table class="other-tab">
+        <tbody>
+        <tr>
+            <td width="215" class="explain-title">
+                <h3>其他需求/特别说明：</h3>
+            </td>
+            <td>
+                <textarea name="explain" cols="30" rows="30" wrap="5" class="explain"
+                          id="explain" required></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><label for="vvcInput" class="iptcheck">验证码：</label>
+                <input type="text" name="visual_verify_code" tabindex="6" onblur="return verifyVVC()" id="vvcInput" class="cont-vcode" required>
+								<span class="cont-vimg">
+									<img id="vcode_img" src="{{$data.vcode_href}}"
+                                         onclick="this.src='{{$data.vcode_href}}?t=' + ((new Date()).getTime()).toString();"
+                                         alt="看不清?点击换一张图。" title="看不清?点击换一张图。"/>
+                                      <span class="check-validate-code">(看不清？<a href="javascript:void(0)" onclick="document.getElementById('vcode_img').src='{{$data.vcode_href}}?t=' + ((new Date()).getTime()).toString();">换一个！</a>)</span>
+                                </span><span id="verify_vvc"></span>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</li>
+<li class="nobd">
+    <input type="submit" class="custom-submit" alt="确认提交" id="send" value="确认提交"/>
+</li>
+</ul>
+</form>
+</div>
+<div class="custom-wrap" id="setp2" style="display:none">
+    <div class="custom-cnt fix"><br/>
+
+        <h2 class="custom-cnt-header">除了拨打热线电话，您也可以联系我们的顾问VIP专线，随时进行专业服务咨询。VIP专线电话：1-626-898-7800 1-225-754-4325</h2>
+
+        <div class="custom-success-wrap">
+            <div class="custom-success-title">
+                <h3>尊敬的 <strong id="user-name" class="user-name">XXX</strong> <span id="show_gender">先生/女士</span>：</h3>
+
+                <p>您的个性旅游需求已经成功提交！如下：</p>
+            </div>
+            <ul class="custom-success-list">
+                <li>出游目的地：<span id="show_to_city"></span></li>
+                <li>行程天数：<span id="to_day"></span></li>
+                <li>出发日期：<span id="year-month"></span></li>
+                <li>出游人数：<span id="show_homan"></span><span id="show_child_div">,儿童</span><span id="show_child"></span></span>
+                </li>
+                <li>酒店标准：<span id="show_hotal"></span></li>
+                <li>酒店房间：<span id="show_room_num"></span>间</li>
+                <li>用车类型：<span id="show_cart"></span></li>
+                <li>出发城市：<span id="show_departure_city"></span></li>
+                <li>结束城市：<span id="show_end_city"></span></li>
+                <li>预算花费：<span id="spend1"><span id="show_budget_dollar"></span>美元</span> <span id="spend2"><span
+                        id="show_budget_rmb"></span>人民币</span></li>
+                <li>已有签证：<span id="show_visa"></span></li>
+                <li>联系电话：<span id="show_tel"></span></li>
+                <li>常用邮箱：<span id="show_mail"></span></li>
+                <li>我还有些特殊需求：<span id="show_msg"></span></li>
+            </ul>
+            <h3 class="custom-success-tips">我们会在24小时内与您联系，请您耐心等候，谢谢！ <a href="{{$data.index}}">&gt;&gt; 返回首页</a></h3>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    $("#contact_us").validate();
+
+    function checkForm(){
+        var result = true;
+        if (result == true) {
+            $('input[type="submit"]').attr('disabled', true);
+            var data = {
+                'to_city': $('#to_city').val(),
+                'year_month': $('#startYear').val() + '-' + $('#startMonth').val(),
+                'to_day': $('#days').val(),
+                'homan_val': '成人 ' + $('#homan').val(),
+                'child_val': $('#child').val(),
+                'hotal_type': $('input[name="hotal_type"]:checked').val(),
+                'room_num': $('#room_num').val(),
+                'cart_type': $('input[name="cart_type"]:checked').val(),
+                'departure_city': $('#departure_city').val(),
+                'end_city': $('#end_city').val(),
+                'visa': $('input[name="visa"]:checked').val(),
+                'budget_dollar': $('#budget_dollar').val(),
+                'budget_rmb': $('#budget_rmb').val(),
+                'user_name': $('#people').val(),
+                'gender': $('input[name="sex"]:checked').val(),
+                'tel': $('#telephone').val(),
+                'mail': $('#email').val(),
+                'content': $('#explain').val(),
+                'visual_verify_code': $('#vvcInput').val()
+            };
+
+           $.post("http://www.chenjie.com/index.php?mod=packet_group&action=send", data, function (rt) {// 赋值并显示成功信息
+                if (parseInt(rt, 10) > 0) {
+                    alert(rt);
+                    $('input[type="submit"]').attr('disabled', false);
+                    return;
+                }
+                $('#user-name').html(data['user_name']);
+                $('#show_to_city').html(data['to_city']);
+                $('#to_day').html(data['to_day']);
+                $('#year-month').html(data['year_month']);
+                $('#show_homan').html(data['homan_val']);
+                $('#show_child').html(data['child_val']);
+                $('#show_hotal').html(data['hotal_type']);
+
+                if ((data['child_val']) < 1) {
+                    $('#show_child_div').hide();
+                }
+                if ((data['budget_dollar']) > 0) {
+                    $('#spend2').hide();
+                }
+                if ((data['budget_rmb']) > 0) {
+                    $('#spend1').hide();
+                }
+                $('#show_room_num').html(data['room_num']);
+                $('#show_cart').html(data['cart_type']);
+                $('#show_departure_city').html(data['departure_city']);
+                $('#show_end_city').html(data['end_city']);
+                $('#show_visa').html(data['visa']);
+                $('#show_budget_dollar').html(data['budget_dollar']);
+                $('#show_budget_rmb').html(data['budget_rmb']);
+                $('#show_gender').html(data['gender']);
+                $('#show_tel').html(data['tel']);
+                $('#show_mail').html(data['mail']);
+                $('#show_msg').html(data['content']);
+                $('#setp1').slideUp();
+                $('#setp2').slideDown();
+            }, 'text');
+        }
+
+        return false;
+    }
+
+    function verifyVVC(){
+       var verified_vvc = false;
+        var vvc = $("#vvcInput").val();
+        var doSubmit = arguments.length > 0;
+        if (vvc == "") {
+            $('#verify_vvc').html('<span class="errorTip">请输入图片中显示的字符，不区分大小写。</span>');
+            $('#verify_vvc').fadeIn("slow");
+            return;
+        }
+
+        $.get("http://www.chenjie.com/index.php?mod=packet_group&action=validate", {"data": vvc, "validator": "vvc"}, function (data) {
+           var result = new validateResult(data);
+            if (result.isSuccess()) {
+                verified_vvc = true;
+                $('#verify_vvc').html('<span class="rightTip">验证码输入正确。</span>');
+                $('#verify_vvc').fadeIn("slow");
+                if (doSubmit)dosubmit();
+            } else {
+                $('#verify_vvc').html('<span class="errorTip">' + result.message + 'error</span>');
+                $('#verify_vvc').fadeIn("slow");
+            }
+        });
+    }
+
+    function validateResult(msg) {
+        this.code = -1;
+        this.message = "null";
+        if (typeof(msg) == "string") {
+            var sepPos = msg.search(/,/);
+            this.code = parseInt(msg.substring(0, sepPos), 10);
+            this.message = msg.substring(sepPos + 1, msg.length);
+        }
+        this.isSuccess = function () {
+            return this.code == 0;
+        }
+        this.toString = function () {
+            return "CODE:" + this.code + " MESSAGE:" + this.message;
+        }
+    }
+</script>

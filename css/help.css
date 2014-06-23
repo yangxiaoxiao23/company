@@ -1,0 +1,38 @@
+@charset "gb2312";
+.help-menu { width:200px; border:1px solid #417CCE; }
+.help-cont { width:740px; }
+.help-menu, .help-cont { margin-top:5px; }
+
+.help-menu-hd, .help-menu-items li a, .help-menu-items li.current a, .help-nav-items li.current, .help-whyus ul li { background:url(../image/help.png); }
+
+.help-menu-hd { height:32px; line-height:30px; background-position:0 0; background-repeat:repeat-x; }
+.help-menu-hd h3 { text-indent:15px; font-size:14px; color:#FFF; }
+.help-menu-items { text-indent:15px; }
+.help-menu-items li { height:34px; background:#DDEDFF; line-height:34px; border-bottom:1px solid #A6C9F1; }
+.help-menu-items li.current { background:#FEF8DA; }
+.help-menu-items li.nobd { border:0 none; }
+.help-menu-items li a,.help-menu-items li.current a { padding-left:8px; color:#00388A; }
+.help-menu-items li a { background-position:-95px -32px; background-repeat:no-repeat; }
+.help-menu-items li.current a { background-position:-95px -48px; background-repeat:no-repeat; }
+.help-menu-items li a:hover { text-decoration:none; font-weight:700; }
+.help-menu-items li.current a { font-weight:700; }
+
+.help-nav { height:30px; line-height:29px; border-bottom:2px solid #F50; }
+.help-nav-items li { float:left; margin-right:5px; padding:0 15px; font-size:14px; font-weight:700; }
+.help-nav-items li.current { background-position:0 -64px; background-repeat:repeat-x; border:1px solid #FF5500; border-bottom:0 none; color:#FFF; }
+
+.help-cont-panel { padding:15px 10px; border:1px solid #CAE4FF; border-top:0 none; }
+.help-about-intro { border-bottom:1px solid #F2F2F2; }
+.help-about-intro img { float:left; margin-top:10px; margin-right:15px; border:1px solid #E3E3E3; }
+.help-about-intro p { line-height:28px; text-indent:2em; padding-bottom:10px; }
+.help-about-intro p a { color:#F60; }
+
+.help-about-why { margin-top:15px; }
+.help-about-why h4 { line-height:30px; text-indent:60px; font-size:22px; font-family:"Microsoft Yahei"; color:#2B59A7; }
+.help-whyus { width:593px; height:225px; margin:10px auto; background:url(../image/aboutwhy.jpg) no-repeat; }
+.help-whyus ul { width:240px; margin-left:20px; padding-top:40px; }
+.help-whyus ul li { width:50%; float:left; background-position:-95px -94px; background-repeat:no-repeat; text-indent:8px; _display:inline; line-height:26px; }
+.help-about-why dl { padding:10px; border-bottom:1px dashed #E3E3E3; }
+.help-about-why dt { padding-bottom:5px; color:#FD7400; font-weight:700; cursor:pointer; }
+.help-about-why dt strong { background:#1C79D3; border-radius:2px; box-shadow:0 1px 3px #666; color:#FFF; padding:2px 5px 4px; }
+.help-about-why dd { line-height:24px; }

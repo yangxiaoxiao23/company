@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+    <link href="../../js/yhbCalendar/css/calendar.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../js/yhbCalendar//calendar-debug.js"></script>
+
+<style>
+body{margin:0;}
+#c7 {position:absolute;right:20px;bottom:20px;}
+.owner {
+    border: 1px solid ;
+    margin: 2px 2px;
+}
+</style>
+
+</head>
+
+<body>
+语言设置：lang:'cn'  <input  id="c1"/>
+语言设置：lang:'en'  <input  id="c2"/><br/>
+
+<div class="owner">
+自定义语言：
+为了不污染calendar.js文件，对语言定义将借用Jquery的extend方法来完成。
+<pre>
+
+1.新增一个语言，比如取名为abc，然后分别定义weeks等其他的属性
+
+$.extend(calendarLang, {
+    'abc':{
+        'weeks':['日','壹','贰','叁','肆','伍','陸'],
+        'months':['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+        'today':'今天',
+        'y':'年',
+        'm':'月',
+        'd':'日',
+        'close':'关闭',
+        'spec':'假日价格',
+        'soldout':'售完',
+        'week_prefix':'周'
+    }
+});
+
+2.在创建日期控件的时候，对语言配置为lang: "abc"
+
+</pre>
+</div>
+<input  id="c3"/>
+
+<script type="text/javascript">
+
+    var defaultTc = {
+        lang: "cn"
+	};
+	$('#c1').calendar(defaultTc || {});
+
+    defaultTc = {
+        lang: "en"
+    };
+    $('#c2').calendar(defaultTc || {});
+
+    defaultTc = {
+        lang: "en"
+    };
+
+    $.extend(calendarLang, {
+        'abc':{
+            'weeks':['日','壹','贰','叁','肆','伍','陸'],
+            'months':['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+            'today':'今天',
+            'y':'年',
+            'm':'月',
+            'd':'日',
+            'close':'关闭',
+            'spec':'假日价格',
+            'soldout':'售完',
+            'week_prefix':'周'
+        }
+    });
+
+    defaultTc = {
+        lang: "abc"
+    };
+    $('#c3').calendar(defaultTc || {});
+
+</script>
+</body>
+</html>

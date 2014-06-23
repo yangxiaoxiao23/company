@@ -1,0 +1,59 @@
+{{* 我申请的结伴同游 *}}
+{{include file='user_left.html'}}
+<div class="right">
+	{{include file='user_companions_public.html'}}
+	<script type="text/javascript">
+	var CompanionCancelApplicationUrl = '{{$data.companionCancelApplicationUrl}}';
+	</script>
+	{{section name=key loop=$data.list}}
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #ffc75f;background:#fffee9;margin-top:5px;">
+	    <tr>
+	      <td style="padding-left:20px;padding-top:12px;line-height:20px;font-weight:700;"><a href="{{$data.list[key].href}}" target="_blank">{{$data.list[key].main.t_companion_title}}</a></td>
+	      <td style="padding-right:20px;padding-top:12px;text-align:right;line-height:20px;">{{$data.list[key].main.add_time|date_format:"%Y-%m-%d"}}发布 回复（{{$data.list[key].main.reply_num}}）查看（{{$data.list[key].main.click_num}}）</td>
+        </tr>
+	    <tr>
+	      <td colspan="2" style="padding-bottom:12px;padding-left:20px;padding-right:20px;line-height:20px;">{{if $data.list[key].main.products}}
+          {{section name=k loop=$data.list[key].main.products}}
+		  旅游线路：<a href="{{$data.list[key].main.products[k].products_href}}" target="_blank">{{$data.list[key].main.products[k].products_name}}</a><br/>
+		 
+		  {{/section}}{{/if}}</td>
+        </tr>
+  </table>
+  
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #ddd;border-top:none;">
+  <tr>
+  	<td colspan="2" style="line-height:34px;height:34px;background:none repeat #f9f9f9;text-indent:15px;border-bottom:1px solid #ddd;"><b>申请状态</b>:{{if $data.list[key].companion_status == 'pending'}}
+	申请已提交，请等待对方处理，若改变主意你可以取消申请。
+	{{elseif $data.list[key].companion_status == 'agree'}}
+	申请已同意。发布者下单后，您即可支付！
+	{{elseif $data.list[key].companion_status == 'refusal'}}
+	对方拒绝结伴
+	{{elseif $data.list[key].companion_status == 'order'}}
+	申请已同意！并且发布者已下单！
+	{{/if}}</td>
+  	<td width="20%" style="line-height:34px;height:34px;background:none repeat #f9f9f9;border-bottom:1px solid #ddd;text-align:right;padding-right:10px;">{{if $data.list[key].companion_status == 'pending'}}
+	<a href="javascript:;" onclick="cancel({{$data.list[key].tca_id}})" style="background:url(http://test.usitrip.com/image/canel.gif) no-repeat;margin-top:3px;width:88px;height:25px;display:block;color:#000;font-weight:700;text-align:center;line-height:25px;float:right;margin-right:5px;">取消</a>
+	{{elseif $data.list[key].companion_status == 'agree'}}
+	改变主意？{{if $data.list[key].send_msg}}<a href="javascript:;" onclick="art.dialog.open('{{$data.list[key].send_msg}}',{title:'发送短消息！',fixed:true,lock:true,top:'50%'})">给他发消息</a>{{/if}}
+	{{elseif $data.list[key].companion_status == 'refusal'}}
+	<a href="javascript:;" onclick="cancel({{$data.list[key].tca_id}})" style="background:url(http://test.usitrip.com/image/canel.gif) no-repeat;margin-top:3px;width:88px;height:25px;display:block;color:#000;font-weight:700;text-align:center;line-height:25px;float:right;margin-right:5px;">取消</a>
+	{{elseif $data.list[key].companion_status == 'order'}}
+	{{* @todo 判断当前结伴同游订单是否已经付款，如果付款完毕，则显示 查看订单 按钮，否则 显示 去支付 *}}
+	<a href="{{$data.list[key].orders_url}}" style="background: url(http://test.usitrip.com/image/jb_fb_all.gif) 0% 0% no-repeat;color:#000;width:88px;height:25px;line-height:25px;display:block;font-size:12px;font-weight:700;margin-top:3px;text-align:center;float:right;margin-right:5px;">去支付</a>
+	{{/if}}</td></tr>
+  <tr>
+  	<td width="9%" valign="top" style="border-bottom:1px solid #ddd;padding:50px 40px;" colspan="3">
+		<table cellpadding="0" cellspacing="0" border="0">
+			<tr>
+				<td class="s_1">已提交</td>
+				<td class="s_2 current">&nbsp;</td>
+				<td class="s_1{{if $data.list[key].companion_status == 'pending'}} gray{{/if}}">{{if $data.list[key].companion_status == 'pending'}}等待同意{{elseif $data.list[key].companion_status == 'refusal'}}已拒绝{{else}}已同意{{/if}}</td>
+				<td class="s_2{{if $data.list[key].companion_status != 'pending' && $data.list[key].companion_status != 'refusal'}} current{{/if}}">&nbsp;</td>
+				<td class="s_1{{if $data.list[key].companion_status != 'order'}} gray{{/if}}">订购产品{{*  @todo付了款之后才是有颜色的，未付款前是灰色的 目前状态不对*}} <br/>付款完毕显示 已订购</td>
+			</tr>
+		</table>
+	</td>
+	</tr>
+  </table>
+  {{/section}}
+</div>

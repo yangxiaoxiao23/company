@@ -1,0 +1,15 @@
+@charset "utf-8";
+/* 用户中心我的订单列表css */
+.uc-odsh { padding:25px 20px; border:1px solid #C5E6F9; border-top:0 none; }
+.uc-odsh .uc-odsh-frm { line-height:26px; vertical-align:middle; }
+.uc-odsh .uc-odsh-frm label { float:left; line-height:26px; }
+.uc-odsh .uc-odsh-slt { padding:2px; border:1px solid #09F; }
+.uc-odsh .uc-odsh-ipt { padding:2px; width:200px; height:20px; margin-left:10px; line-height:20px; border:1px solid #CCC; }
+.uc-odsh .uc-odsh-ipt:focus { border-color:#F60; }
+.uc-odsh .uc-odsh-btn { display:inline-block; *display:inline; *zoom:1; height:26px; margin-left:15px; _margin-top:1px; line-height:26px; padding-left:10px; background-position:0 -45px; background-repeat:no-repeat; color:#003686; }
+.uc-odsh .uc-odsh-btn span { display:inline-block; *display:inline; *zoom:1; height:26px; line-height:26px; cursor:pointer; padding-right:10px; background-position:right -71px; background-repeat:no-repeat; }
+
+.uc-odpages { padding:10px 0; }
+.uc-odpages span.current, .uc-odpages a { display:inline-block; *display:inline; *zoom:1; margin-right:5px; padding:2px 8px; border:1px solid #CCC; border-radius:2px; color:#4D4D4D; box-shadow:inset 0 1px 2px #eee, 0 1px 3px #DDD; }
+.uc-odpages a:hover { text-decoration:none; }
+.uc-odpages span.current { border-color:#F60; background:#FFC; font-weight:700; }

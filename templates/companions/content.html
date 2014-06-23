@@ -1,0 +1,97 @@
+<!-- 新版结伴同游回复 -->
+	<div class="partner_message">
+		<div class="partner_target_box cfix">
+			<div class="partner_target_left">
+				<div class="partner_target_head">
+					<h3>结伴发起人</h3>
+					<span class="head_box head_icon"><img {{$data.main.customers.customers_face_wh}} alt="" src="{{$data.main.customers.customers_face}}" /></span><span class="head_box head_name"><label class="p_name">{{$data.main.customers_name}}</label><label {{if $data.main.customers.is_online != 1 }}class="s_off">离线{{else }}class="s_on">在线{{/if}}</label></span>
+					<p>积分：{{$data.main.customers.customers_shopping_points}}</p>
+					<p>注册时间：{{$data.main.customers.reg_datetime}}</p>
+                    {{if $data.main.application_click_type != 'is_self' && $data.main.application_click_type != 'not_login'}}
+                    <p><a onclick="art.dialog.open('{{$data.main.send_sms}}',{title:'发送短消息！',fixed:true,lock:true,top:'50%'})" href="javascript:;">给他发消息</a><a onclick="art.close()" id="closeart"></a></p>
+                    {{/if}}
+				</div>
+				<p class="partner_already">已经{{$data.main.application_num}}人申请结伴</p>
+				<p class="partner_btn">{{if !isset($data.main.application_click_type)}}<a class="btn_jb popup" onclick="art.dialog.open('{{$data.application_url}}',{title:'申请结伴',fixed:true,lock:true,top:'50%'});" href="javascript:;">申请结伴</a>{{else}}<a class="btn_jb" href="javascript:showDialog('{{$data.main.application_click_type}}');">申请结伴</a>{{/if}}<a onclick="location.href = location.href.split('#')[0] + '#PartnerReply_box'" class="btn_re" href="javascript:;">回复</a></</p>
+			</div>
+			<div class="partner_target_right">
+				<h1>{{$data.main.t_companion_title}}</h1>
+                <p><b>发表时间</b>：{{$data.main.add_time}}</p>
+                {{if $data.main.bbs_type == 1}}{{section name=key loop=$data.main.products}}<p><b>旅游线路{{$smarty.section.key.index+1}}</b>：
+                <a href="{{$data.main.products[key].products_href}}" target="_blank">{{$data.main.products[key].products_name}}</a></p>{{/section}}{{/if}}
+                <p><b>途径景点</b>：
+                {{section name=k loop=$data.main.attractions}}
+				{{$data.main.attractions[k].tca_name}}
+				{{/section}}</p>
+                {{if $data.main.bbs_type != 1}}<p><b>行程计划</b>：{{$data.main.t_companion_content}}</p>{{/if}}
+                <p><b>出行时间</b>：{{$data.main.hope_departure_date}}</p>
+                <p><b>现有人数</b>：{{if $data.people_groups == 1}}男性{{$data.main.now_people_man}} 女性{{$data.main.now_people_woman}} 小孩{{$data.main.now_people_child}}{{else}}{{$data.main.now_people_total}}人{{/if}}</p>
+                <p><b>期待结伴</b>：{{if $data.people_groups == 1}}男性{{$data.main.hope_people_man}} 女性{{$data.main.hope_people_woman}} 小孩{{$data.main.hope_people_child}}{{else}} {{$data.main.hope_people_total}}人{{/if}}</p>
+                {{if $data.main.open_ended == '1'}}<p class="jb_more">欢迎更多人申请结伴</p>{{/if}}
+                <p><b>我的基本信息</b>：</p>
+                <p><b>姓名</b>：{{$data.main.customers_name}}</p>
+                <p><b>性别</b>：{{$data.main.t_gender}}</p>
+                <p><b>个人介绍</b>：{{$data.main.personal_introduction}}</p>
+			</div>
+		</div>
+        
+        <div class="partner_reply_list">
+            <h2>网友回复</h2>
+            <ul>
+            	{{section name=key loop=$data.list}}
+                <li class="{{if $smarty.section.key.index==0}}one {{/if}}cfix">
+                	<a name="r{{$data.list[key].t_c_reply_id}}"></a>
+                    <div class="partner_target_head">
+                        <span class="head_box head_icon"><img {{$data.list[key].customers_info.customers_face_wh}} alt="{{$data.list[key].customers_name}}" src="{{$data.list[key].customers_info.customers_face}}" /></span><span class="head_box head_name"><label class="p_name">{{$data.list[key].customers_name}}</label>{{if $data.list[key].customers_info.is_online == 1 }}<label class="s_on">在线</label>{{else}}<label class="s_off">离线</label>{{/if}}</span>
+                        <p>积分：{{$data.list[key].customers_info.customers_shopping_points}}</p>
+                        <p>注册时间：{{$data.list[key].customers_info.reg_datetime}}</p>
+                    </div>
+                    <div class="reply_options">
+                    	<p class="reply_time cfix">发表于：{{$data.list[key].add_time}}<b>{{$data.list[key].index_number}}楼</b></p>
+                        <p class="reply_cont"><span>{{$data.list[key].t_c_reply_content|nl2br}}</span>
+                        {{if $data.list[key].can_edit == true}}
+                        <span style="float:right;position:relative;top:0;right:5px;cursor:pointer;" onclick="editReply(this)">编辑</span><textarea name="" id="" style="display:none">{{$data.list[key].t_c_reply_content}}</textarea>
+                        {{/if}}
+                        </p>
+                    </div>
+                </li>
+                {{/section}}
+            </ul>
+            <div>{{section name=key loop=$data.pagebar.pages_list}}
+            {{if $data.pagebar.pages_list[key].selected == 1}}
+            <a>{{$data.pagebar.pages_list[key].text}}</a>
+            {{else}}
+            <a href="{{$data.pagebar.pages_list[key].href}}">{{$data.pagebar.pages_list[key].text}}</a>
+            {{/if}}
+            {{/section}}
+            </div>
+        </div>
+        <iframe id="PartnerReply_box" frameborder="0" width="100%" scrolling="no" src="{{$data.replay_url}}"></iframe>
+        <script type="text/javascript">
+		function editReply(obj){
+			$(obj).next().css({'display':'block','width':600,'height':100});
+			$(obj).prev().css('display','none');
+			$(obj).parent().append('<input type="button" value="保存"/><input type="button" value="取消"/>');
+		}
+			function showDialog($tag){
+				switch($tag) {
+				case 'is_application':
+					alert('您已经申请该结伴，请勿重复申请！');
+					break;
+				case 'is_full':
+					alert('名额已满！不能申请了，看看别的吧。');
+					break;
+				case 'has_expired':
+					alert('已过期！');
+					break;
+				case 'is_self':
+					alert('你是楼主，不用申请。');
+					break;
+				case 'not_login':
+						art.dialog.open('{{$data.dialog_href}}',{title:'快速登录',fixed:true,lock:true,top:'50%'});
+					break;
+				}
+			}
+		</script>
+	</div>
+<!-- 新版结伴同游回复 end -->

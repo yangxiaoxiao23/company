@@ -1,0 +1,70 @@
+{{* 边栏搜索框 *}}
+{{* 已经弃用
+<div class="usdest">
+	<form method="get" action="{{$data.box.search.form_action}}">
+	<input name="mod" type="hidden" value="advanced_search_result" />
+	<div class="usdestSearch">
+	<div class="usdestSearchead">
+		<h3>旅游度假</h3>
+	</div>
+	<table class="usdestSearchTable">
+		<tbody>
+			<tr>
+				<td class="labeltd"><label for="startPlace">出发地：</label></td>
+				<td class="rel"><input type="text" placeholder="输入出发地点" class="destext" id="startPlace"></td>
+			</tr>
+			<tr>
+				<td class="labeltd"><label for="endPlace">目的地：</label></td>
+				<td class="rel"><input type="text" placeholder="输入出目的地地点" class="destext" id="endPlace"></td>
+			</tr>
+			<tr>
+				<td class="labeltd"><label for="destDays">天&nbsp;&nbsp;&nbsp;数：</label></td>
+				<td>
+					{{$data.box.search.daysDownMenu}}
+				</td>
+			</tr>
+			<tr>
+				<td class="labeltd"><label for="destKwd">出发日期：</label></td>
+				<td class="rel"><input name="start_date" type="text" placeholder="选择您想要出团的日期" class="destext" id="startDate" value="{{$data.box.search.start_date}}"></td>
+			</tr>
+			<tr>
+				<td class="labeltd"><label for="destKwd">关键字：</label></td>
+				<td class="rel"><input name="w" type="text" placeholder="输入酒店部分或全部名称" class="destext" id="destKwd" value="{{$data.box.search.w}}"></td>
+			</tr>
+			<tr>
+				<td class="labeltd">&nbsp;</td>
+				<td>
+					<input type="submit" value="搜索" class="fl destsbtn oh">
+					<div class="desthelp">
+						<a href="">帮助</a>
+						<div class="desthelpTips hide">
+							<i class="tiprole destips_role"></i>
+							<div class="desthelpCnt">
+								<p>1.在出发地中选好出发城市,可再选目的地,可以准确的找到你想要的线路.</p>
+								<p>2.也可只选出发城市,搜索出来的是以该城市出发的所有线路.</p>
+								<p>3.也可只选目的地,搜索出来的是到达和途径此目的地的所有线路.同时在搜索结果里还可以按出发城市/时间等筛选.</p>
+							</div>
+						</div>
+					</div>
+				</td>
+			</tr>
+		
+		<tr>
+			<td colspan="2">
+				<dl class="destlist">
+					<dt>推荐：</dt>
+					<dd>
+						<a href="#">纽约</a>
+						<a href="#">洛杉矶</a>
+						<a href="#">旧金山</a>
+						<a href="#">黄石公园</a>
+					</dd>
+				</dl>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	</div>
+	</form>
+</div>
+*}}

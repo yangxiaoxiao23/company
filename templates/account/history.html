@@ -1,0 +1,103 @@
+{{include file='user_left.html'}}
+
+<div class="fr ucont">
+	<ul class="ucm-tab">
+		<li class="current"><a>我的订单</a></li>
+	</ul>
+	<div class="uc-odsh uifix">
+		<form id="J_SearchForm" action="{{$data.search.action}}" method="get" enctype="application/x-www-form-urlencoded" target="_self" class="fl uc-odsh-frm">
+			<label>订单查询：</label>
+			{{$data.search.search_type}}
+			{{$data.search.search_value}}
+			<input name="mod" type="hidden" value="account_history" />
+		</form>
+		<a href="javascript:void(0);" onclick="$('#J_SearchForm').submit();" class="uc-odsh-btn"><span>搜 索</span></a>
+		<a href="{{$data.search.clear}}"><span>清除条件</span></a>
+</div>
+	{{if $data.orders_list}}
+	<div class="uc-ocont">
+		<!--循环开始{-->
+		{{foreach from=$data.orders_list item=I}}
+		<div class="uc-lodtb">
+			<div class="uc-lodtb-tit">
+			<h3>
+			订单编号：<span class="uc-lodtb-nub">{{$I.orders_id}}</span>  下单时间：{{$I.date_purchased|date_format:'%Y年%m月%d日'}}
+			{{if $I.is_companion_order == true}}
+				<span class="uc-lodtb-nub">结伴同游</span>
+			{{/if}}
+			</h3>
+			</div>
+			<table class="uc-loadtb-table">
+				<thead>
+					<tr>
+						<th nowrap="nowrap">产品名称</th>
+						<th nowrap="nowrap">订购人姓名</th>
+						<th nowrap="nowrap">订单金额</th>
+						<th nowrap="nowrap">支付状态</th>
+						<th nowrap="nowrap">状态</th>
+						<th nowrap="nowrap">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+						{{foreach from=$I.ordersProducts item=pr}}
+						<div align="left">
+						<a target="_blank" href="{{$pr.href}}">{{$pr.products_name}} [{{$pr.products_model}}]</a>
+						</div>
+						{{/foreach}}
+						</td>
+						<td>{{$I.customers_name}}</td>
+						<td>{{$I.order_total}}</td>
+						<td>{{$I.paymentStatus}}</td>
+						<td>{{$I.orders_status_name_to_user}}</td>
+						<td>{{if $I.is_pay}}
+							<a href="{{$I.orders_detail_href}}">订单详情</a>
+							{{else}}
+							<a href="{{$I.to_pay_href}}">去付款</a>
+							{{/if}}
+							<br />
+							{{if $I.flight_href}}
+							<a href="{{$I.flight_href}}" class="uc-edit-order"><span>填写航班信息</span></a>
+							{{/if}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{{/foreach}}
+		<!--循环结束}-->
+		
+		<!--翻页{-->
+		{{if $data.orders_page}}
+		<div class="uc-odpages">
+			<div class="fl uifix">
+				{{if $data.orders_page.first_href}}
+					<a href="{{$data.orders_page.first_href}}">第一页</a>
+				{{/if}}
+				{{if $data.orders_page.previous_href}}
+					<a href="{{$data.orders_page.previous_href}}">上一页</a>
+				{{/if}}				
+				{{foreach from=$data.orders_page.pages_list item=pa}}
+					{{if $pa.href}}
+						<a href="{{$pa.href}}">{{$pa.text}}</a>
+					{{elseif $pa.text}}
+						<span class="current">{{$pa.text}}</span>
+					{{else}}
+						<span class="current">没有页码文字</span>
+					{{/if}}
+				{{/foreach}}				
+				{{if $data.orders_page.next_href}}	
+					<a href="{{$data.orders_page.next_href}}">下一页</a>
+				{{/if}}
+				{{if $data.orders_page.last_href}}	
+					<a href="{{$data.orders_page.last_href}}">最后一页</a>
+				{{/if}}
+				
+			</div>
+		</div>
+		{{/if}}
+		<!--翻页}-->
+	</div>
+	{{/if}}
+</div>

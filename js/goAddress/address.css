@@ -1,0 +1,21 @@
+
+
+/* �ϳ���ַ������ͨ����ʽ */
+.addr_common_flow{ position:absolute; display:none; width:450px; background:#fff; border:solid 3px #feae11; box-shadow:2px 2px 3px #ccc;}
+.addr_common_flow dt{ height:24px; line-height:24px; padding-left:10px; font-weight:bold; background:#ffedcc; border-bottom:solid 1px #ccc;}
+.addr_common_flow dt a.bc_cancel{ position:absolute; top:0; right:0; display:block; height:24px; line-height:24px; width:24px; text-align:center; font-family:"������"; font-weight:bold; font-size:20px; text-shadow:1px 1px 1px #ccc; color:#feae11;}
+.addr_common_flow dt a.bc_cancel:hover{ text-decoration:none; color:#e37124; background:#f5d9a6;}
+.addr_common_flow dl dd{ height:24px; line-height:24px; padding-left:5px; border-bottom:solid 1px #ccc; overflow:auto;font-size:12px;}
+.addr_common_flow dl dd.oncur,.addr_common_flow dl dd.hover{ background:#ebebeb; }
+.addr_common_flow .bc_list dl.abso{}
+.addr_common_flow dl dd label input{ margin-right:5px; vertical-align:middle;}
+.addr_common_flow dl dd label{ display:block; cursor:pointer;}
+.addr_common_flow dl dd label.disabled span{ color:#ccc;}
+/*.addr_common_flow .bc_detail .bc_dlist { display:none;}*/
+.addr_common_flow .bc_detail .bc_dlist .bc_de_title label{ display:inline-block; padding-right:10px;}
+.addr_common_flow .bc_detail .bc_dlist dl dd span.addr_time{ padding-right:20px;}
+.addr_common_flow dl dd label span{  float:none; width:auto;}
+.addr_common_flow p.h_list_btns{ text-align:center; padding:5px 0 10px 0;}
+.addr_common_flow p.h_list_btns a{display:inline-block; color:#fff; width:60px; line-height:18px; height:20px; padding-top:1px; text-align:center; font-size:12px; font-weight:bold;}
+.addr_common_flow p.h_list_btns a.rbtn_ok{ background:url(/tpl/www/js/goAddress/rooms_btn.png) left top no-repeat; margin-right:10px;}
+.addr_common_flow p.h_list_btns a.rbtn_cancel{ background:url(/tpl/www/js/goAddress/rooms_btn.png) right top no-repeat;}

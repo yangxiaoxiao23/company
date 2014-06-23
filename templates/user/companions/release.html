@@ -1,0 +1,78 @@
+{{include file='user_left.html'}}
+<div class="right">
+	{{include file='user_companions_public.html'}}
+    <script type="text/javascript">
+	var setApplicationStatusUrl = '{{$data.setApplicationStatusUrl}}';
+	var setCompanionsToExpireUrl = '{{$data.setCompanionsToExpireUrl}}';
+	var products = [];
+	</script>
+    {{section name=key loop=$data.list}}
+	<script type="text/javascript">
+	products[{{$data.list[key].t_companion_id}}] = [];
+	</script>
+	  <table width="100%" border="0" cellspacing="0" cellpadding="0" style="border:1px solid #ffc75f;background:#fffee9;margin-top:5px;">
+	    <tr>
+	      <td style="padding-left:20px;padding-top:12px;line-height:20px;font-weight:700;"><a href="{{$data.list[key].href}}" target="_blank">{{$data.list[key].t_companion_title}}</a></td>
+	      <td style="padding-right:20px;padding-top:12px;text-align:right;line-height:20px;">{{$data.list[key].add_time|date_format:"%Y-%m-%d"}}发布 回复（{{$data.list[key].reply_num}}）查看（{{$data.list[key].click_num}}）</td>
+        </tr>
+	    <tr>
+	      <td colspan="2" style="padding-bottom:12px;padding-left:20px;padding-right:20px;line-height:20px;">{{if $data.list[key].products}}
+          {{section name=k loop=$data.list[key].products}}
+		  旅游线路：<a href="{{$data.list[key].products[k].products_href}}" target="_blank">{{$data.list[key].products[k].products_name}}</a><br/>
+		  <script type="text/javascript">
+		  products[{{$data.list[key].t_companion_id}}][{{$smarty.section.k.index}}] = [];
+		  products[{{$data.list[key].t_companion_id}}][{{$smarty.section.k.index}}]['href'] = '{{$data.list[key].products[k].products_href}}';
+		  products[{{$data.list[key].t_companion_id}}][{{$smarty.section.k.index}}]['name'] = '{{$data.list[key].products[k].products_name}}';
+		  </script>
+		  {{/section}}{{/if}}</td>
+        </tr>
+  </table>
+  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border:1px solid #ddd;border-top:none;">
+  <tr><td colspan="2" style="line-height:34px;height:34px;background:none repeat #f9f9f9;text-indent:15px;border-bottom:1px solid #ddd;"><b>申请人</b>:有({{$data.list[key].applicationTotal}})人申请结伴，已经同意({{$data.list[key].applicationAgreeTotal}})人</td><td width="20%" style="line-height:34px;height:34px;background:none repeat #f9f9f9;border-bottom:1px solid #ddd;text-align:right;padding-right:10px;"><a href="javascript:;" onclick="setToExpire({{$data.list[key].t_companion_id}},{{if $data.list[key].has_expired == 0}}1{{else}}0{{/if}})">{{if $data.list[key].has_expired == 0}}设为过期贴{{else}}重新开启结伴{{/if}}</a></td></tr>
+  {{section name=k loop=$data.list[key].application}}
+  <tr>
+  	<td width="9%" valign="top" style="padding:8px;border-bottom:1px solid #ddd;"><img src="http://test.usitrip.com/image/tx_b_s.gif" width="76" height="76"/></td>
+	<td width="71%" style="line-height:21px;padding:8px 0;border-bottom:1px solid #ddd;">姓名：{{$data.list[key].application[k].tca_cn_name}} 性别：{{$data.list[key].application[k].sex}}<br/>
+	邮箱：{{$data.list[key].application[k].tca_email_address}}<br/>
+	电话：{{$data.list[key].application[k].tca_phone}}<br/>
+	人数：{{if $data.people_groups == 1}}男性{{$data.list[key].application[k].tca_people_man}} 女性{{$data.list[key].application[k].tca_people_woman}} 小孩{{$data.list[key].application[k].tca_people_child}}{{else}}{{$data.list[key].application[k].people_total}}人{{/if}}<br/>
+	备注:{{$data.list[key].application[k].tca_content}}</td>
+	<td align="center" style="border-bottom:1px solid #ddd;">
+	{{if $data.list[key].application[k].tca_verify_status == 0}}
+	{{if $data.list[key].orders_id == 0}}
+	<a style="background:url(http://test.usitrip.com/image/nav/ui-yellow-btn.gif) no-repeat scroll 0 0 rgba(0,0,0,0);color:#ff6f00;display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;" onclick="setApplicationStatu({{$data.list[key].application[k].tca_id}},1)" href="javascript:;">我同意</a>
+  <a style="background:url(http://test.usitrip.com/image/nav/ui-yellow-btn.gif) no-repeat scroll 0 0 rgba(0,0,0,0);color:#ff6f00;display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;" onclick="setApplicationStatu({{$data.list[key].application[k].tca_id}},2)" href="javascript:;">不同意</a>
+  {{/if}}
+  {{elseif $data.list[key].application[k].tca_verify_status == 1}}
+  <a style="display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;">已同意</a>
+  {{if $data.list[key].orders_id == 0}}
+  <a style="background:url(http://test.usitrip.com/image/nav/ui-yellow-btn.gif) no-repeat scroll 0 0 rgba(0,0,0,0);color:#ff6f00;display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;" onclick="setApplicationStatu({{$data.list[key].application[k].tca_id}},3,'agree')" href="javascript:;">取消</a>
+  {{/if}}
+  {{else}}
+  <a style="display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;">已拒绝</a>
+  {{if $data.list[key].orders_id == 0}}
+  <a style="background:url(http://test.usitrip.com/image/nav/ui-yellow-btn.gif) no-repeat scroll 0 0 rgba(0,0,0,0);color:#ff6f00;display:block;height:27px;width:96px;text-align:center;line-height:27px;margin-bottom:3px;" onclick="setApplicationStatu({{$data.list[key].application[k].tca_id}},3,'refuse')" href="javascript:;">取消</a>
+  {{/if}}
+  {{/if}}
+  <a href="javascript:;" style="background:url(http://test.usitrip.com/image/nav/ui-yellow-btn.gif) no-repeat scroll 0 0 rgba(0,0,0,0);color:#ff6f00;display:block;height:27px;width:96px;text-align:center;line-height:27px;" onclick="art.dialog.open('{{$data.list[key].application[k].send_msg}}',{title:'发送短消息！',fixed:true,lock:true,top:'50%'})">发送消息给对方</a></td></tr>
+  {{/section}}
+  <tr>
+  <td colspan="3" style="text-align:right;padding:8px 15px;line-height:30px;height:30px;">
+  {{if $data.list[key].orders_id == 0}}
+  订购时，房间请选择“结伴拼房”<a style="background:url(http://test.usitrip.com/image/nav/ui-order-buy-btn.gif) no-repeat;border:0;color:#802c15;display:inline-block;font-weight:700;height:30px;margin-left:10px;text-align:center;width:97px;cursor:pointer;margin-right:20px;" onclick="toOrder({{$data.list[key].t_companion_id}})">去订购</a>
+  {{else}}
+  {{* @todo 这里还未做检测当前用户是否已经付了这个结伴订单的钱  如果付了 就显示 查看订单 否则显示 已下单，去支付*}}
+  <a href="{{$data.list[key].orders_url}}">已下单，去支付</a>
+  {{/if}}
+  </td>
+  </tr>
+  </table>
+  {{/section}}
+    <div>{{section name=key loop=$data.pages.pages_list}}
+	{{if $data.pages.pages_list[key].selected }}
+	<a>{{$data.pages.pages_list[key].text}}</a>
+	{{else}}
+	<a href="{{$data.pages.pages_list[key].href}}">{{$data.pages.pages_list[key].text}}</a>
+	{{/if}}
+	{{/section}}</div>
+</div>

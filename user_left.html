@@ -1,0 +1,130 @@
+<div class="fl ucnav">
+	<div class="ucnav-hd">
+		<h3>用户中心</h3>
+	</div>
+	<dl class="ucmenu">
+		{{if $data.menu.order_manage}}
+		<dt>
+			<h4 class="ucm-hd">订单管理</h4>
+		</dt>
+		<dd>
+			<ul class="ucm-items">
+				{{if $data.menu.order_manage.my_order.href}}
+				<li class="{{if $data.menu.order_manage.my_order.current}}current{{/if}}"><a href="{{$data.menu.order_manage.my_order.href}}">我的订单</a></li>
+				{{/if}}
+				{{if $data.menu.order_manage.my_companion.href}}
+				<li class="{{if $data.menu.order_manage.my_companion.current}}current{{/if}}"><a href="{{$data.menu.order_manage.my_companion.href}}">结伴同游订单</a></li>
+				{{/if}}
+				{{if $data.menu.order_manage.my_ticket.href}}
+				<li class="{{if $data.menu.order_manage.my_ticket.current}}current{{/if}}"><a href="{{$data.menu.order_manage.my_ticket.href}}">我的电子参团凭证</a></li>
+				{{/if}}
+				{{if $data.menu.order_manage.my_visa_order.href}}
+				<li class="{{if $data.menu.order_manage.my_visa_order.current}}current{{/if}}"><a href="{{$data.menu.order_manage.my_visa_order.href}}">签证订单</a></li>
+				{{/if}}
+			</ul>
+		</dd>
+		{{/if}}
+		{{if $data.menu.companion}}
+		<dt>
+			<h4 class="ucm-hd">我的结伴同游</h4>
+		</dt>
+		<dd>
+			<ul class="ucm-items">
+				{{if $data.menu.companion.my_message.href}}
+				<li class="{{if $data.menu.companion.my_message.current }}current{{/if}}"><a href="{{$data.menu.companion.my_message.href}}">我收到的信息</a></li>
+				{{/if}}
+				{{if $data.menu.companion.my_release.href}}
+				<li class="{{if $data.menu.companion.my_release.current }}current{{/if}}"><a href="{{$data.menu.companion.my_release.href}}">我发起的结伴同游</a></li>
+				{{/if}}
+				{{if $data.menu.companion.my_application.href}}
+				<li class="{{if $data.menu.companion.my_application.current }}current{{/if}}"><a href="{{$data.menu.companion.my_application.href}}">我申请的结伴同游</a></li>
+				{{/if}}
+				{{if $data.menu.companion.my_invite.href}}
+				<li class="{{if $data.menu.companion.my_invite.current }}current{{/if}}"><a href="{{$data.menu.companion.my_invite.href}}">我发起的结伴邀请</a></li>
+				{{/if}}
+				{{if $data.menu.companion.my_receive_invite.href}}
+				<li class="{{if $data.menu.companion.my_receive_invite.current }}current{{/if}}"><a href="{{$data.menu.companion.my_receive_invite.href}}">我发起的结伴邀请</a></li>
+				{{/if}}
+				{{if $data.menu.companion.my_reply.href}}
+				<li class="{{if $data.menu.companion.my_reply.current }}current{{/if}}"><a href="{{$data.menu.companion.my_reply.href}}">我回复的结伴同游</a></li>
+				{{/if}}
+			</ul>
+		</dd>
+		{{/if}}
+		{{if $data.menu.user_info}}
+		<dt>
+			<h4 class="ucm-hd">个人信息管理</h4>
+		</dt>
+		<dd>
+			<ul class="ucm-items">
+				{{if $data.menu.user_info.my_info.href}}
+				<li class="{{if $data.menu.user_info.my_info.current }}current{{/if}}"><a href="{{$data.menu.user_info.my_info.href}}">基本信息</a></li>
+				{{/if}}
+				{{if $data.menu.user_info.my_password.href}}
+				<li class="{{if $data.menu.user_info.my_password.current }}current{{/if}}"><a href="{{$data.menu.user_info.my_password.href}}">修改密码</a></li>
+				{{/if}}
+				{{if $data.menu.user_info.my_favorites.href}}
+				<li class="{{if $data.menu.user_info.my_favorites.current }}current{{/if}}"><a href="{{$data.menu.user_info.my_favorites.href}}">我的收藏夹</a></li>
+				{{/if}}
+				{{if $data.menu.user_info.my_coupon.href}}
+				<li class="{{if $data.menu.user_info.my_coupon.current }}current{{/if}}"><a href="{{$data.menu.user_info.my_coupon.href}}">我的优惠券</a></li>
+				{{/if}}
+			</ul>
+		</dd>
+		{{/if}}
+		{{if $data.menu.integral}}
+		<dt>
+			<h4 class="ucm-hd">我的积分</h4>
+		</dt>
+		<dd>
+			<ul class="ucm-items">
+				{{if $data.menu.integral.summary.href}}
+				<li class="{{if $data.menu.integral.summary.current }}current{{/if}}"><a href="{{$data.menu.integral.summary.href}}">我的积分概要</a></li>
+				{{/if}}
+				{{if $data.menu.integral.details.href}}
+				<li class="{{if $data.menu.integral.details.current }}current{{/if}}"><a href="{{$data.menu.integral.details.href}}">积分记录明细</a></li>
+				{{/if}}
+				{{if $data.menu.integral.rule.href}}
+				<li class="{{if $data.menu.integral.rule.current }}current{{/if}}"><a href="{{$data.menu.integral.rule.href}}" target="_blank">积分规则</a></li>
+				{{/if}}
+				{{if $data.menu.integral.faq.href}}
+				<li class="{{if $data.menu.integral.faq.current }}current{{/if}}"><a href="{{$data.menu.integral.faq.href}}" target="_blank">积分FAQ</a></li>
+				{{/if}}
+			</ul>
+		</dd>
+		{{/if}}
+		{{if $data.menu.alliance}}
+		<dt>
+			<h4 class="ucm-hd">网站联盟</h4>
+		</dt>
+		<dd>
+			<ul class="ucm-items">
+				{{if $data.menu.alliance.info.href}}
+				<li class="{{if $data.menu.alliance.info.current }}current{{/if}}"><a href="{{$data.menu.alliance.info.href}}">联盟帐号信息</a></li>
+				{{/if}}
+				{{if $data.menu.alliance.code.href}}
+				<li class="{{if $data.menu.alliance.code.current }}current{{/if}}"><a href="{{$data.menu.alliance.code.href}}">生成广告代码</a></li>
+				{{/if}}
+				{{if $data.menu.alliance.clearing.href}}
+				<li class="{{if $data.menu.alliance.clearing.current }}current{{/if}}"><a href="{{$data.menu.alliance.clearing.href}}">结算中心</a></li>
+				{{/if}}
+				{{if $data.menu.alliance.faq.href}}
+				<li class="{{if $data.menu.alliance.faq.current }}current{{/if}}"><a href="{{$data.menu.alliance.faq.href}}">联盟常见问题</a></li>
+				{{/if}}
+			</ul>
+		</dd>
+		{{/if}}
+	</dl>
+	<script type="text/javascript">
+$(document).ready(function(){
+	$('dl.ucmenu dt').toggle(function(){
+		$(this).next('dd').slideUp(300);
+		$(this).find('h4').addClass('up');	
+	},function(){
+		$(this).next('dd').slideDown(200);	
+		$(this).find('h4').removeClass('up');
+	});	
+});
+</script> 
+</div>
+

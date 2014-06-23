@@ -1,0 +1,30 @@
+@charset "utf-8";
+.sign-location { border-bottom:1px solid #CCC; }
+.reg-ipt, .ref-focus, .reg-vipt, .reg-vfocus, .reg-sbtn { background:url(../image/sign.png) no-repeat; _background-attachment:fixed; }
+.reg-ipt { float:left; height:28px; background-position:0 0; overflow:hidden; border:0 none; line-height:28px; padding:2px 8px; font-family:tahoma; font-size:14px; }
+.reg-vipt { float:left; height:28px; background-position:0 -155px; overflow:hidden; border:0 none; line-height:28px; padding:2px 5px; font-family:tahoma; font-size:14px; }
+.reg-focus { background-position:0 -35px; }
+.reg-vfocus { background-position:-133px -155px; }
+.reg-iptips { float:left; margin-left:8px; line-height:30px;}
+
+.register-panel { padding:20px 50px; }
+
+.register-tipsbox { text-align:center; }
+.register-tips { position:relative; display:inline-block; *display:inline; *zoom:1; padding:10px 50px; border:1px solid #F60; background:#FFC; border-radius:3px; font-size:14px; }
+.register-tips i { position:absolute; bottom:-11px; *bottom:-15px; right:30px; display:block; width:20px; height:20px; border-right:1px solid #F60; border-bottom:1px solid #F60; background:#FFC; font-size:0; }
+.register-tips a { padding-left:5px; color:#06F; font-weight:700; }
+
+.register-form { margin-top:10px;  font-size:12px; }
+.register-form td { padding:8px 0; }
+.register-form label { display:block; text-align:right; font-size:14px; }
+.register-form label b { position:relative; bottom:-2px; color:#F00; }
+.register-form .reg-ipt { width:247px; }
+.register-form .reg-vipt { width:120px; }
+.register-form .reg-vimg { display:inline-block; *display:inline; *zoom:1; height:30px; margin-left:10px; line-height:30px; width:60px; border:1px solid #CCC; }
+.register-form .reg-vimg img { vertical-align:top; width:60px; height:30px; }
+.register-form .reg-sbtn { width:187px; height:41px; background-position:0 -110px; border:0 none; line-height:39px; _line-height:41px; padding-bottom:2px; overflow:hidden; color:#432906; font-size:14px; font-weight:700; cursor:pointer; }
+
+
+.reg-agreement { width:600px; margin:5px auto; }
+.reg-agreement p { line-height:28px; }
+.reg-agreement .reg-agreement-textarea { resize:none; margin-top:5px; width:590px; height:120px; border:1px solid #C9C9C9; padding:4px; font-family:tahoma; background:#FFF url(../image/reg-agreement-textarea.jpg) center no-repeat; overflow-y:auto; line-height:20px; }

@@ -1,0 +1,338 @@
+{{if $data.message != ''}}
+	{{$data.message}}
+{{/if}}
+{{include file='user_left.html'}}
+<script type="text/javascript">
+var ajaxCurrentUrl = "{{$data.href.ajaxCurrentUrl}}";
+var validateUrl = "{{$data.validation_url}}";
+</script>
+<div class="fr ucont">
+	<ul class="ucm-tab">
+		<li class="current"><a href="javascript:void(0);">基本信息</a></li>
+		<li><a href="{{$data.menu.user_info.my_password.href}}">修改密码</a></li>
+	</ul>
+	<div class="uc-ubipanel">
+		{{$data.form}}
+		{{$data.hid_input}}
+			<table class="uc-ubifrm">
+				<tbody>
+					<tr>
+						<td class="uc-ubifrm-label" width="70"><label for="ucchg-enname">英文名：</label></td>
+						<td><input type="text" id="ucchg-enname" class="uc-nmipt"  name="firstname" value="{{$data.firstname}}" />
+							<input type="text" class="uc-nmipt" name="lastname" value="{{$data.lastname}}" /></td>
+					</tr>
+					<tr>
+						<td class="uc-ubifrm-label"><span class="required-mark">*</span><label for="ucchg-cnname">中文名：</label></td>
+						<td><input type="text" id="ucchg-cnname" class="uc-nmipt validate[required]" name="name_cn" value="{{$data.name_cn}}" /></td>
+					</tr>
+					<tr>
+						<td class="vtop uc-ubifrm-label"><span class="required-mark">*</span><label for="ucchg-email">注册邮箱：</label></td>
+						<td><input type="text" id="ucchg-email" class="uc-emlipt validate[required,custom[email]]" name="email_address" value="{{$data.email_address}}" />
+                            {{if $data.customers_info.customers_validation != 1 && $data.customers_info.customers_validation_code != ''}}
+                            <a href="javascript:;" class="uc-reg-emlvld J-email-validation"><span>验证中...</span></a><br/>
+                            <p id="ValidatingTips"><span class="successTip">验证邮件已发送，请注意查收！</span><br/>没收到邮件？也许邮件被系统误判定为垃圾或广告邮件，您可以查检您的垃圾箱或广告箱，或选择<a href="javascript:reSendValidationEmail()">重发验证邮件</a>。</p>
+                            {{elseif $data.customers_info.customers_validation == '1'}}
+                            <span class="successTip">邮箱已通过验证。</span>
+                            <a href="javascript:;" class="uc-reg-emlvld"><span onclick="cancleValidateEmail()">取消验证</span></a><br />
+                            {{else}}
+							<a href="javascript:;" class="uc-reg-emlvld J-email-validation"><span>验证邮箱</span></a><br />
+							<p id="ValidatingTips">请立即验证邮箱，确保能成功收到参团凭证、发票等走四方网的相关信息。</p>
+                            {{/if}}
+						</td>
+					</tr>
+					<tr>
+						<td class="vtop uc-ubifrm-label"><label for="ucchg-mobile">手 机：</label></td>
+						<td>
+							<div id="uc-mobile" style="display: inline-block;_display:inline;_zoom:1;_width:250px;"></div>
+                            <div id="mobile-tips" style="display: inline-block;_display:inline;_zoom:1;">
+                                {{if $data.customers_info.confirmphone != $data.customers_info.customers_mobile_phone || $data.customers_info.customers_mobile_phone ==''}}
+                                <a href="javascript:;" class="uc-reg-emlvld J_mobile_validation"><span>验证手机</span></a>
+                                {{else}}
+                                <span class="successTip">手机已通过验证。</span>
+                                <a class="uc-reg-emlvld" onclick="cancleMobileValidate()" href="javascript:void(0);"><span>取消验证</span></a>
+                                {{/if}}
+                            </div>
+                            <div id="verify_phone_warp" style="display: none" class="even">
+                            </div>
+						</td>
+					</tr>
+                    <tr>
+                        <td class="vtop uc-ubifrm-label"><label for="ucchg-place">国家/地区：</label></td>
+                        <td><div id="uc-country" class="uc-place-pop"></div>
+                            <script type="text/javascript">
+                                var t =new usitrip.widget.Area({
+                                    el:'#uc-country',
+                                    ajaxUrl:ajaxCurrentUrl,
+                                    initValue : {
+                                        country_name:'country_id',
+                                        province_name:'zone_id',
+                                        city_name:'city_id',
+                                        data:{{$data.CountrysJson}},
+                                        defaultCountry:{'name':'{{$data.CountrysName|default:'国家'}}','id':'{{$data.customers_info.entry_country_id}}'},
+                                        defaultProvince:{'name':'{{$data.ProvinceName|default:'州/省'}}','id':'{{$data.customers_info.entry_zone_id}}'},
+                                        defaultCity:{'name':'{{$data.CityName|default:'城市'}}','id':'{{$data.customers_info.entry_city}}'}
+                                    }
+                                });
+
+                                t.on('countrydone',function(){
+                                    t.province.click();
+                                });
+                                t.on('provincedone',function(){
+                                    t.city.click();
+                                });
+                            </script></td>
+                    </tr>
+					<tr>
+						<td class="uc-ubifrm-label"><label for="ucchg-address">详细地址：</label></td>
+						<td><input type="text" id="ucchg-address" class="uc-adsipt" name="street_address" value="{{$data.address}}" /></td>
+					</tr>
+                    <!--
+					<tr>
+						<td class="uc-ubifrm-label"><label for="ucchg-zip">邮编：</label></td>
+						<td><input type="text" id="ucchg-zip" class="uc-zipipt" name="postcode" value="{{$data.postcode}}"/></td>
+					</tr> -->
+					<tr>
+						<td class="uc-ubifrm-label">性别：</td>
+						<td><span class="ucchg-gender">
+							<input id="male" type="radio" name="gender" {{if $data.gender_m == true}} checked="checked" {{/if}} value="m" />
+							<label for="male">男</label>
+							</span> <span class="ucchg-gender">
+							<input id="women" type="radio" name="gender" {{if $data.gender_m == false}} checked="checked" {{/if}}  value="f" />
+							<label for="women">女</label>
+							</span></td>
+					</tr>
+					<tr>
+						<td class="uc-ubifrm-label">生日：</td>
+						<td class="J_Birthday">
+							<script type="text/javascript">
+								jQuery(function($){
+									
+									
+									var el = $('#birthday_input');
+									var cfg = {
+										today: "<?= date('Y-m-d')?>",
+										dispalyMonths:1,
+										readout: true
+									};
+								
+									el.calendar(cfg);
+									
+									/*
+									var _forms = new forms();
+									_forms.cBirthday('#J_BirthdayBox',{"y":"dob_year","m":"dob_month","d":"dob_day"},'birthBox1','{{$data.dob|date_format:"%Y-%m-%d"}}','1902-02-22','2013-03-25');*/
+									//参数格式：父元素(必填项)，年月日输入框名称对象(必填项)，Class名用以区分多个出生日期的情况，默认值(可选项)，允许最的小值(可选项)，允许的最大值(可选项)
+								});
+							</script>
+							<span id="J_BirthdayBox"><input type="text" id="birthday_input" name="birthday" value='{{$data.dob}}'></span>
+							<span class="ucchg-showbirthday">
+							<input id="open" type="radio" name="bdshow" value="1" {{if $data.dob_is_public == '1'}} checked="checked" {{/if}} />
+							<label for="open">完全公开</label>
+							</span> <span class="ucchg-showbirthday">
+							<input id="off" type="radio" name="bdshow" value="0" {{if $data.dob_is_public == '0'}} checked="checked" {{/if}}/>
+							<label for="off">保密</label>
+							</span> <span class="ucchg-showbirthday">
+							<input id="onmd" type="radio" name="bdshow" value="2" {{if $data.dob_is_public == '2'}} checked="checked" {{/if}}/>
+							<label for="onmd">只显示月/日</label>
+							</span></td>
+					</tr>
+					<tr>
+						<td class="vtop uc-ubifrm-label"><label for="ucchg-otherphone">其他电话：</label></td>
+						<td><input type="text" id="ucchg-otherphone" class="uc-opipt" name="telephone" value="{{$data.telephone}}"/>
+							<p>请加上城市代码和区号，多个电话请用逗号隔开。如：086-028-88888888,086-0839-66666666</p></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="ucchg-btm-label"><input type="submit" value="保存基本信息" class="ucchg-savebtn" /></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('.uc-ubifrm tr').hover(function() {
+					$(this).find('td').addClass('hover');
+				}, function() {
+					$(this).find('td').removeClass('hover');
+				});
+				$('.uc-ubifrm input[type="text"]').not("dSearchIpt").focus(function() {
+					$(this).addClass('iptfocus');
+				});
+				$('.uc-ubifrm input[type="text"]').not("dSearchIpt").blur(function() {
+					$(this).removeClass('iptfocus');
+				});
+			});
+		</script>
+		<div class="uc-chgavatar">
+			<div class="uc-chgavatar-box"> <img id="img_customers_face" src="{{$data.user_face.img}}"  /> </div>
+			<div id="uploadStatusBar" class="uploadProcessBarSmall"><div>&nbsp;<!-- 上传进度条 --></div></div>
+            <script src="/tpl/www/js/swfupload/swfupload.js" type="text/javascript"></script>
+            <script src="/tpl/www/js/swfupload/swfupload.cookies.js" type="text/javascript"></script>
+            <script type="text/javascript">
+				
+				$(function(){
+					new usitrip.widget.MobilePhoneField({
+                        el:'#uc-mobile',
+                        initValue : {
+                            phoneWidth:160,
+                            zhWidth:34,
+                            phoneValue:'{{$data.mobilephone}}'
+                        },
+                        name:'mobilephone',
+                        tipson:false
+                    });
+					
+				});
+				
+				$(function(){
+                    email_validation('ucchg-email');
+                });
+				
+				
+            </script>
+			<p class="uc-upload-avatar photouploader">
+                <!--<span id="divAddPhoto"></span> -->
+                <span id="uploadImg">上传图片</span>
+            </p>
+            <!--<span id="divAddPhoto">上传头像</span>-->
+			<p>支持jpg,gif,png格式的图片。</p>
+		</div>
+	</div>
+</div>
+<div style="clear: both"></div>
+
+<script type="text/javascript">
+$(function(){
+	$("#basic-info").validationEngine();
+});
+
+$(function(){
+		
+		var swfu, areaSelect ;
+		
+		var sourceWid, previewWid, sourceHei, previewHei;
+		
+		var uploadCompleteFun = function(a){
+			var cc = this;
+		};
+		
+		var selArea = {width: 100,height:100,x1:0,y1:0};
+		
+		
+		var uploadSuccessFun = function(option, result,status){
+			var a =this;
+			var obj = eval('(' + result + ')');
+			
+			$('#source-img, #preview-img').attr('src', obj['imgUrl']);
+			setTimeout(function(){
+				areaSelect.setOptions({x1:0,y1:0,x2:100,y2:100});
+				preview(null, selArea);			
+			}, 300);			
+		};
+		 var settings_object = {//定义参数配置对象
+			upload_url : "{{$data.up_photo_url}}",
+			flash_url : "/tpl/www/js/swfupload/swfupload.swf",
+			button_placeholder_id: 'divAddPhoto',
+			button_width : 84,
+			button_height : 22,
+			button_text:'<span class="btn-style">上传图片</span>',
+			button_text_top_padding: 4,
+			button_text_left_padding: 18,
+			button_text_style: '.btn-style{color:#ED5C00;}',
+			button_cursor : SWFUpload.CURSOR.HAND,
+			button_window_mode : SWFUpload.WINDOW_MODE.TRANSPARENT,
+			//button_image_url: '/tpl/www/image/ucbutton.png',
+			file_types : "*.jpg;*.gif;*.png",
+			upload_success_handler : uploadSuccessFun,
+			upload_complete_handler : uploadCompleteFun,
+			upload_error_handler: function(){
+				
+			},
+			upload_progress_handler: function(fileInfo, uploadSize, fileSize){
+			},
+			
+			file_dialog_start_handler: function(){
+				areaSelect.cancelSelection();
+			},
+			
+			file_dialog_complete_handler: function(){
+				swfu.startUpload();
+			},
+			file_queue_error_handler: function(option, codeError, errmsg){
+				if(codeError == -130){
+					alert('文件类型不支持');
+				}
+			}
+		};
+		 
+	 var preview = function(img, selection) { 
+		
+		
+		sourceWid = $('#source-img').width();
+		previewWid = $('#preview').width();
+		
+		sourceHei = $('#source-img').height();
+		previewHei = $('#preview').height();
+		
+		
+		if (!selection.width || !selection.height)
+			return;
+		
+		selArea['width'] = selection.width;
+		selArea['height'] = selection.height;
+		selArea['x1'] = selection.x1;
+		selArea['y1'] = selection.y1;
+		
+		var scaleX = previewWid / selection.width;
+		var scaleY = previewHei / selection.height;
+	
+		$('#preview img').css({
+			width: Math.round(scaleX * sourceWid),
+			height: Math.round(scaleY * sourceHei),
+			marginLeft: -Math.round(scaleX * selection.x1),
+			marginTop: -Math.round(scaleY * selection.y1)
+		});
+	}	
+	
+	
+	$('#uploadImg').click(function(){
+		
+		var flashCon = '<div class="imgcut"><p class="uc-upload-avatar photouploader"><span id="divAddPhoto"></span></p><div class="container clear"><div style="float: left; width: 70%;"><div id="source" class="frame" style="margin: 0 0.3em; width: 300px; height: 300px;"><img id="source-img"></div></div><div style="float: left; width: 30%;"><div class="frame" style="margin: 0 1em; width: 100px; height: 100px;"><div id="preview" style="width: 100px; height: 100px; overflow: hidden;"><img id="preview-img" style="width: 100px; height: 100px;"></div></div></div><div></div>';
+		
+		art.dialog({
+			title: '上传头像',
+			drag: false,
+			lock: true,
+			content: flashCon,
+			ok: function () {
+				var url = "{{$data.href.ajaxCurrentUrl}}" + '&action=cutimg';
+				$.post(url, selArea, function(msg, status, xhr){
+					if(msg.success === 'true'){
+						
+						$('#img_customers_face').attr('src', msg['imgUrl']);
+					} else {
+						artDialog.alert('图片裁剪失败,请重试!');
+					}
+				}, 'json');
+				areaSelect.cancelSelection();
+			},
+			cancel: function(){
+				areaSelect.cancelSelection();
+			}
+		});
+		
+		swfu = new SWFUpload(settings_object);//实例化一个SWFUpload，传入参数配置对象
+		
+		areaSelect = $('img#source-img').imgAreaSelect({
+			aspectRatio: '1:1',
+			instance: true,
+			handles: true,
+			onSelectEnd: function(img, s){
+				preview(img, s);
+			}
+		});
+	});
+	
+});
+</script>
+
+
+

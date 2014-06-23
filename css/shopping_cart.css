@@ -1,0 +1,231 @@
+@charset "utf-8";
+body, #sitebg{ background:none; }
+#head{ border-bottom:4px solid #276EC6;}
+#body{width:100%; background:#F0F0F0; padding:0;}
+#body .shopping-progress-left {
+    background: url("../image/shopping-cart-icon.png") no-repeat 34px 37px ;
+    float: left;
+    height: 35px;
+    padding: 45px 0 16px 48px;
+	font:12px/1 tahoma,Arial,宋体,Helvetica,sans-serif;
+}
+#body .shopping-progress-right .two-step strong {
+    padding: 0 16px 0 75px;
+}
+#body .shopping-progress-left span {
+    font-family: '微软雅黑','宋体';
+    font-size: 36px;
+    padding-left: 50px;
+}
+#body .shopping-progress-right {
+    background: url("../image/progress-1.png") no-repeat left 39px ;
+    float: right;
+    height: 41px;
+    line-height: 41px;
+    padding: 39px 18px 17px 0;
+    width: 591px;
+}
+#body .shopping-progress-right strong {
+    color: #FFFFFF;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 31px;
+    height: 41px;
+    line-height: 41px;
+    padding: 0 16px;
+    vertical-align: top;
+}
+
+#body .shopping-progress-right span {
+    color: #FFFFFF;
+    display: inline-block;
+    font-family: '微软雅黑','宋体';
+    font-size: 18px;
+    height: 41px;
+    line-height: 41px;
+}
+#body .shopping-progress-right .three-step span{padding-right:60px;}
+#body .product-action{
+	color: #307DE7;
+    font-size: 12px;
+    left: 784px;
+    position: static;
+    top: 22px;
+	text-align:right;
+}
+#body .product-action a{
+    border: 1px solid #CADEFF;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+    padding: 4px 16px;
+}
+
+/*background styles*/
+.shopcart-hd,.shopcart-pro-list th {/*background-image:url(../image/shopcartbg.png);*/
+background:none repeat  0 0 #276EC6;
+}
+
+.shopcart-wrap{width:990px; margin-left:auto; margin-right:auto;background:#FFFFFF;}
+.shopcart-hd{height:34px;background-position:0 0;background-repeat:repeat-x;border-radius:0px 0px 0 0; height:28px; line-height:28px;}
+.shopcart-hd h3{float:left;padding-left:15px;line-height:28px;font-size:14px;font-weight:700;color:#FFFFFF;}
+.shopcart-panel{}
+
+.shopcart-pro-list{width:100%;border:none;}
+.shopcart-pro-list tr.even td{background-color:#f8fbff;}
+.shopcart-pro-list th{
+	height:30px;
+	background-position:0 -34px;
+	background-repeat:repeat-x;
+	border:1px solid #276EC6;
+	border-bottom:1px solid #CADEFF;
+	border-top:0;
+	font-weight: bold;
+	line-height:30px;
+	text-align:left;
+	text-indent:10px; 
+	color:#FFFFFF;
+}
+.shopcart-pro-list td{line-height:24px;border:1px solid #AED5FF;}
+.shopcart-pro-box{padding:10px;*zoom:1;}
+.shopcart-pro-box:after{display:block;clear:both;height:0;font-size:0;visibility:hidden;content:"";}
+.shopcart-pro-pic{float:left;_display:inline;width:160px; height:120px; margin-top:5px;overflow:hidden;}
+.shopcart-pro-pic img {width:150px;height:100px;}
+
+.shopcart-pro-info{float:left;line-height:22px;width:758px;}
+.shopcart-pro-info h4 a{font-size:14px;color:#327EF6;}
+.shopcart-pro-info h4 a:hover,.shopcart-pro-info .is-jieban,.shopcart-pro-info .start-date,.shopcart-pro-info .small-total{color:#FF6600;}
+.shopcart-pro-info dl.pro-attr dd span.is-jieban{
+    background: none repeat  0 0 #FFE6CD;
+    border: 1px solid #FF5A00;
+    color: #FE5900;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 2px 3px;
+    float:none;
+}
+.shopcart-pro-info .start-date{font-size:16px;font-weight:700;color:#FF6600;}
+.shopcart-pro-info .small-total{font-weight:700;}
+
+.shopcart-pro-info dl.pro-attr dd{font-size:14px; color:#333333; line-height:28px; display:block; width:100%; clear:both;}
+
+.shopcart-pro-info dl.pro-attr dd ul {display:block; width:100%;}
+.shopcart-pro-info dl.pro-attr dd ul li{display:block; width:100%; clear:both; color:#333333; height:28px; line-height:28px;}
+.shopcart-pro-info dl.pro-attr dd ul li:hover{background:#ffe7cd;}
+
+.shopcart-pro-info dl.pro-attr dd span{color:#999999; float:left;}
+
+.shopcart-pro-info span.option-label {text-align:right;}
+
+.special-project-detail {display:block;}
+
+.special-project-detail ul li span {white-space: nowrap; /*设置不折行*/
+    overflow: hidden; /*设置超过的隐藏*/
+    text-overflow: ellipsis; /*这就是省略号喽*/
+    width:500px;
+    color: #333333
+}
+    
+.special-project-detail ul li em {color:#f60;}
+
+.shopcart-pro-info .capita {
+    width:100%;
+    display:block;
+    color:#999999;
+    text-align:right;
+}
+
+.shopcart-pro-info dd .shopcart-pro-price{font-size:14px;font-weight:700;color:#FF6600;}
+.shopcart-btn{display:inline-block;*display:inline;*zoom:1;margin:3px auto;background-position:0 -64px;background-repeat:no-repeat;color:#223C6A;text-align:center; height:18px; line-height:19px;}
+.shopcart-btn:hover{color:#FF6600;text-decoration:none;}
+
+.shopcart-ok-wrap {
+	
+}
+
+.go_recharge.shopping_cart {
+	display:inline-block;
+	_display:inline;
+	_zoom:1;
+    margin-left: 10px;
+	padding:0 15px;
+	height:24px;
+	line-height:24px;
+	font-size:12px;
+	border: 1px solid #CADEFF;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.go_recharge.shopping_cart:hover {
+    color:#f60;
+}
+
+
+.shopcart-money{padding:15px;border:1px solid #AED5FF;border-top:0;line-height:30px;text-align:right;}
+.shopcart-money strong{position:relative;top:-2px;}
+.shopcart-money label{padding:0 10px;font-size:14px;color:#666666;font-family:"Microsoft Yahei";cursor:pointer;line-height:25px;font-weight:normal;}
+.shopcart-money .total_details.money-total label,.shopcart-money .total_details.money-total em {font-size:18px;}
+.shopcart-money .money-total{font-size:12px;color:#f60;font-family:Arial, Helvetica, sans-serif;padding-right:20px;}
+.is-rmb{text-align:left;background:#FFEFDC;color:#FF5A00;padding:5px;border:1px solid #FFC5A5;margin-top:8px;}
+
+
+
+.control-panel{padding: 34px 0;background:#F0F0F0;}
+.control-panel .control-btns{display:inline-block;*display:inline;*zoom:1;color:#00388A;}
+.control-panel .control-btns:hover{color:#4d4d4d;text-decoration:none;}
+.control-panel .control-btns span{position:relative;display:inline-block;*display:inline;*zoom:1;margin-right:-1px;cursor:pointer;}
+.control-panel .prev-step{margin-left:58px;background-position:0 -86px;background-repeat:no-repeat;
+font-size: 14px;
+color: #666666;
+border: 1px solid #cadeff;
+padding: 8px 20px 8px 32px;
+background: #f7fbff url(../image/header-icons.png) no-repeat 10px -343px;
+border-radius: 3px;
+}
+.control-panel .next-step{margin-left:230px;padding-left:25px;background-position:0 -144px;background-repeat:no-repeat;
+font-size: 14px;
+color: #666666;
+border: 1px solid #cadeff;
+padding: 8px 20px 8px 32px;
+background: #f7fbff url(../image/header-icons.png) no-repeat 10px -343px;
+border-radius: 3px;
+}
+.control-panel .order-btns{position:relative;left:-23px;
+font-size: 20px;
+color: #fff;
+border: 1px solid #e98007;
+padding: 4px 20px;
+background: #ff8800;
+border-radius: 3px;
+font-weight: bold;
+}
+.control-panel .order-btns:hover{text-decoration:none;}
+.control-panel .order-btns span{position:relative;display:inline-block;*display:inline;*zoom:1;cursor:pointer;text-shadow:0 1px 1px #666;}
+
+.important-text-f60 {
+	color: #f60;	
+}
+
+.important-text-333 {
+	color: #333333;	
+}
+
+.important-text-666 {
+	color: #666666;	
+}
+
+.important-text-999 {
+	color: #999999;	
+}
+
+/*调整购物车编辑产品样式*/
+div.product_attribute {width:330px;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm .sel_box ul {width:320px;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm .slel_box .sel_box .selectspan {width:300px; background-position:308px center;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm .slel_box .sel_box .selectspan span.cont_text {width:275px;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm .slel_box.rooms_info .room_info_box ul li {width:308px;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm div.product_attribute div.slel_box.title_checkbox div.sel_info_m ul  li {width:308px;}
+
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm  div.recharge_btn  div.shopcart-ok-wrap {text-align:right;}
+.shopcart-pro-box.uifix .shopcart-pro-info #J_BookingBoxForm .sel_box_m ul {width:320px;}
+#J_hotel_check_out_date_input, #J_dAddressBoxParent input.train_line {width:300px;}

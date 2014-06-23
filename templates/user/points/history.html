@@ -1,0 +1,100 @@
+{{include file='user_left.html'}}
+<div class="mytoursRight"><div class="userTitle"><ul><li class="cur">积分记录明细</li></ul></div>					 <!-- content main body start -->
+<!-- body //-->
+<style type="text/css">
+    h2{ line-height:24px;}
+    .pointsIntro li{ list-style:disc inside none; padding-left:15px; color:#F7860F; line-height:18px;}
+    p{ padding-left:15px; line-height:18px;}
+    .titleSmall h3{ margin-top:2px;}
+    .infoBox{ border:1px solid #C5E6F9; border-top:0;}
+    td.productListing-heading{ padding:0 5px; background:#F3FAFF; line-height:24px;}
+    td.productListing-data{ padding:0 5px; line-height:30px; border-bottom:1px solid #e1e1e1;}
+</style>
+
+<table width="100%" cellspacing="3" cellpadding="3" border="0" style="border:1px solid #AED5FF;">
+<tbody><tr>
+
+<!-- body_text //-->
+<td width="100%" valign="top"><table width="100%" cellspacing="0" cellpadding="0" border="0">
+<tbody><tr>
+    <td>
+    </td>
+</tr>
+<tr>
+    <td>
+        <table width="100%" cellspacing="0" cellpadding="2" border="0" style=" padding:0 0 10px; font-size:14px;">
+
+
+            <tbody><tr><td style="border:1px solid #ffc75f;background:#fffee9;padding:8px 15px;" class="main">总积分： <strong class="color_orange">{{$data.points}}</strong>  价值： <strong class="color_orange">${{$data.points_to_money}}</strong> 			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将要过期的积分 <b style="color:#FF0000">0</b>（一个月内）			  </td>
+            </tr>
+            </tbody></table>
+
+        <div class="title titleSmall">
+            <b></b><span></span>
+            <h3>以下是您所有的积分历史记录。</h3>
+        </div>
+
+
+        <div id="dataTable">
+            {{if $data.list}}
+            <table width="100%" cellspacing="1" cellpadding="0" border="0" style="background:#dbdbdb" class="">
+
+                <tbody><tr class="productListing-heading">
+                    <td height="33" align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">日期</td>
+                    <td width="10%" nowrap="nowrap" align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">&nbsp;</td>
+                    <td nowrap="nowrap" align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">积分记录</td>
+                    <td align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">积分状态</td>
+                    <td align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">分值</td>
+                    <td align="center" style="background:url(/tpl/www/image/nav/user_bg11.gif)">操作</td>
+                </tr>
+                {{section name=key loop=$data.list.list}}
+                <tr class="moduleRow">
+                <td width="13%" class="productListing-data">{{$data.list.list[key].date_added|date_format:"%Y-%m-%d"}}{{* %H:%M:%S"*}}</td>
+                <td nowrap="nowrap" class="productListing-data">{{$data.list.list[key].title}}</td>
+                <td nowrap="nowrap" class="productListing-data">{{$data.list.list[key].points_comment}}</td>
+                <td class="productListing-data">{{$data.list.list[key].points_status}}</td>
+                <td align="right" class="productListing-data">{{$data.list.list[key].points_pending}}</td>
+                <td align="center">{{if $data.list.list[key].href}}
+                    <a href='{{$data.list.list[key].href}}'>查看详情</a>
+                    {{/if}}
+                </td>
+                </tr>
+                {{/section}}
+                </tbody></table>
+            {{/if}}
+        </div>
+        <table width="100%" cellspacing="0" cellpadding="2" border="0">
+            <tbody><tr>
+                <td><img width="1" height="1" border="0" alt="" src="image/pixel_trans.gif"></td>
+            </tr>
+            </tbody></table>
+    </td>
+</tr>
+<tr>
+    <td><table width="100%" cellspacing="0" cellpadding="2" border="0">
+        <tbody><tr>
+            <td valign="top" class="smallText">显示 <b>{{$data.list.pages.rowsStatistics.from_num}}</b> 至 <b>{{$data.list.pages.rowsStatistics.to_num}}</b> （共有 <b>{{$data.list.pages.rowsStatistics.number_of_rows}}</b> 条积分记录）</td>
+            <td align="right" class="smallText">
+                {{if $data.list.pages.first_href}}<a href="{{$data.list.pages.first_href}}">首页</a>{{/if}}
+                {{if $data.list.pages.previous_href}}<a href="{{$data.list.pages.previous_href}}">上一页</a>{{/if}}
+                {{section name=key  loop = $data.list.pages.pages_list}}
+                &nbsp;<a href="{{$data.list.pages.pages_list[key].href}}">{{$data.list.pages.pages_list[key].text}}</a>
+                {{/section}}
+                {{if $data.list.pages.next_href}}<a href="{{$data.list.pages.next_href}}">下一页</a>{{/if}}
+                {{if $data.list.pages.last_href}}<a href="{{$data.list.pages.last_href}}">末页</a>{{/if}}
+            </td>
+        </tr>
+        </tbody></table></td>
+</tr>
+<!--<tr>
+    <Td class="main" style="padding-top:10px;">兑换方式： 在预定行程支付（checkout）过程中点击“兑换积分”按钮。 <br><br></Td>
+</tr>-->
+
+</tbody></table></td>
+<!-- body_text_eof //-->
+
+</tr>
+</tbody></table>
+<!-- body_eof //-->
+
+</div>

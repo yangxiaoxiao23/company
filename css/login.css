@@ -1,0 +1,29 @@
+@charset "gb2312";
+.sign-location { border-bottom:1px solid #CCC; }
+.login-btn, .reg-btn, .sign-ipt, .sign-focus { background:url(../image/sign.png) no-repeat; _background-attachment:fixed; }
+.sign-ipt { float:left; height:28px; background-position:0 0; overflow:hidden; border:0 none; line-height:28px; padding:2px 8px; font-family:tahoma; font-size:14px; font-weight:700; }
+.sign-focus { background-position:0 -35px; }
+.sign-panel { padding:70px; }
+
+.login-form { width:470px; padding-right:20px; }
+.login-form td { padding:10px 0; vertical-align:middle; }
+.login-form label { font-size:14px; }
+.login-form label em.required-star { color:#F00; position:relative; bottom:-2px; padding-right:3px; }
+.login-form .sign-ipt { width:247px; }
+.forget-pwd { display:inline-block; *display:inline; *zoom:1; height:32px; line-height:32px; margin-left:8px; font-size:14px; color:#C00; }
+.forget-pwd:hover { text-decoration:none; }
+.login-btn { color:#4A2801; width:120px; height:36px; overflow:hidden; line-height:34px; font-weight:700; font-family:"Microsoft Yahei"; background-position:0 -70px; border:0 none; cursor:pointer; font-size:16px; letter-spacing:5px; }
+.reg-btn { color:#333; width:120px; height:34px; line-height:34px; margin:5px 0; font-family:"Microsoft Yahei"; font-size:14px; text-align:center; font-weight:700; background-position:-143px -70px; display:block; letter-spacing:2px; }
+.reg-btn:hover { color:#FF6600; text-decoration:none; }
+
+.register-panel { width:280px; padding-left:30px; border-left:1px dashed #A7A7A7; color:#b3b3b3; }
+.register-panel h3{ font-size:14px; line-height:26px; }
+.register-panel dl { line-height:24px; }
+.register-panel dt { font-weight:700; }
+
+.login-uname-box { position:relative; }
+.login-email-box { width:263px; height:32px; }
+#email_suggest { position:absolute; top:32px; left:0; display:none; width:261px; background:#FFF; border:1px solid #09F; }
+#email_suggest li { width:100%; height:28px; line-height:28px; text-indent:8px; font-weight:700; cursor:pointer; overflow:hidden; }
+#email_suggest li.first_li { font-weight:normal; cursor:default; }
+#email_suggest .current { background:#BAEAFB; }

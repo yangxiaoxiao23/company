@@ -1,0 +1,11 @@
+html,body{height:auto;}
+body{background:none;}
+#body{background:none;margin:auto;padding:inherit;width:auto;z-index:auto;}
+#position{display:none;}
+
+#CreateNewCompanionCon{ padding:20px; width:520px;}
+#CreateNewCompanionCon h3{ font-size:16px;}
+#CreateNewCompanionCon p{ padding:5px;}
+#CreateNewCompanionCon p span{ display:inline-block;}
+#CreateNewCompanionCon p.moretips span{ vertical-align:top;}
+input.c_txt,.token-input-input-token-facebook input{ border:solid 1px #ccc; height:20px;}

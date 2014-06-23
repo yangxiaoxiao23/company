@@ -1,0 +1,184 @@
+{{include file='user_left.html'}}
+<div class="fr ucont">
+	<ul class="ucm-tab">
+		<li class="current"><a>我的帐号</a></li>
+	</ul>
+	<div class="uc-user uifix">
+		<div class="fl uc-avatar"> <a href="{{$data.menu.user_info.my_info.href}}"><img src="{{$data.user_info.face_img}}" width="{{$data.user_info.face_width}}" height="{{$data.user_info.face_height}}" alt="用户头像" /></a> </div>
+		<ul class="uc-totalist">
+			<li><a href="{{$data.menu.user_info.my_info.href}}" class="uc-edit">编辑个人资料</a><strong>{{$data.user_info.user_name}}</strong>，欢迎您！上一次登录时间：<span class="uc-plt">{{$data.user_info.last_logon}}</span></li>
+			<li> <span>总消费额：<b>{{$data.user_info.order_cost_total}}</b></span> <span>订单总数：<b>{{$data.user_info.order_count}}</b></span> 
+			{{* 如果关闭了积分，则不显示这块积分相关的信息 *}}
+			{{if $smarty.const.USE_POINTS_SYSTEM == 'true'}}
+			<span>我的积分：<b>{{$data.user_info.points}}</b>价值：<i>{{$data.user_info.points_to_money}}</i><a href="{{$data.menu.integral.details.href}}">积分历史记录</a> <a href="{{$data.menu.integral.rule.href}}">(怎么得积分？)</a><br  />
+				将要过期的积分<b>0</b>(一个月内)</span> 
+			{{/if}}</li>
+			<li class="uc-nobd hide"> <span>折扣券：<b>0</b></span> <span>我的佣金：<b>0</b></span> </li>
+		</ul>
+	</div>
+	<div class="uc-ocont">
+		<div class="uc-lod"> <span class="fr uc-lod-tips"> 订单提醒: <a href="{{$data.menu.order_manage.my_order.href}}">待支付订单</a><i>({{$data.user_info.needpay_total}})</i> <a href="{{$data.menu.order_manage.my_ticket.href}}">电子通知票</a><i>({{$data.user_info.new_eticket}})</i> </span>
+			<h3 class="fl uc-lod-tit">最新订单</h3>
+		</div>
+		{{section name=list loop=$data.orderlist}}
+		<div class="uc-lodtb">
+			<div class="uc-lodtb-tit">
+				<h3>
+				{{if $data.orderlist[list].is_companion_order == true}}
+				结伴同游订单
+				{{else}}
+				普通订单
+				{{/if}}  订单编号：<span class="uc-lodtb-nub">{{$data.orderlist[list].orders_id}}</span> 下单时间：{{$data.orderlist[list].date_purchased|date_format:"%Y年%m月%d日"}}</h3>
+			</div>
+			<table class="uc-loadtb-table">
+				<thead>
+					<tr>
+						<th>产品名称</th>
+						<th>订购人姓名</th>
+						<th>订单金额</th>
+						<th>支付状态</th>
+						<th>状态</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>{{section name=product_i loop=$data.orderlist[list].ordersProducts}}
+						<p><a href="{{$data.orderlist[list].ordersProducts[product_i].href}}">{{$data.orderlist[list].ordersProducts[product_i].products_name}} [{{$data.orderlist[list].ordersProducts[product_i].products_model}}]</a></p>
+						{{/section}}
+						</td>
+						<td>{{$data.orderlist[list].customers_name}}</td>
+						<td>{{$data.orderlist[list].order_total}}</td>
+						<td>{{$data.orderlist[list].paymentStatus}}</td>
+						<td>{{$data.orderlist[list].orders_status_name_to_user}}</td>
+						<td>{{if $data.orderlist[list].is_pay == true}}
+							<a href="{{$data.orderlist[list].orders_detail_href}}">订单详情</a>
+							{{else}}
+							<a href="{{$data.orderlist[list].to_pay_href}}">去付款</a>
+							{{/if}}<br />
+							{{if $data.orderlist[list].flight_href != ''}}
+							<a href="{{$data.orderlist[list].flight_href}}" class="uc-edit-order"><span>填写航班信息</span></a>
+							{{/if}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{{/section}}
+		
+	</div>
+	<div class="uc-rmd uifix">
+		<ul class="uc-rmdtab">
+			<li class="current"><a href="javascript:;">您可能感兴趣的行程(这里还没做)</a></li>
+			<li><a href="javascript:;">热销行程</a></li>
+			<li><a href="javascript:;">特价行程</a></li>
+		</ul>
+		<div class="uifix uc-rmdcnt">
+			<div class="uc-rmdsubcnt">
+				<ul class="uc-rmdpro">
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$573.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$573.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$573.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$573.00</strong></p>
+					</li>
+				</ul>
+			</div>
+			<div class="hide uc-rmdsubcnt">
+				<ul class="uc-rmdpro">
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$5173.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$5173.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$5173.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$5173.00</strong></p>
+					</li>
+				</ul>
+			</div>
+			<div class="hide uc-rmdsubcnt">
+				<ul class="uc-rmdpro">
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$73.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$73.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$73.00</strong></p>
+					</li>
+					<li> <a class="uc-rmdpro-pic"  href="#"> <img src="_product/rmd-pic.jpg" /> </a>
+						<p><a href="#">旧金山,拉斯维加斯,大峡谷,迪士尼九日游</a></p>
+						<p class="uc-rmdpro-price">价格:<strong>$73.00</strong></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+				$(document).ready(function(){
+					$('ul.uc-rmdtab li').click(function(){
+						$('ul.uc-rmdtab li').removeClass('current');
+						$(this).addClass('current');
+						$('div.uc-rmdcnt > div').hide();
+						$("div.uc-rmdcnt").find(".uc-rmdsubcnt").eq(jQuery("ul.uc-rmdtab li").index(this)).show();	
+					});	
+				});
+				</script> 
+</div>
+
+
+<!--  
+<h1>{{$data.heading_title}}</h1>
+
+{{$data.messageStack_account}}
+
+<div class="contentContainer">
+  <h2>{{$data.my_account_title}}</h2>
+
+  <div class="contentText">
+    <ul class="accountLinkList">
+      <li><span class="ui-icon ui-icon-person accountLinkListEntry"></span><a href="{{$data.href}}">{{$data.my_account_information}}</a></li>
+      <li><span class="ui-icon ui-icon-home accountLinkListEntry"></span><a href="{{$data.addressbookhref}}">{{$data.my_account_address_book}}</a></li>
+      <li><span class="ui-icon ui-icon-key accountLinkListEntry"></span><a href="{{$data.password_href}}">{{$data.my_account_password}}</a></li>
+    </ul>
+  </div>
+
+  <h2>{{$data.my_orders_title}}</h2>
+
+  <div class="contentText">
+    <ul class="accountLinkList">
+      <li><span class="ui-icon ui-icon-cart accountLinkListEntry"></span><a href="{{$data.orderlist}}">我的订单列表</a></li>
+    </ul>
+  </div>
+
+  <h2>E-Mail提醒</h2>
+
+  <div class="contentText">
+    <ul class="accountLinkList">
+      <li><span class="ui-icon ui-icon-mail-closed accountLinkListEntry"></span><a href="{{$data.newsletters}}">订阅或取消订阅。</a></li>
+      <li><span class="ui-icon ui-icon-heart accountLinkListEntry"></span><a href="{{$data.updatelist}}">查看或变更产品提醒列表。</a></li>
+    </ul>
+  </div>
+</div>
+-->

@@ -1,0 +1,116 @@
+<?php
+/**
+ * 结伴同游有人申请的邮件模板
+ * @author lwkai 2014-03-11
+ * @package 邮件
+ * @subpackage  邮件模板
+ *
+ * 数组KEY说明：
+ * subject      邮件标题
+ * content      邮件正文
+ * tag说明：
+ *    {{$mail_foot}}            邮件页脚【统一设置】
+ */
+$path = dirname(__FILE__);
+$top = include($path . '/../header.php');
+$bottom = include($path . '/../footer.php');
+return array('subject' => '欢迎光临 usitrip 请查收您的登录信息', 'content' => $top . '
+<table cellpadding="0" cellspacing="0" align="center" width="668"
+       style="color:#666;padding:10px 20px;border-left:1px solid #c1d6e2;border-right:1px solid #c1d6e2;font-size:12px;font-family:tahoma,SimSun;">
+	<tbody>
+	<tr>
+		<td style="margin:10px 0;font-family:\'Microsoft Yahei\';"><p
+				style="margin:0;padding:5px 0;font-size:18px;font-weight:bold;">亲爱的会员：<strong style="color:#000000">{{$customers_name_cn}}</strong>您好！
+			</p>
+
+			<div style="height:60px;background:url({{$images}}/success.gif) no-repeat;font-size:14px;line-height:28px;">
+				<p style="margin:0;padding-left:80px;">恭喜！您已成功注册为usitrip会员！</p>
+
+				<p style="margin:0;padding-left:80px;"><a href="{{$http_server}}/" style="color:#4164d8;">走四方旅游网</a>祝您旅游愉快！
+				</p></div>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<table cellpadding="0" cellspacing="0" align="center" width="668"
+       style="color:#666;border-left:1px solid #c1d6e2;border-right:1px solid #c1d6e2;font-size:12px;font-family:tahoma">
+	<tbody>
+	<tr>
+		<td style="padding:10px 20px;color:#333;">
+			<div style="font-size:14px;"><p style="margin:0;padding:0;">您的登录E-mai：{{$email}}</p> {{$password}} <p
+					style="margin:0;padding:0;">赶紧<a style="color:#1974dc; text-decoration:underline;" target="_blank"
+			                                         href="{{$login_url}}">登录网站</a>!开启你的快乐之旅吧&gt;&gt; <a
+						href="{{$http_server}}/" style="text-decoration:none;color:#1974dc;">www.usitrip.com</a></p>
+			</div>
+			<div style="margin-top:15px;"><p style="margin:0;padding:0;">温馨提示：请妥善保管您的账号密码，如有必要，请定期登录<a
+						style="color:#1974dc; text-decoration:underline;" target="_blank" href="{{$login_url}}">会员中心</a>更改密码。
+				</p>
+
+				<p style="margin:0;padding:0;">如有任何疑问，请点击<a style="color:#1974dc; text-decoration:underline;"
+				                                            target="_blank" href="{{$contact_us_url}}">这里</a>，或直接拨打24小时全球热线电话与我们联系，谢谢!
+				</p></div>
+			<div style="margin-top:15px;"><p style="margin:0;padding:0;"><a
+						style="width:85px; height:23px; display:block;" href="{{$faq_question_url}}"><img width="85"
+			                                                                                              height="23"
+			                                                                                              border="0"
+			                                                                                              alt="更多帮助"
+			                                                                                              src="{{$images}}/morehelp.gif"></a>
+
+				<p style="color:#666666; font-size:12px; padding:12px 0; margin:0;">注：此为系统邮件，请勿回复！ </p></div>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<table cellpadding="0" cellspacing="0" align="center" width="668"
+       style="color:#666;padding:0 20px;border-left:1px solid #c1d6e2;border-right:1px solid #c1d6e2;font-size:12px;font-family:\'Microsoft Yahei\';">
+	<tbody>
+	<tr>
+		<td style="font-size:14px;font-weight:bold;color:#444444;line-height:30px;padding-top:10px;border-top:1px dotted #ccc;">
+			即刻起，您已完全尊享??
+		</td>
+	</tr>
+	<tr>
+		<td style="padding-bottom:10px;border-bottom:1px dotted #ccc;">
+			<table cellpadding="0" cellspacing="0" border="0" style="font-size:12px;color:#666;">
+				<tbody>
+				<tr>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>最低价格保障</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>最高商誉评级</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>专业华人旅行社</td>
+				</tr>
+				<tr>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>资深服务团队</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>多维服务体系</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>结伴同游交友</td>
+				</tr>
+				<tr>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>签证中文系统</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>线路专享定制</td>
+					<td width="132" height="22"><img src="{{$images}}/dot.gif"/>无休客服体系</td>
+				</tr>
+				<tr>
+					<td colspan="3"><p style="margin:0;padding:0;"><a href="{{$about_us_url}}"
+					                                                  style="float:right;margin-right:30px;color:#1974dc;">了解详情&gt;&gt;</a>
+						</p></td>
+				</tr>
+				</tbody>
+			</table>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<table cellpadding="0" cellspacing="0" align="center" width="666"
+       style="border-left:1px solid #c1d6e2;border-right:1px solid #c1d6e2;font-size:14px;font-family:\'SimSun\';">
+	<tbody>
+	<tr>
+		<td style="height:258px;background:url({{$images}}/banner.jpg) no-repeat;">
+			<div style="position:relative;width:666px;height:258px;">
+				<div style="position:absolute;top:0;right:0;padding-top:5px;padding-right:10px;float:right;"><a
+						href="{{$login_url}}" style="color:#09f;">登录</a>&nbsp;| <a href="{{$faq_question_url}}"
+				                                                                   style="color:#09f;">帮助中心</a></div>
+			</div>
+		</td>
+	</tr>
+	</tbody>
+</table>' . $bottom);
+

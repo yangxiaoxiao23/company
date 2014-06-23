@@ -1,0 +1,230 @@
+<!-- 新版结伴同游左侧 -->
+<div class="item_left">
+	<div class="partner_colorful">
+    	<span class="partner_adtitle"><img alt="结伴同游" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_01.jpg"/></span>
+        <a class="partner_ad pr" href=""><img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_02.jpg" /></a>
+        <a class="partner_ad" href=""><img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_03.jpg" /></a>
+        <a class="partner_ad pr" href=""><img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_04.jpg" /></a>
+        <a class="partner_ad" href=""><img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_05.jpg" /></a>
+        <span class="set_partner"><a href="javascript:void(0)" onclick="art.dialog.open('{{$data.dialog_href}}',{title:'{{if $data.is_login != 'true'}}快速登录{{else}}发起新结伴{{/if}}',lock:true});" pop-type="iframe" pop-src="{{$data.dialog_href}}"><img alt="我要发起结伴" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_07.jpg" /></a></span>
+    </div>
+    <!-- 紧急结伴 -->
+    <div class="partner_hurry">
+    	<h2 class="hurry_title">紧急结伴</h2>
+        <ul>
+        	{{section name=key loop=$data.urgent_companions}}
+        	<li class="cfix">
+            	<p><a href="{{$data.urgent_companions[key].href}}" title="{{$data.urgent_companions[key].t_companion_title}}" class="hurry_tl">{{$data.urgent_companions[key].t_companion_title|truncate:18:"..."}}</a></p>
+            	<span class="mr"><img alt="" src="{{$data.urgent_companions[key].customers_face}}" {{$data.urgent_companions[key].customers_face_wh}} /></span>
+                <span class="mr"><p>发起：{{$data.urgent_companions[key].customers_name}}</p><p>出发时间：{{$data.urgent_companions[key].date}}</p><!-- p>目的地：纽约</p --></span>
+                <span><a href="{{$data.urgent_companions[key].href}}" class="together_button">一起<br />结伴</a></span>
+            </li>
+            {{/section}}
+            {{*<li class="cfix">
+            	<p><a href="" class="hurry_tl">温哥华七日精彩行当时看见合肥看见的是</a></p>
+            	<span class="mr"><img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_02.jpg" /></span>
+                <span class="mr"><p>发起：<a href="">veals</a></p><p>出发时间：<a href="">13-12-02</a></p><p>目的地：<a href="">纽约</a></p></span>
+                <span><a class="together_button" href="javascript:;">一起<br />结伴</a></span>
+            </li>*}}
+        </ul>
+    </div>
+    <!-- 紧急结伴 end -->
+    
+    <!-- 最新专题 -->
+    <div class="lastest_action">
+        <h2 class="la_title">最新专题</h2>
+        <ul>
+            <li><a target="_blank" href=""><img alt="" src="http://www.usitrip.com/image/nav/abouts_img4.jpg"></a></li>
+            <li><a target="_blank" href=""><img alt="" src="http://www.usitrip.com/image/nav/abouts_img4.jpg"></a></li>
+        </ul>
+    </div>
+    <!-- 最新专题 end -->
+    
+    <!-- 为什么选择走四方 -->
+    <div class="why_selus margin_b10 border_1">
+        <h4>为什么选择走四方</h4>
+        <ul class="cfix">
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_1.png"><p>美国认证</p></a></li>
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/" class="n_r"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_2.png"><p>透明公开</p></a></li>
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_3.png"><p>品质线路</p></a></li>
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/" class="n_r"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_4.png"><p>安全保障</p></a></li>
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/" class="n_b"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_5.png"><p>专业客服</p></a></li>
+            <li><a target="_blank" href="http://www.usitrip.com/web_action/2013_6youshi/" class="n_r n_b"><img src="{{$smarty.const.HTTP_TPL_DIR}}/image/partner_trip/selus_6.png"><p>高效签证</p></a></li>
+        </ul>
+    </div>
+    <!-- 为什么选择走四方 end -->
+</div>
+<!-- 新版结伴同游左侧 end -->
+
+<!-- 新版结伴同游右侧 -->
+<div class="jb_right">
+	<span class="jb_title">结伴选择</span>
+    <div class="jb_options">
+    	<div class="jb_style op_list">
+        	<label class="jb_op_title">类型:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.typelist}}<a href="{{$data.typelist[key].href}}" class="{{if $data.typelist[key].current == 'true' }}hover {{/if}}">{{$data.typelist[key].type_name}}</a>{{/section}}</span>
+        </div>
+        <!--<div class="jb_destination op_list">
+        	<label class="jb_op_title">目的地:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.categories_list}}<a class="{{if $data.categories_list[key].selected == 'true'}}hover {{/if}}" href="{{$data.categories_list[key].href}}">{{$data.categories_list[key].name}}<img alt="" src="{{$smarty.const.HTTP_TPL_DIR}}image/partner_trip/partner_trip_10.jpg" /></a>{{/section}}</span>
+            <div class="jb_op_cont">
+            {{section name=key loop=$data.categories_list}}
+                <div class="jb_dest_list" style="{{if $data.categories_list[key].selected == 'true'}}display:block;{{/if}}">{{section name=key2 loop=$data.categories_list[key].subdata}}<a class="{{if $data.categories_list[key].subdata[key2].selected == 'true'}}hover {{/if}}" href="{{$data.categories_list[key].subdata[key2].href}}">{{$data.categories_list[key].subdata[key2].name}}</a>{{/section}}</div>
+            {{/section}}
+            </div>
+        </div>-->
+        <div class="jb_city op_list">
+        	<label class="jb_op_title">想去哪儿:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.attractions_list}}<a class="{{if $data.attractions_list[key].selected == 'true'}}hover {{/if}}" href="{{$data.attractions_list[key].href}}">{{$data.attractions_list[key].tca_name}}</a>{{/section}}</span>
+        </div>
+        {{*<div class="jb_city op_list">
+        	<label class="jb_op_title">结束城市:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.destination_list}}
+            <a class="{{if $data.destination_list[key].selected == 'true'}}hover {{/if}}" href="{{$data.destination_list[key].href}}">{{$data.destination_list[key].tcd_name}}</a>
+            {{/section}}</span>
+        </div>*}}
+        <div class="jb_city op_list">
+        	<label class="jb_op_title">出发城市:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.start_city}}
+            <a class="{{if $data.start_city[key].selected == 'true'}}hover {{/if}}" href="{{$data.start_city[key].href}}">{{$data.start_city[key].tcd_name}}</a>
+            {{/section}}</span>
+        </div>
+        <div class="jb_sex op_list">
+        	<label class="jb_op_title">发起人性别:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.search_gender}}<a class="{{if $data.search_gender[key].selected == 'true'}}hover{{/if}}" href="{{$data.search_gender[key].href}}">{{$data.search_gender[key].text}}</a>{{/section}}</span>
+        </div>
+        {{if $data.search_haveline}}
+        <div class="jb_poststyle op_list">
+        	<label class="jb_op_title">帖子类型:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.search_haveline}}<a class="{{if $data.search_haveline[key].selected == 'true'}}hover {{/if}}" href="{{$data.search_haveline[key].href}}">{{$data.search_haveline[key].text}}</a>{{/section}}</span>
+        </div>
+        {{/if}}
+        <div class="jb_poststatus op_list">
+        	<label class="jb_op_title">帖子状态:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.search_status}}<a class="{{if $data.search_status[key].selected == 'true'}}hover {{/if}}" href="{{$data.search_status[key].href}}">{{$data.search_status[key].text}}</a>{{/section}}</span>
+        </div>
+        {{if $data.filter }}
+        <div class="jb_poststatus op_list">
+        	<label class="jb_op_title">已选条件:</label>
+            <span class="jb_op_list">{{section name=key loop=$data.filter}}<a title="{{$data.filter[key].title|default:'删除此条件'}}" href="{{$data.filter[key].href}}">{{$data.filter[key].text}}</a>{{/section}}</span>
+        </div>
+        {{/if}}
+    </div>
+    
+    <script type="text/ecmascript">
+    	jQuery(document).ready(function($){
+			var _tab = $('.jb_destination span.jb_op_list a');
+			var _cont = $('.jb_destination .jb_op_cont .jb_dest_list');
+			_tab.hover(function(){
+				var num = $(this).index();
+				$(this).addClass('hover').siblings().removeClass('hover');
+				_cont.eq(num).show().siblings().hide();
+			});
+		});
+		
+		/**
+ * 航班日期选择器(此函数需要日历控件类的支持@see calendar.js)
+ * @outer 显示日历
+ * @param {string} inputId 为日期输入框id
+ * @param {string} inputParentId 日期输入框的父id（主要是用来放日历框）
+ * @param {string} mindate 最小允许日期:1980-01-01
+ * @param {string} maxdate 最大允许日期:2015-12-01
+ */
+var calendarObj = [];
+function flightsCalendar(inputId, inputParentId, mindate, maxdate ){
+	if(typeof calendarObj[inputId+inputParentId] != 'undefined') {
+		var cal = calendarObj[inputId+inputParentId];
+	} else {
+		var cal = calendarObj[inputId+inputParentId] = new Calendar();
+	}
+	cal.appendTo(document.getElementById(inputParentId));
+	var _mind = mindate, _maxd = maxdate;
+	if(typeof(mindate)=='undefined'){
+		var myDate = new Date();
+		_mind = myDate.getFullYear() + '-'+ (myDate.getMonth()+1) +'-'+ myDate.getDate();
+	}
+	if(typeof(maxdate)=='undefined'){ _maxd = '2100-12-31';}
+	cal.open(document.getElementById(inputId), {
+		//acceptDate : ["2013-11-18", "2013-11-19", "2014-7-20", "2014-7-21", "2014-7-22", "2014-7-23", "2015-7-25", "2015-7-29"],
+		minDate: _mind,
+		maxDate: _maxd,
+		selectedDate: $("#"+inputId).val(),
+		dataNum: 1
+	}); 
+	//cal.wrapper.style.left = 0;
+	//cal.wrapper.style.top = 25 + "px";
+	cal.notClickClose();
+};
+
+    </script>
+    
+    <!-- 结伴贴列表 -->
+    <div class="jb_contlist">
+    	<div class="jb_contrank cfix">
+        	<span class="rk_title">共有{{$data.companions_counts}}贴满足条件：</span>
+            <span class="rk_func">排序：<a class="{{if $data.bydeparture_orderby == 'asc'}}rk_up{{elseif $data.bydeparture_orderby == 'desc'}}rk_down{{else}}rk_nb{{/if}}" href="{{$data.bydeparture_href}}">出行时间</a><a class="{{if $data.bysendtime_orderby == 'asc'}}rk_up{{elseif $data.bysendtime_orderby == 'desc'}}rk_down{{else}}rk_nb{{/if}}" href="{{$data.bysendtime_href}}">发布时间</a></span>
+        </div>
+        
+        <!-- 搜索帖子 -->
+        <div class="jb_r_b_cent cfix">
+            <div class="jb_r_b_cent_f">
+                <form target="_self" id="form_search" name="form_search" method="get" action="{{$data.search_form_action}}">
+                    <table cellspacing="0" cellpadding="0" border="0">
+                     <tbody>
+                        <tr>
+                            <td nowrap="nowrap">
+                                <b>出发时间:</b>
+                                {{foreach from=$data.search_form_params item=val key=key}}
+									<input type="hidden" name="{{$key}}" value="{{$val}}">
+									{{/foreach}}</td>
+                    <td nowrap="nowrap" style="padding-left:10px; padding-right:10px;" id="s_date">
+                            <input type="text" style="ime-mode: disabled;"  onClick="flightsCalendar('search_date_start','s_date')" autocomplete="false" class="text_time" id="search_date_start" name="search_date_start" value="{{$data.search_date_start}}" />                        </td>
+                            <td>至</td>
+                            <td nowrap="nowrap" style="padding-left:10px; padding-right:10px;" id="e_date">
+                            <input type="text" style="ime-mode: disabled;" onclick="flightsCalendar('search_date_end','e_date')" autocomplete="false" class="text_time" id="search_date_end" name="search_date_end"  value="{{$data.search_date_end}}" />	               </td>
+                           <td><input type="text" title="请输入关键字，进一步搜索" value="{{if $data.search_keywords != ''}}{{$data.search_keywords}}{{else}}{{/if}}" style="color:#BBBBBB" class="text4" id="tc_keyword" name="tc_keyword"></td><td><button style="width:100px;" class="jb_fb_sh m_l1"><div class="botton_nei_sh"><span>搜 索</span></div></button></td></tr>
+                </tbody></table>
+                </form>
+            </div>
+    	</div>
+        <!-- 搜索帖子 end -->
+       
+       <div class="jb_artlist">
+       		<div class="jb_art_title">
+            	<span class="art1">发起人</span><span class="art2">内容</span><span class="art3">出发时间</span><span class="art4">最后更新</span>
+            </div>
+            <ul>
+            {{section name=key loop=$data.companions_list}}
+            	<li>
+                	<span class="art_thumb art1"><img src="{{$data.companions_list[key].customers_face}}" alt="" {{$data.companions_list[key].customers_face_wh}}/><p>{{$data.companions_list[key].customers_name}}</p></span>
+                    <span class="art2"><a href="{{$data.companions_list[key].href_url}}" title="{{$data.companions_list[key].t_companion_title}}">{{$data.companions_list[key].t_companion_title|truncate:28:"...":true}}</a><p>{{if $data.companions_list[key].bbs_type == 1}}
+							旅游线路：
+							{{section name=pk loop=$data.companions_list[key].products}}
+							<a href="{{$data.companions_list[key].products[pk].products_href}}" target="_blank">{{$data.companions_list[key].products[pk].products_name}}</a><br/>
+							{{/section}}
+							{{else}}
+							目的地：{{section name=k loop=$data.companions_list[key].destination_names}}
+							{{$data.companions_list[key].destination_names[k].tcd_name}}
+							{{/section}}
+							{{/if}}</p><p>发布日期：{{$data.companions_list[key].add_time|date_format:"%Y.%m.%e"}}</p></span>
+                    <span class="art3">{{$data.companions_list[key].hope_departure_date}}</span>
+                    <span class="art4"><p>回复（{{$data.companions_list[key].reply_num}}）查看（{{$data.companions_list[key].click_num}}）</p><p>最后更新：by {{$data.companions_list[key].lastReply}}</p></span>
+                </li>
+            {{/section}}
+            	<li>
+            	{{if $data.pagebar.previous_href != ''}} <a title=" 上一页 " href="{{$data.pagebar.previous_href}}" class="pre1">&lt;&lt; 上一页</a>&nbsp;{{/if}}
+					{{if $data.pagebar.previous_x_page.href != ''}}&nbsp;&nbsp;<a title=" 前 10 页 " href="{{$data.pagebar.previous_x_page.href}}">...</a>{{/if}}
+					{{section name=key loop=$data.pagebar.pages_list}}
+					&nbsp;&nbsp;
+					{{if $data.pagebar.pages_list[key].selected != '1'}} <a title=" 第{{$data.pagebar.pages_list[key].text}}页 "  href="{{$data.pagebar.pages_list[key].href}}" class="type1">{{$data.pagebar.pages_list[key].text}}</a> {{else}} <b>{{$data.pagebar.pages_list[key].text}}</b> {{/if}}
+					{{/section}}
+					{{if $data.pagebar.next_x_page.href != ''}}&nbsp;&nbsp;<a title=" 后 10 页 " href="{{$data.pagebar.next_x_page.href}}">...</a>{{/if}}
+					{{if $data.pagebar.next_href != ''}}
+					&nbsp;&nbsp;<a title=" 下一页 " href="{{$data.pagebar.next_href}}" class="next1">下一页 &gt;&gt;</a> {{/if}}
+				</li>
+            </ul>
+       </div>
+        
+    </div>
+</div>
+<!-- 新版结伴同游右侧 end -->

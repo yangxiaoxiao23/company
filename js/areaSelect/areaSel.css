@@ -1,0 +1,32 @@
+/* 
+	区域选择选项卡 css
+	2013-11-15
+ */
+
+.ucPlaceDialog { position:absolute; left:0; top:26px; width:650px; border:2px solid #09F; background:#FFF; }
+.ucPlaceDialog .d_hd { height:30px; line-height:30px; font-size:12px; font-weight:700; background:#F5F5F5; border-bottom:1px solid #E3E3E3; }
+.ucPlaceDialog .d_hd h4 { text-indent:12px; color:#013E5B; }
+.ucPlaceDialog .d_hd h4 span { font-weight:normal; color:#4D4D4D; }
+.ucPlaceDialog .d_hd .close { float:right; margin-right:8px; line-height:30px; color:#5E9EDE; font-size:14px; font-weight:normal; font-family:tahoma,arial,"Hiragino Sans Gb","SimSun"; }
+.ucPlaceDialog .d_hd .close:hover { text-decoration:none; color:#C00; }
+
+.ucPlaceDialog .place_cont { padding:8px; }
+.ucPlaceDialog .place_cont .dCountryLabel{ display:none;}
+.ucPlaceDialog .place_cont label { display:inline-block; *display:inline; *zoom:1; width:132px; height:20px; overflow:hidden; padding:2px; border-radius:2px; margin-right:8px; line-height:20px; vertical-align:middle; font-family:Arial; cursor:pointer; outline:none; }
+.ucPlaceDialog .place_cont label.hover { background:#E6F0FF; }
+.ucPlaceDialog .place_cont label input { position:relative; bottom:-2px; }
+
+.dCountryTab{ padding-left:15px; padding-bottom:25px; border-bottom:1px solid #FC0; }
+.dCountryTab li { float:left; _display:inline; border:1px solid #FC0; border-bottom:0 none; text-align:center; padding:0 5px; height:24px; line-height:24px;margin-right:5px; cursor:pointer; background:#FFF6C8; }
+.dCountryTab li.current{ height:25px; font-weight:bold; background:#FFF; }
+.dCountryTab .dSearch { float:right; width:130px; margin-right:10px; _margin-top:-1px; border:0 none; padding:0; background:#FFF; position:relative; }
+.dCountryTab .dSearchIpt { height:20px; width:124px; border:1px solid #09F; padding:1px 2px; outline:none; }
+
+.dCountryLabel { padding-top:5px; }
+
+.ucPlaceDialog .d_foot { background:#F5F5F5; border-top:1px solid #E3E3E3; padding:3px 0; text-align:center; }
+.ucPlaceDialog .d_foot .d_btn { display:inline-block; *display:inline; *zoom:1; width:50px; height:25px; line-height:25px; text-align:center; color:#4D4D4D; background:url(/tpl/www/image/ucbutton.png) no-repeat -100px -160px; margin:0 3px; }
+
+.uc-chgavatar { position:absolute; top:20px; right:20px; width:160px; }
+.uc-chgavatar .uc-chgavatar-box { width:100px; height:100px; overflow:hidden; margin:0 auto; }
+.uc-chgavatar p { color:#777; }

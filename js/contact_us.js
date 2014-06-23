@@ -1,0 +1,1 @@
+$("#packet_group").validate();

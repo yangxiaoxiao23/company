@@ -1,0 +1,48 @@
+<style>
+body{background:none;}
+#body{background:none; margin:auto;padding:inherit;width:auto;z-index:auto;}
+#position{display:none;}
+#login_dialog_box{ background:#fff; padding:10px;}
+#login_dialog_box .login_dialog_title{ position:relative; border-bottom:dashed 1px #ccc; height:30px; line-height:30px;}
+#login_dialog_box .login_dialog_title h3{ font-size:14px;}
+#login_dialog_box .login_dialog_title a.login_dialog_close{ position:absolute; right:0; top:0; background:url(/tpl/www/image/X.gif) no-repeat; width:20px; height:20px; display:block; text-indent:-200000;}
+#login_dialog_box .login_dialog_title a.login_dialog_close:hover{ background:url(/tpl/www/image/X_on.gif) no-repeat;}
+#login_dialog_box .login_dialog_options{ width:370px; margin:20px auto;}
+#login_dialog_box .login_dialog_options p{ margin-bottom:20px;}
+#login_dialog_box .login_dialog_options p label{ display:inline-block; width:100px; text-align:right; padding-right:10px;}
+#login_dialog_box .login_dialog_options p input.sign_in_box{ height:22px; width:160px; padding:0 5px; border-width:1px; border-style:solid; border-color:#ccc; border-radius:1px; box-shadow:inset 1px 1px #aaa;}
+#login_dialog_box .login_dialog_options p.dialog_button,#login_dialog_box .login_dialog_options p.dialog_forget{ padding-left:110px;}
+#login_dialog_box .login_dialog_options p.dialog_forget a{ color:#003fa0;}
+</style>
+<div id="login_dialog_box">
+    <form onsubmit="submit_and_login_CreateNewCompanion(this); return false;" id="login_CreateNewCompanion" method="post" action="" name="login_CreateNewCompanion">
+        <input type="hidden" name="formid" id="formid" value="{{$data.sessiontoken}}" />
+        <div class="login_dialog_options">
+            <p><label>µÁ◊”” œ‰:</label><input type="text" class="sign_in_box" id="email_address" name="email_address" onblur="this.value = simplized(this.value);"></p>
+            <p><label>√‹¬Î:</label><input type="password" class="sign_in_box" id="password" name="password" onblur="this.value = simplized(this.value);"></p>
+            <p class="dialog_button">
+                <input type="image" title=" µ«¬º " alt="µ«¬º" style="border:0px;" src="/tpl/www/image/button_login.gif">
+                <input type="hidden" value="true" name="ajax">
+            </p>
+            <p class="dialog_forget">
+            	<span class="smalltext"><a href="http://www.xiaoming.com/password_forgotten.php" target="_blank" style="text-decoration:underline;">Õ¸º«√‹¬Î£ø</a></span>
+                <span class="smalltext">–¬”√ªß«Î <a href="http://www.xiaoming.com/create_account.php" target="_blank" class="sp3">◊¢≤·</a></span>
+            </p>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+function submit_and_login_CreateNewCompanion(obj){
+	
+	var url = '{{$data.sendLoginUrl}}';//"http://cn.86.usitrip-2.0.com/ajax.php?mod=login&action=process";
+	$.post(url,{'email_address':$('#email_address').val(),'password':$('#password').val(),'formid':$('#formid').val()},function(r){
+		if (r.result == 'success') {
+			parent.G.popup.hide();
+			parent.G.popup.reload();
+		} else {
+			alert(r.errortext);
+		}
+	},'json');
+	return false;
+}
+</script>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html"; charset="utf8" />
+<title>出生日期控件demo</title>
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="../js/forms.js"></script>
+</head>
+
+<body>
+<script type="text/javascript">
+	jQuery(function($){
+		var xx = new forms();
+		xx.cBirthday('div',{"y":"year","m":"mon","d":"day"},'birthBox1','1990-10-27','1902-02-22','2013-03-25');
+		xx.cBirthday('body',{"y":"year1","m":"mon1","d":"day1"},'birthBox2','1991-09-26','1902-02-22','2013-03-25');
+	});
+</script>
+
+<style type="text/css">
+	ul,li,p,h1,h2,h3,h4,h5,h6{ list-style:none; margin:0; padding:0;}                                      
+	.date_bir_box{ width:300px; height:60px; margin:100px auto 0 auto; font-size:12px; }
+	.date_bir_box .bir_year,.date_bir_box .bir_day,.BirthMonth{ position:relative;}
+	.date_bir_box .bir_year,.date_bir_box .bir_day,.bir_month{ display:inline-block; margin:0 5px; vertical-align:top;}
+	.date_bir_box .placeholder_text{ position:absolute; left:5px; top:5px; color:#999;}
+	.date_bir_box .bir_month .BirthMonth .month_list{ display:none; position:absolute; left:0; top:0; width:98px; background:#fff; border:solid 1px #ccc;}
+	.date_bir_box input{ border:solid 1px #ccc; padding-left:3px; height:24px; line-height:24px; width:60px;}
+	.date_bir_box input.warnL{ border-color:#c00;}
+	.date_bir_box .bir_month{ width:100px;}
+	.date_bir_box .BirthMonth .month_dis{ position:relative; height:22px; border:solid 1px #ccc; cursor:pointer; padding:5px 0 0 5px; background:url(http://www.usitrip.com/image/nav/header_bottom_bg.gif) repeat-x 0 -33px;}
+	.date_bir_box .month_dis .mon_arrow{ position:absolute; right:5px; top:7px;}
+	.date_bir_box .month_list ul li{ height:24px; line-height:24px; padding-left:5px; cursor:pointer;}
+	.date_bir_box .month_list ul li.oncur{ background:#09f; color:#fff;}
+	.date_bir_box .month_list ul li.seled{ background:#09f; color:#fff;}
+	.date_bir_box p.emsg{ display:none; color:#c00; margin:5px 0 0 5px;}
+</style>
+</body>
+<div></div>
+</html>

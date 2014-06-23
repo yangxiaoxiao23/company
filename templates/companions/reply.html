@@ -1,0 +1,46 @@
+
+<form onsubmit="Submit_Companion_Reply(); return false" id="CompanionFormReply" name="CompanionFormReply" method="post" action="">
+    <input type="hidden" name="formid" id="formid" value="{{$data.sessiontoken}}"/>
+    <div class="partner_reply_input">
+        <p class="reply_title"><strong>发表回复</strong>{{$data.date}}</p>
+        <span class="ipt_title">内容：</span>
+        <span class="ipt_cont">
+            {{if $data.is_login != 'true'}}<a class="reply_checkusr" href="javascript:;" onclick="go_login()">在这里输入回复内容...</a>{{else}}
+            <textarea maxlength="1000" rows="6" class="reply_content" name="t_c_reply_content" id="t_companion_content" ></textarea>{{/if}}
+            <p class="cfix"><button type="submit" class="reply_btn">回复</button><label for="only_leader"><input type="checkbox" id="only_leader" name="only_top_can_see" value="1" />只告诉楼主</label><span class="r"></span></p>
+        </span>
+    </div>
+    <input type="hidden" value="{{$data.t_companion_id}}" id="t_companion_id" name="t_companion_id">
+    <input type="hidden" value="0" id="parent_id" name="parent_id">
+    <input type="hidden" value="0" id="parent_type" name="parent_type">
+</form>
+<script type="text/javascript">
+    function Submit_Companion_Reply(){
+	    var t_c_reply_content = $('#t_companion_content').val().trim();
+    	var only_top_can_see = $('#only_leader').attr('checked');
+    	var t_companion_id = $('#t_companion_id').val().trim();
+    	var parent_id = $('#parent_id').val().trim();
+    	var parent_type = $('#parent_type').val().trim();
+    	var formid = $('#formid').val().trim();
+    	$.post('{{$data.replay_url}}',{'t_c_reply_content':t_c_reply_content,'only_top_can_see':only_top_can_see,'t_companion_id':t_companion_id,'parent_id':parent_id,'parent_type':parent_type,'formid':formid},function(r){
+    		if(r.status == 0) {
+    			alert('回复成功!');
+    			$('#t_companion_content').val('');
+    			parent.location.reload();
+    		} else {
+    			alert(r.errmsg);
+    		}
+    	},'json');
+    	return false;
+    }
+
+	//让弹出层与本窗体自适应
+	$(document).ready(function(){
+		parent.$('#PartnerReply_box').css('height',$(document).height());
+	});
+	function go_login(){
+        parent.showDialog('not_login');
+		//parent.$('a.btn_jb').click();
+		return false;
+	}
+</script>

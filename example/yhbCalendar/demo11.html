@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <link href="../../js/yhbCalendar/css/calendar.css" type="text/css" rel="stylesheet"/>
+    <script type="text/javascript" src="jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="../../js/yhbCalendar//calendar-debug.js"></script>
+
+    <style>
+        body{margin:0;}
+    </style>
+
+</head>
+
+<body>
+<h3>几个回调</h3>
+callback: 选择日期后，则执行的回调方法
+showAfter: 显示之后的回调
+hideAfter: 隐藏之后的回调
+<input  id="c1"  class="cc" /><br/>
+<script type="text/javascript">
+
+    var callbackFunction = function(){
+        alert('选择日期后，则执行的回调方法');
+    };
+
+    var showAfterFun = function(){
+        alert('showAfter');
+    };
+
+    var hideAfterFun = function(){
+        alert('hideAfter');
+    };
+
+    var defaultTc = {
+        callback: callbackFunction, //选择日期后，则执行的回调方法
+        showAfter: showAfterFun, //显示之后的回调
+        hideAfter: hideAfterFun //隐藏之后的回调
+    };
+    $('#c1').calendar(defaultTc || {});
+</script>
+</body>
+</html>
